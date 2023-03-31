@@ -7,7 +7,7 @@
 
 \newcommand{\std}{1} % for students
 %\newcommand{\std}{0} % for teacher
- 
+
 \newcommand{\includegraphicsex}[3]{
     \ifnum\std=1 \includegraphics[#1]{#3} \else \includegraphics[#2]{#3} \fi
 }
