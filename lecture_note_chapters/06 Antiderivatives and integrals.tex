@@ -1544,21 +1544,21 @@ This form of presentation is more concise but obscure if you are not adept in ma
 \end{ex}
 \begin{exsol}[]{exsol: ibp_simp}
     \begin{enumerate}
-        \item U-substitution does not work here, and the integrand is a product of two functions, so we may try integration by parts.  We now have the choice of setting $u = x, dv/dx = e^{2x}$ or $u = e^{2x}, dv/dx = x$.  Since the latter would lead to $v = x^2/2$ that is more complicated that $dv/dx = x$, we opt for the first setting.  Now since $u = x, dv/dx = e^{2x}$, we have $du/dx = 1, v = e^{2x}/2$, where the antidifferentiation of $e^{2x}$ can be done either by eyeballing or U-substitution letting $w = 2x$.  Now we can apply integration by part and yield
+        \item U-substitution does not work here, and the integrand is a product of two functions, so we may try integration by parts.  We now have the choice of setting $u = x, dv/dx = e^{2x}$ or $u = e^{2x}, dv/dx = x$.  Since the latter would lead to $v = x^2/2$ that is more complicated that $dv/dx = x$, we opt for the first setting.  Now since $u = x, dv/dx = e^{2x}$, we have $du/dx = 1, v = e^{2x}/2$, where the antidifferentiation of $e^{2x}$ can be done either by eyeballing or U-substitution letting $w = 2x$.  Now we can apply integration by parts and yield
         \begin{align*}
             \int xe^{2x}~dx &= x \cdot \frac{1}{2}e^{2x} - \int 1 \cdot \frac{1}{2}e^{2x}~dx\\
             &= \frac{1}{2}xe^{2x} - \frac{1}{2}\int e^{2x}~dx\\
             &= \frac{1}{2}xe^{2x} - \frac{1}{2}\cdot\frac{1}{2}e^{2x} + C\\
             &= \frac{1}{2}xe^{2x} - \frac{1}{4}e^{2x} + C = \frac{1}{4}(2x+1)e^{2x}
         \end{align*}
-        \item U-substitution does not work here, and the integrand is a product of two functions, so we may try integration by parts.  We now have the choice of setting $u = x^3, dv/dx = \ln x$ or $u = \ln x, dv/dx = x^3$.  For the former we do not even know how to antidifferentiate $\ln x$, so we are forced to use the latter setting.  Now since $u = \ln x, dv/dx = x^3$, we have $du/dx = 1/x, v = x^4/4$.  Now we can apply integration by part and yield
+        \item U-substitution does not work here, and the integrand is a product of two functions, so we may try integration by parts.  We now have the choice of setting $u = x^3, dv/dx = \ln x$ or $u = \ln x, dv/dx = x^3$.  For the former we do not even know how to antidifferentiate $\ln x$, so we are forced to use the latter setting.  Now since $u = \ln x, dv/dx = x^3$, we have $du/dx = 1/x, v = x^4/4$.  Now we can apply integration by parts and yield
         \begin{align*}
             \int \ln x \cdot x^3~dx &= \ln x \cdot \frac{1}{4}x^4 - \int \frac{1}{x} \cdot \frac{1}{4}x^4~dx\\
             &= \frac{1}{4}x^4\ln x - \frac{1}{4}\int x^3~dx\\
             &= \frac{1}{4}x^4\ln x - \frac{1}{4}\cdot \frac{1}{4}x^4 + C\\
             &= \frac{1}{4}x^4\ln x - \frac{1}{16}x^4 + C
         \end{align*}
-        \item U-substitution still doesn't work here, and the integrand is a product of two functions, so we may try integration by parts.  We now have the choice of setting $u = x, dv/dx = \sec^2 x$ or $u = \sec^2 x, dv/dx = x$.  For the latter, $v$ would be more complicated that $dv/dx$, and the derivative a $\sec^2 x$ is pretty yucky, so we opt for the former setting, where we actually know how to antidifferentiate $\sec^2 x$, which is $\tan x$.  Now since $u = x, dv/dx = \sec^2 x$, we have $du/dx = 1, v = \tan x$, so we can apply integration by part and yield
+        \item U-substitution still doesn't work here, and the integrand is a product of two functions, so we may try integration by parts.  We now have the choice of setting $u = x, dv/dx = \sec^2 x$ or $u = \sec^2 x, dv/dx = x$.  For the latter, $v$ would be more complicated that $dv/dx$, and the derivative a $\sec^2 x$ is pretty yucky, so we opt for the former setting, where we actually know how to antidifferentiate $\sec^2 x$, which is $\tan x$.  Now since $u = x, dv/dx = \sec^2 x$, we have $du/dx = 1, v = \tan x$, so we can apply integration by parts and yield
         \begin{align*}
             \int x \cdot \sec^2x~dx &= x \cdot \tan x - \int 1 \cdot \tan x~dx\\
             &= x \tan x - \int \frac{\sin x}{\cos x}~dx\\
@@ -1568,7 +1568,7 @@ This form of presentation is more concise but obscure if you are not adept in ma
         \end{align*}
         \item U-substitution still doesn't work here, and the integrand is a product of two functions, so we may try integration by parts.  Note that here we have $\cos^2x$ in the integrand, which is a little bit hard to maneuver when either we want to antidiffernetiate or differentiate it.  Therefore, we can pretreat it with the double angle formula:
         \[\int x \cos^2x~dx = \int x \cdot \frac{1+\cos 2x}{2}~ dx = \frac{1}{2}\int x dx +\frac{1}{2} \int x \cos 2x~dx\]
-        Now for the second antiderivative, we will use integration by part and let $u = x$ and $dv/dx = \cos 2x$.  This leads to $du/dx = 1$ and $v = (\sin 2x)/2$, and we yield
+        Now for the second antiderivative, we will use integration by parts and let $u = x$ and $dv/dx = \cos 2x$.  This leads to $du/dx = 1$ and $v = (\sin 2x)/2$, and we yield
         \begin{align*}
             \frac{1}{2}\int x dx +\frac{1}{2} \int x \cos 2x~dx &= \frac{1}{2}\int x dx + \frac{1}{2}\Big(x \cdot \frac{1}{2}\sin 2x - \int 1 \cdot \frac{1}{2}\sin 2x\Big)~dx\\
             &= \frac{1}{2}\int x dx + \frac{1}{4}x\sin 2x - \frac{1}{4}\int \sin 2x~dx\\
@@ -1593,6 +1593,81 @@ In the previous examples, the choice of $u$ and $dv/dx$ in integration by parts 
 
 \begin{egsol}[]{egsol: ibp_hard}
     \begin{enumerate}[a)]
-        \item At first glance, integration by parts should not work since the integrand cannot be split into two parts for us to determine which is $u$ and which is $dv/dx$.  However, we can be clever here and note
+        \item At first glance, integration by parts should not work since the integrand cannot be split into two parts for us to determine which is $u$ and which is $dv/dx$.  However, we can force the integrand to be a product of two functions by writing
+        \[\int \ln x~dx = \int 1 \cdot \ln x~dx\]
+        We now have the choice of setting $u = 1, dv/dx = \ln x$ or $u = \ln x, dv/dx = 1$.  The former is not sensible since we are finding the antiderivative of $\ln x$ in the first place.  Therefore we let $u = \ln x, dv/dx = 1$, so we have $du/dx = 1/x, v = x$.  Now we can apply integration by parts and yield
+        \begin{align*}
+            \int \ln x \cdot 1~dx &= \ln x \cdot x - \int \frac{1}{x} \cdot x~dx\\
+            &= x\ln x - \int 1~dx\\
+            &= x\ln x - x + C
+        \end{align*}
+        \item As with the previous problem, to use integration by parts, we can construct a product form in the integrand by writing
+        \[\int \arctan x~dx = \int 1 \cdot \arctan x~dx\]
+        Now we can let $u = \arctan x$ and $dv/dx = 1$ since setting $dv/dx = \arctan x$ does not make sence.  Therefore, we have $du/dx = \frac{1}{x^2+1}$ and $v = x$, which we insert into the formula for integration by parts:
+        \begin{align*}
+            \int \arctan x \cdot 1~dx &= \arctan x \cdot x - \int \frac{1}{x^2+1} \cdot x~dx\\
+            &= x\arctan x - \int \frac{x}{x^2+1}~dx\\
+            &= x\arctan x - \frac{1}{2}\int \frac{1}{x^2+1} (2x dx)
+        \end{align*}
+        where in the last equality we prep the differential for U-substitution.  Now we can let $w = x^2 + 1$ so that $dw = 2xdx$:
+        \begin{align*}
+            x\arctan x - \frac{1}{2}\int \frac{1}{x^2+1} (2x dx) &= x\arctan x - \frac{1}{2}\int \frac{1}{w}~dw \\
+            &= x\arctan x - \frac{1}{2}\ln |w| + C\\
+            &= x\arctan x - \frac{1}{2}\ln |x^2+1| + C
+        \end{align*}
+        \item In order to use integration by parts, one way to rewrite the integrand is $(\ln x)^2 = (\ln x)(\ln x)$, so that we can let $u = \ln x, dv/dx = \ln x$.  Using the result from the first problem,  we have $du/dx = 1/x, v = x\ln x - x$ and plug them into the formula for integration by parts:
+        \begin{align*}
+            \int (\ln x) (\ln x)~dx &= (\ln x)(x \ln x - x) - \int \frac{1}{x}(x \ln x - x)~dx\\
+            &= x(\ln x)^2 - x \ln x - \int (\ln x - 1)~dx\\
+            &= x(\ln x)^2 - x \ln x - (x \ln x - x - x) + C\\
+            &= x(\ln x)^2 - 2x \ln x + 2x + C
+        \end{align*}
+        Alternatively, we can rewrite the integrand as $(\ln x)^2 = (\ln x)^2 \cdot 1$, so that we can let $u = (\ln x)^2, dv/dx = 1$.  In this case we yield $du/dx = 2 \ln x / x, v = x$, and we can use integration by parts:
+        \begin{align*}
+            \int (\ln x)^2 \cdot 1~dx &= (\ln x)^2 \cdot x - \int \frac{2\ln x}{x}\cdot x~dx\\
+            &= x(\ln x)^2 - \int 2\ln x~dx\\
+            &= x(\ln x)^2 - 2(x \ln x - x) + C\\
+            &= x(\ln x)^2 - 2x \ln x + 2x + C
+        \end{align*}
+        which gives us the same result as before. 
+        \item Here for integration by parts, we have the choice of setting $u = x^2, dv/dx = \cos x$ or $u = \cos x, dv/dx = x^2$.  Since the latter would lead to $v = x^3/3$ that is more complicated that $x^2$, we opt for the former setting that leads to $du/dx = 2x, v = \sin x$, so we have
+        \[\int x^2 \cos x~dx = x^2 \sin x - \int 2x \sin x~dx\]
+        The antiderivative on the right hand side can be tackled by using integration by parts again.  We can let $u = 2x, dv/dx = \sin x$ so that $du/dx = 2, v = -\cos x$, so we have 
+        \begin{align*}
+            x^2 \sin x - \int 2x \sin x~dx &= x^2 \sin x - \Big(2x(-\cos x) - \int 2 (-\cos x)~dx\Big)\\
+            &= x^2 \sin x - \Big(-2x\cos x + 2\int \cos x~dx\Big)\\
+            &= x^2 \sin x + 2x \cos x - 2\sin x + C
+        \end{align*}
+        Note that here by repeatedly using integration by parts, the integrand goes from $x^2\cos x$ to $2x\sin x$ then $(-2\cos x)$, which we can finally antidifferentiate.  In essence, since integration by parts differentiates one part of the integrand and antidifferentiates the other part, as long as the differentiation provides simplification (for polynomials, it reduces its power) and the antidifferentiation does not complicate the integrand (for sine and cosine functions, it just alternates between them), we can repeatedly apply integration by parts and gradually simplify the integrand to a form that we can deal with.  Therefore, this approach of repeated integration by parts can be used for antidifferentiations of the following forms:
+        \[\int x^n\sin(kx)~dx \quad;\quad \int x^n\cos(kx)~dx \quad;\quad \int x^ne^{kx}~dx\]
+        \item Here to apply integration by parts, we have to decide either to let $u = e^x, dv/dx = \sin x$ or $u = \sin x, dv/dx = e^x$.  Since it is more straightforward to antidifferentiate $e^x$, we opt for $u = \sin x, dv/dx = e^x$ so that $du/dx = \cos x, v = e^x$, and then yield
+        \[\int \sin x \cdot e^x~dx = \sin x \cdot e^x - \int \cos x \cdot e^x~dx\]
+        Now we have $\int e^x \cos x~dx$ on the right hand side, which is very similar to our original integrand, so we use the same approach for integration by parts and let $u = \cos x, dv/dx = e^x$, so that $du/dx = -\sin x, v = e^x$ and thus
+        \begin{align*}
+            \int e^x\sin x~dx &= e^x\sin x - \int \cos x \cdot e^x~dx\\
+            &= e^x\sin x - \Big(\cos x \cdot e^x - \int (-\sin x) \cdot e^x~dx\Big)\\
+            &= e^x\sin x - e^x\cos x - \int e^x\sin x~dx
+        \end{align*}
+        Notice $\int e^x\sin x~dx$ appears on both sides, so we can rearrange the equation and yield
+        \begin{align*}
+            2\int e^x\sin x~dx &= e^x\sin x - e^x\cos x + C^*\\
+            \int e^x\sin x~dx &= \frac{1}{2}(e^x\sin x - e^x\cos x) + C
+        \end{align*}
+        where we define $C = 2C^*$ for brevity.  In this example, after using integration by parts twice, we get back to our original antiderivative and can then solve for the antiderivative using algebra, which is pretty awesome.
+        \item For this antiderivative, in order to apply integration by parts, we split the integrand into $(\sec x)(\sec^2 x)$.  Now if we set $dv/dx = \sec x$, we would get $v = \ln|\sec x + \tan x|$, which is prettly yucky.  Therefore, we let $u = \sec x, dv/dx = \sec^2 x$ so that $du/dx = \sec x \tan x, v = \tan x$ and we can apply the formula for integration by parts:
+        \begin{align*}
+            \int \sec^3 x~dx &= \int \sec x \cdot \sec^2 x~dx\\
+            &= \sec x \cdot \tan x - \int \sec x \tan x \cdot \tan x~dx\\
+            &= \sec x \tan x - \int \sec x \tan^2 x~dx\\
+            &= \sec x \tan x - \int \sec x (\sec^2x - 1)~dx\\
+            &= \sec x \tan x - \int \sec^3 x~dx + \int \sec x~dx
+        \end{align*}
+        Note that we again have our original antiderivative $\int \sec^3 x~dx$ on both sides, so we can rearrange the equation and yield:
+        \begin{align*}
+            2\int \sec^3 x~dx &= \sec x \tan x + \int \sec x~dx\\
+            2\int \sec^3 x~dx &= \sec x \tan x + \ln |\sec x \tan x| + C^*\\
+            \int \sec^3 x~dx &= \frac{1}{2}(\sec x \tan x + \ln |\sec x \tan x|) + C
+        \end{align*}
+        where we define $C = 2C^*$ for brevity.  Note that this approach can be used to derive the antiderivative for other powers of secant functions (except power of $1$).
     \end{enumerate}
 \end{egsol}
