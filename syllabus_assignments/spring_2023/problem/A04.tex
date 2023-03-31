@@ -1,0 +1,111 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus II (MSF\_10010 / AM\_\_1080AH) \\ 2023 Spring \\ Problem List IV (Due Mar 16)}
+
+\bigskip
+\noindent \textbf{Reminder:} Remember the $+C$!
+\bigskip
+
+\problem Find the following antiderivatives
+    \begin{enumerate}[(a)]
+        \item $\int x^2(\sqrt{x}-1)~dx$
+        \item $\int \frac{x+3}{x^2+6x+7}~dx$
+        \item $\int \frac{x}{\sqrt{3x^2+1}}~dx$
+        \item $\int \frac{x^3+2x+4}{x+1}~dx $ \quad (Hint: Use long division)
+        \item $\int \frac{1}{x(\ln x)^2}~dx$
+    \end{enumerate} \vspace{6mm}
+
+\problem Find the following antiderivatives
+    \begin{enumerate}[(a)]
+        \item $\int \frac{3}{4x^2+9}~dx$
+        \item $\int \frac{2x+3}{4x^2+9}~dx$
+        \item $\int \frac{4x^2}{4x^2+9}~dx$ \quad (Hint: Use long division)
+        \item $\int \sqrt{x^7+x^4} dx$ \quad (Hint: Factor out some power of $x$ out of the square root)
+        \item $\int \frac{x^2+x+1}{\sqrt{x-1}} dx$ \quad (Hint: If $u = x - 1$, then $x = u + 1$)
+    \end{enumerate} \vspace{6mm}
+
+\problem Find the following antiderivatives
+    \begin{enumerate}[(a)]
+        \item $\int \sin^2x \cos x~dx$
+        \item $\int \sin^2x \cos^5x~dx$
+        \item $\int \sin^5x~dx$
+        \item $\int \sin^4x~dx$
+        \item $\int \sin^2x\cos^4x~dx$
+    \end{enumerate} \vspace{6mm}
+
+\problem Find the following antiderivatives
+    \begin{enumerate}[(a)]
+        \item $\int \frac{\sin x}{\cos^2x}~dx$
+        \item $\int \frac{\sin^2x}{\cos^2x}~dx$ (Hint: The derivative of $\tan x$ is $\sec^2x$)
+        \item $\int \frac{\sin^3x}{\cos^2x}~dx$ (Hint: Express excessive sine functions with cosine)
+        \item $\int \frac{2}{e^{-x}+1}~dx$ \quad (Hint: Multiply the same quantity to both the numerator and demonimator)
+        \item $\int \frac{1+e^{-x}}{1+xe^{-x}}~dx$ \quad (Hint: Multiply the same quantity to both the numerator and demonimator)
+    \end{enumerate} \vspace{6mm}
+
+\end{document}

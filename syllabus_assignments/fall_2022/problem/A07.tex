@@ -1,0 +1,131 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\answer}{\noindent \textbf{Answer. }}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Differentiation rules I, II}
+
+\bigskip
+
+\problem Find the derivatives of the following functions
+\begin{enumerate}[(a)]
+    \item $(x^3+1) \sin x$
+    \item $x^{-2} \ln x$
+    \item $\frac{x-1}{(x+2)^2}$
+    \item $e^x \sec x$
+    \item $(\sin 2x) (\cot x)$
+\end{enumerate}\vspace{6mm}
+
+\problem Find the derivatives of the following functions
+\begin{enumerate}[(a)]
+    \item $(e^x + \ln 2)^2$
+    \item $\sin^3 x$
+    \item $\ln \frac{\pi}{\sqrt[3]{x^2}}$
+    \item $3^{\ln x}$ \quad (Hint: Write $3$ as $e^{\ln 3}$)
+    \item $\log_{x^5} 5^x$ \quad (Hint: Try changing the base)
+\end{enumerate}\vspace{6mm}
+
+
+\problem A heap of radioactive material is decaying so that its mass (in grams) over time (in thousand years) follows the equation $M(t) = 50 (0.9715)^t, \; t \ge 0$
+\begin{enumerate}[(a)]
+    \item What is its mass at $t = 0$?
+    \item What is the half-life of this material, i.e. the time needed to halve its mass?
+    \item At what rate is this heap of material decaying initially (at $t=0$)?
+    \item At what rate is this heap of material decaying at its half-life?
+\end{enumerate}\vspace{6mm}
+
+\problem A raindrop is falling with its speed (in meters/second) over time (in seconds) as $v(t) = 5\cdot \frac{e^{4t}-1}{e^{4t}+1}, t \ge 0$
+\begin{enumerate}[(a)]
+    \item What is the raindrop's initial velocity, i.e. its velocity at $t = 0$?
+    \item What is the raindrop's terminal velocity, i.e. its velocity as $t \rightarrow \infty$?
+    \item The acceleration function $a(t)$ is defined as the derivative of the velocity function with respect to time. Find $a(t)$.
+    \item What is the raindrop's initial acceleration?
+    \item What is the raindrop's terminal acceleration?
+\end{enumerate}\vspace{6mm}
+
+% \problem Determine if the following statements are true or false and explain. (You can just provide a counterexample if you determine them as false)
+% \begin{enumerate}[(a)]
+%     \item If $f'(x) = g'(x)$ (for all $x\in \mathbb{R}$), then $f(x) = g(x)$
+%     \item If $f(1) = 0$, then $f'(1) = 0$
+%     \item If $f'(x) = 0$ (for all $x\in \mathbb{R}$), then $f(x) = 0$
+% \end{enumerate}\vspace{6mm}
+
+% \problem Let $f(x) = \sqrt[4]{x} - \sqrt{x}$,
+% \begin{enumerate}[(a)]
+%     \item Find the tangent line of $f(x)$ at the point where $x=16$.
+%     \item At which point(s) on $f(x)$ is its tangent line horizontal?
+%     \item Is $f(x)$ differentiable at $x = 0$? Why?
+% \end{enumerate}\vspace{6mm}
+
+% \problem A ball is expanding with its radius $r$ as a function of time $t$: $r(t) = \sqrt{t} + 2, t \ge 0$
+% \begin{enumerate}[(a)]
+%     \item Find the rate its radius is growing at $t = 1$
+%     \item Find the rate its surface area is growing at $t = 1$
+%     \item Find the rate its volume is growing at $t = 1$
+% \end{enumerate}\vspace{6mm}
+
+\end{document}

@@ -1,0 +1,141 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage{xcolor}
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\answer}{\noindent \textbf{Answer. }}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Application of Derivatives (5.1)}
+
+\bigskip
+
+\problem Let $f(x) = (2+x)^5e^{1+x}\sin(\pi x)$,
+\begin{enumerate}[(a)]
+    \item Give the best linear approximant for $f(x)$ near $x = 1$
+    \item Give the best linear approximant for $f(x)$ near $x = 0$.
+    \item Give the best linear approximant for $f(x)$ near $x = -1$.
+\end{enumerate}\vspace{6mm}
+
+\problem Let $f(x) = \tan^{-1} x$.
+\begin{enumerate}[(a)]
+    \item Give the best linear approximant for $f(x)$ near $x = 1$.
+    \item Give the best quadratic approximant for $f(x)$ near $x = 1$.
+    \item From (a) and (b), approximate $\tan^{-1}1.05$ using linear and quadratic approximation.
+    \item Use a calculator to calculate $\tan^{-1} 1.05$.  What is the percentage of error for the linear and quadratic approximants (percentage of error = $\frac{\text{approximated value - true value}}{\text{true value}} \times 100\%$)?
+\end{enumerate}\vspace{6mm}
+
+\problem Use linear approximation to estimate $\sqrt[3]{7.98}$.  Give the percentage of error for your linear approximation. \vspace{6mm}
+
+\problem Newton's law of gravity dictates that gravitational acceleration is governed by the inverse square law.  If you are $r$ meters away from a planet's center of mass, then the gravitational acceleration you feel from the planet can be expressed as a function of $r$:
+\[g(r) = \frac{GM}{r^2}\]
+where $G$ is the gravitational constant (unit: $m^3/(kg \cdot s^2)$) and $M$ is the mass of that planet (unit: $kg$).  Therefore, the farther you are from the planet, the smaller gravitational tug you will feel from the planet.  Suppose the earth is a perfect sphere with radius $R = 6.4 \times 10^{6}$ meters and mass $M_e$ kilograms, while its center of mass is also its spherical center.
+\begin{enumerate}[(a)]
+    \item Express the gravitational acceleration at the surface of the earth with $G$, $M_e$ and $R$.
+    \item Denote the height of a mountain as $kR$.  Express the gravitational acceleration at the peak of that mountain with $G$, $M_e$, $R$ and $k$.
+    \item Since the height of every mountain is minuscule compared to the radius of the earth, $k$ is a very small positive number.  Give a linear approximation to the result of (b) around $k = 0$.
+    \item From (c), suppose the gravitational acceleration at the surface of the earth is $9.8 m/s^2$, then what would be the gravitational acceleration at the peak of a $3200$-meter mountain?
+\end{enumerate}
+\vspace{6mm}
+
+% \problem Use the hinted linear approximations to approximate the following quantities:
+% \begin{enumerate}[(a)]
+%     \item $\tan 46 \degree$, approximating $\tan x$ at $x = 45 \degree$. (Note: You'll have to operate in radians) 
+%     \item $\ln(1.01)$, approximating $\ln (1+x)$ at $x = 0$.
+%     \item $\tan^{-1}0.99$, approximating $\tan^{-1} x$ at $x = 1$.
+%     \item $\sqrt[4]{80}$, approximating $3\sqrt[4]{1+x}$ at $x = 0$.
+%     \item $\frac{1}{0.99^3}$, approximating $\frac{1}{(1+x)^3}$ at $x = 0$.
+% \end{enumerate}\vspace{6mm}
+
+% \problem Find the following limits. You \textit{may} use the L'Hôpital's rule \textit{if applicable}.
+% \begin{enumerate}[(a)]
+%     \item $\lim\limits_{x \to 1} \frac{x^3+x^2+x-3}{x^3+2x^2+x-3}$
+%     \item $\lim\limits_{x \to 0} \frac{e^{(3x^2+2x)}-1}{\sin(2x^2+3x)}$
+%     \item $\lim\limits_{x \to 0} \frac{\sin (x^2)}{x \tan x}$
+%     \item $\lim\limits_{x \to 0} x^2 \ln (x^2)$ \quad (Hint: Transform it into $\frac{\infty}{\infty}$ form)
+%     \item $\lim\limits_{x \to 0} \frac{e^{-\frac{1}{x^2}}}{x^2}$ \quad (Hint: $\frac{0}{0}$ form can also be transformed into $\frac{\infty}{\infty}$ form)
+% \end{enumerate}\vspace{4mm}
+
+% \problem Determine if the following statements are true or false and explain. (You can just provide a counterexample if you determine them as false)
+% \begin{enumerate}[(a)]
+%     \item If $f'(x) = g'(x)$ (for all $x\in \mathbb{R}$), then $f(x) = g(x)$
+%     \item If $f(1) = 0$, then $f'(1) = 0$
+%     \item If $f'(x) = 0$ (for all $x\in \mathbb{R}$), then $f(x) = 0$
+% \end{enumerate}\vspace{6mm}
+
+% \problem Let $f(x) = \sqrt[4]{x} - \sqrt{x}$,
+% \begin{enumerate}[(a)]
+%     \item Find the tangent line of $f(x)$ at the point where $x=16$.
+%     \item At which point(s) on $f(x)$ is its tangent line horizontal?
+%     \item Is $f(x)$ differentiable at $x = 0$? Why?
+% \end{enumerate}\vspace{6mm}
+
+% \problem A ball is expanding with its radius $r$ as a function of time $t$: $r(t) = \sqrt{t} + 2, t \ge 0$
+% \begin{enumerate}[(a)]
+%     \item Find the rate its radius is growing at $t = 1$
+%     \item Find the rate its surface area is growing at $t = 1$
+%     \item Find the rate its volume is growing at $t = 1$
+% \end{enumerate}\vspace{6mm}
+
+\end{document}

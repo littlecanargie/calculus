@@ -1,0 +1,211 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\answer}{\noindent \textbf{Answer. }}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Differentiation rules I, II (Answer Key)}
+
+\bigskip
+
+\problem Find the derivatives of the following functions
+\begin{enumerate}[(a)]
+    \item $(x^3+1) \sin x$
+    \item $x^{-2} \ln x$
+    \item $\frac{x-1}{(x+2)^2}$
+    \item $e^x \sec x$
+    \item $(\sin 2x) (\cot x)$
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item Using the product rule, 
+    \[\frac{d}{dx} \left[(x^3+1) \sin x \right] = (x^3+1)' \sin x + (x^3+1) (\sin x)' = 3 x^2 \sin x + (x^3 + 1) \cos x\]
+    \item Using the product rule, 
+    \[\frac{d}{dx} \left[ x^{-2} \ln x \right]= (x^{-2})' \ln x + x^{-2} (\ln x)' = (-2x^{-3}) \ln x + x^{-2} \cdot \frac{1}{x} = x^{-3} (1-2 \ln x)\]
+    \item Using the quotient rule, 
+    \begin{align*}
+        \frac{d}{dx} \frac{x-1}{(x+2)^2} &= \frac{(x-1)' (x+2)^2 - (x-1)\left[(x+2)^2\right]'}{[(x+2)^2]^2} \\
+        &= \frac{(x+2)^2 - (x-2) (x^2+4x+4)'}{(x+2)^4} \\
+        &= \frac{(x+2)^2 - (x-2) (2x+4)}{(x+2)^4} \\
+        &= \frac{(x+2)^2 - (x-2) \cdot 2 \cdot (x+2)}{(x+2)^4} \\
+        &= \frac{(x+2) - (x-2) \cdot 2}{(x+2)^3} = \frac{-x+6}{(x+2)^3}
+    \end{align*}
+    \item $\frac{d}{dx}e^x \sec x = \frac{d}{dx}\frac{e^x}{\cos x}$. Using the quotient rule,
+    \begin{align*}
+        \frac{d}{dx} \frac{e^x}{\cos x} &= \frac{(e^x)' \cos x - e^x(\cos x)'}{\cos^2 x} \\
+        &= \frac{e^x \cos x - e^x (-\sin x)}{\cos^2 x} \\
+        &= e^x\frac{\cos x + \sin x}{\cos^2 x} \\
+        &= e^x\frac{1 + \tan x}{\cos x} = e^x \sec x(1 + \tan x)
+    \end{align*}
+    \item $\frac{d}{dx}(\sin 2x) (\cot x) = \frac{d}{dx} \left(2 \sin x \cos x \frac{\cos x}{\sin x}\right) = 2\frac{d}{dx} \cos^2 x$.  Using the product rule,
+    \begin{align*}
+        2\frac{d}{dx} \cos^2 x &= 2\frac{d}{dx}(\cos x \cdot \cos x) \\
+        &= 2 \left[(\cos x)' \cos x + \cos x (\cos x)'\right] \\
+        &= 2 \left[2(\cos x)' \cos x\right]\\
+        &= 2\left[2(- \sin x) \cos x\right] = -2\left[2 \sin x \cos x\right] = -2\sin 2x
+    \end{align*}
+\end{enumerate}\vspace{6mm}
+
+\problem Find the derivatives of the following functions
+\begin{enumerate}[(a)]
+    \item $(e^x + \ln 2)^2$
+    \item $\sin^3 x$
+    \item $\ln \frac{\pi}{\sqrt[3]{x^2}}$
+    \item $3^{\ln x}$ \quad (Hint: Write $3$ as $e^{\ln 3}$)
+    \item $\log_{x^5} 5^x$ \quad (Hint: Try changing the base)
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item Using the product rule, 
+    \[\frac{d}{dx}(e^x + \ln 2)(e^x + \ln 2) = (e^x + \ln 2)'(e^x + \ln 2)+(e^x + \ln 2)(e^x + \ln 2)' = 2 (e^x + \ln 2)'(e^x + \ln 2) = 2e^x(e^x+\ln 2)\]
+    \item Using the (extended) product rule, 
+    \begin{align*}
+        \frac{d}{dx}\sin^3 x &= \frac{d}{dx}\sin x \cdot \sin x \cdot \sin x \\
+        &= (\sin x)' \sin x \sin x + \sin x (\sin x)' \sin x + \sin x \sin x (\sin x)' \\
+        &= 3 (\sin x)'\sin^2 x = 3 \cos x \sin^2x
+    \end{align*}
+    \item $\frac{d}{dx}\left[\ln \frac{\pi}{\sqrt[3]{x^2}}\right] = \frac{d}{dx}\left[\ln \pi - \ln \sqrt[3]{x^2}\right] = \frac{d}{dx}\left[\ln \pi - \ln x^{\frac{2}{3}}\right] = \frac{d}{dx}\left[\ln \pi - \frac{2}{3}\ln x\right] = 0 - \frac{2}{3}\frac{1}{x} = -\frac{2}{3x}$
+    \item $\frac{d}{dx}3^{\ln x} = \frac{d}{dx} \left(e^{\ln 3}\right)^{\ln x} = \frac{d}{dx} e^{\ln 3 \cdot \ln x} = \frac{d}{dx} \left(e^{\ln x}\right)^{\ln 3} = \frac{d}{dx} x^{\ln 3} = (\ln 3)x^{(\ln 3) - 1}$
+    \item $\frac{d}{dx}\log_{x^5} 5^x = \frac{d}{dx}\frac{\ln 5^x}{\ln x^5} = \frac{d}{dx}\frac{x \ln 5}{5 \ln x} = \frac{\ln 5}{5}\frac{d}{dx} \frac{x}{\ln x}$. Using the quotient rule,
+    \[\frac{\ln 5}{5} \frac{d}{dx} \frac{x}{\ln x} = \frac{\ln 5}{5}\frac{(x)' \ln x - x (\ln x)'}{(\ln x)^2} = \frac{\ln 5}{5}\frac{\ln x - x \frac{1}{x}}{(\ln x)^2} = \frac{\ln 5}{5}\frac{\ln x - 1}{(\ln x)^2}\]
+\end{enumerate}\vspace{6mm}
+
+\problem A heap of radioactive material is decaying so that its mass (in grams) over time (in thousand years) follows the equation $M(t) = 50 (0.9715)^t, \; t \ge 0$
+\begin{enumerate}[(a)]
+    \item What is its mass at $t = 0$?
+    \item What is the half-life of this material, i.e. the time needed to halve its mass?
+    \item At what rate is this heap of material decaying initially (at $t=0$)?
+    \item At what rate is this heap of material decaying at its half-life?
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item $M(0) = 50 (0.9715)^0 = 50 \cdot 1 = 50$ (grams)
+    \item The half of the initial mass is $50/2 = 25$ grams.  Let the half-life be $t_0$ thousand years, then:
+    \begin{align*}
+        M(t_0) &= 25\\
+        50(0.9715)^{t_0} &= 25\\
+        (0.9715)^{t_0} &= 0.5\\
+        t_0 &= \log_{0.9715}0.5 = \frac{\ln 0.5}{\ln 0.9715} \approx 23.973
+    \end{align*}
+    So the half-life of this material is about $23973$ years.
+    \item The rate of decay can be expressed at $-M'(t)$, where we add a negative sign since the mass is decreasing and the derivative would be negative.  We have :
+    \[M'(t) = \frac{d}{dt}50(0.9715)^t = 50\frac{d}{dt}(0.9715)^t = 50 (0.9715)^t \ln (0.9715)\]
+    Therefore, the rate this heap of material is decaying at $t=0$ is 
+    \[-M'(0) = -50 (0.9715)^0 \ln(0.9715) = - 50 \ln(0.9715) \approx 1.446 \text{ (grams / thousand years)}\]
+    \item The rate this heap of material is decaying at its half-life $t=\log_{0.9715}0.5$ is
+    \[-M'(\log_{0.9715}0.5) = -50 (0.9715)^{\log_{0.9715}0.5} \ln(0.9715) = - 50 \cdot 0.5 \cdot \ln(0.9715) \approx 0.723 \text{ (grams / thousand years)}\]
+\end{enumerate}\vspace{6mm}
+
+
+\problem A raindrop is falling with its speed (in meters/second) over time (in seconds) as $v(t) = 5\cdot \frac{e^{4t}-1}{e^{4t}+1}, t \ge 0$
+\begin{enumerate}[(a)]
+    \item What is the raindrop's initial velocity, i.e. its velocity at $t = 0$?
+    \item What is the raindrop's terminal velocity, i.e. its velocity as $t \rightarrow \infty$?
+    \item The acceleration function $a(t)$ is defined as the derivative of the velocity function with respect to time. Find $a(t)$.
+    \item What is the raindrop's initial acceleration?
+    \item What is the raindrop's terminal acceleration?
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item $v(0) = 5 \cdot \frac{e^0 - 1}{e^0 + 1} = 5 \cdot \frac{1-1}{1+1} = 0$ (meters/second)
+    \item $\lim\limits_{t \to \infty} v(t) = \lim\limits_{t \to \infty} 5 \cdot \frac{e^{4t}-1}{e^{4t}+1} = 5\lim\limits_{t \to \infty} \frac{(e^{4t}-1)/e^{4t}}{(e^{4t}+1)/e^{4t}} = 5\lim\limits_{t \to \infty} \frac{1-e^{-4t}}{1+e^{-4t}} = 5 \frac{1-0}{1+0} = 5$ (meters/second)
+    \item $a(t) = \frac{d}{dt} v(t) = \frac{d}{dt} 5 \cdot \frac{e^{4t}-1}{e^{4t}+1} = 5\frac{d}{dt} \left(1-\frac{2}{e^{4t}+1}\right) = -10\frac{d}{dt}\frac{1}{e^{4t}+1}$.  Using the quotient rule,
+    \begin{align*}
+        -10\frac{d}{dt}\frac{1}{e^{4t}+1} &= -10\frac{(1)'\cdot(e^{4t}+1) - 1 \cdot (e^{4t}+1)'}{(e^{4t}+1)^2} \\
+        &= -10\frac{0-(e^{4t})'}{(e^{4t}+1)^2} \\
+        &= \frac{10\left((e^4)^t\right)'}{(e^{4t}+1)^2} \\
+        &= \frac{10 \left(e^4\right)^t \ln (e^4)}{(e^{4t}+1)^2} = \frac{10 \cdot e^{4t} \cdot 4}{(e^{4t}+1)^2} = \frac{40 e^{4t}}{(e^{4t}+1)^2}
+    \end{align*}
+    \item $a(0) = \frac{40e^0}{(e^0+1)^2} = \frac{40\cdot 1}{(1+1)^2} = 10$ (meters / second$^2$)
+    \item $\lim\limits_{t \to \infty} a(t) = \lim\limits_{t \to \infty} \frac{40 e^{4t}}{(e^{4t}+1)^2} = \lim\limits_{t \to \infty} \frac{40 e^{4t} / (e^{4t})^2}{(e^{4t}+1)^2 / (e^{4t})^2} =  \lim\limits_{t \to \infty} \frac{40 e^{-4t}}{(1+e^{-4t})^2} = \frac{0}{(1+0)^2} = 0$ (meters / second$^2$)
+\end{enumerate}\vspace{6mm}
+
+% \problem Determine if the following statements are true or false and explain. (You can just provide a counterexample if you determine them as false)
+% \begin{enumerate}[(a)]
+%     \item If $f'(x) = g'(x)$ (for all $x\in \mathbb{R}$), then $f(x) = g(x)$
+%     \item If $f(1) = 0$, then $f'(1) = 0$
+%     \item If $f'(x) = 0$ (for all $x\in \mathbb{R}$), then $f(x) = 0$
+% \end{enumerate}\vspace{6mm}
+
+% \problem Let $f(x) = \sqrt[4]{x} - \sqrt{x}$,
+% \begin{enumerate}[(a)]
+%     \item Find the tangent line of $f(x)$ at the point where $x=16$.
+%     \item At which point(s) on $f(x)$ is its tangent line horizontal?
+%     \item Is $f(x)$ differentiable at $x = 0$? Why?
+% \end{enumerate}\vspace{6mm}
+
+% \problem A ball is expanding with its radius $r$ as a function of time $t$: $r(t) = \sqrt{t} + 2, t \ge 0$
+% \begin{enumerate}[(a)]
+%     \item Find the rate its radius is growing at $t = 1$
+%     \item Find the rate its surface area is growing at $t = 1$
+%     \item Find the rate its volume is growing at $t = 1$
+% \end{enumerate}\vspace{6mm}
+
+\end{document}

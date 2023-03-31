@@ -1,0 +1,142 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\answer}{\noindent \textbf{Answer. }}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Homework List for Pre-calculus I, II (Answer Key)}
+
+\bigskip
+
+\problem Let $f(x) = -x^2 + 3x + 18$. $f(x)$ is a parabola when graphed on a Cartesian plane.
+    \begin{enumerate}[(a)]
+    \item  What direction is the parabola facing, why?
+    \item Evaluate $f(0)$
+    \item Find the coordinate of the vertex of $f(x)$
+    \item Find the roots of $f(x)$
+    \item Based on the above, sketch $f(x)$ and mark the vertex and $x-$, $y-$intercepts. 
+    \item What is the domain and range of $f(x)$?
+    \end{enumerate} \vspace{6mm}
+
+\answer
+    \begin{enumerate}[(a)]
+    \item The parabola is facing downwards since the coefficient of $x^2$ is less than zero.
+    \item $f(0) = -0^2 + 3 \cdot 0 + 18 = 18$
+    \item $f(x) = -x^2 + 3x + 18 = -(x^2-3x)+18 = -\left(x^2-2\cdot\frac{3}{2}x+\left(\frac{9}{4}\right)^2\right)+18+\left(\frac{9}{4}\right)^2 = -\left(x-\frac{3}{2}\right)^2 + \frac{81}{4}$.  Therefore, the vertex of $f(x)$ is $(\frac{3}{2}, \frac{81}{4})$
+    \item In (c) we've shown $f(x) = -\left(x-\frac{3}{2}\right)^2 + \frac{81}{4}$.  Setting $f(x) = 0$ we yield $x-\frac{3}{2} \pm \sqrt{\frac{81}{4}}$, which leads to two roots $x=6$ and $x=-3$.
+    \item (Deferred)
+    \item Any real number can be plugged into $f(x)$, so its domain is $\mathbb{R}$.  For the range, since $f(x)$ is a down-facing parabola with the $y$-coordinate of its vertex as $\frac{81}{4}$, its value maxes at $\frac{81}{4}$ and does not have a minimum, so its range is $\left(-\infty, \frac{81}{4}\right)$
+    \end{enumerate} \vspace{6mm}
+
+\problem Let $f(x) = -x^4 + x^3 + x - 1$. We will now try to factorize $f(x)$:
+	\begin{enumerate}[(a)]
+	\item Is $x = 1$ a root of $f(x)$, why? 
+	\item Derive $g(x) = \frac{f(x)}{x-1}$. Is $x = 1$ a root of $g(x)$, why?
+	\item Derive $h(x) = \frac{g(x)}{x-1}$. Determine the number of real roots for $h(x)$ using its discriminant
+	\item Factorize $f(x)$
+	\end{enumerate} \vspace{6mm}
+	
+\answer
+\begin{enumerate}[(a)]
+	\item Yes, since $f(1) = -1^4+1^3+1-1 = 0$.
+	\item Using long division, we yield $g(x) = -x^3+1$.  Since $g(1) = -1^3+1 = 0$, $x=1$ is still a root for $g(x)$.
+	\item Using long division, we yield $h(x) = -x^2-x-1$, which is a quadratic (degree-$2$) polynomial.  Since the discriminant of $h(x)$ is $(-1)^2-4(-1)(-1) = -3 < 0$, $h(x)$ has $0$ real roots.
+	\item From the above we found that $f(x) = (x-1)g(x) = (x-1)(x-1)h(x) = -(x-1)^2(x^2+x+1)$, and we have shown that we cannot factorize further since $h(x)$ does not have real roots.  Therefore, the factorization is complete.
+\end{enumerate} \vspace{6mm}
+
+\problem Let $\log_{10} x = u, \log_{10} y = v$, where $x, y > 0$. Express the following with $u, v$:
+\begin{enumerate}[(a)]
+\item $\log_{0.001}x$
+\item $\log_{10}{\frac{\sqrt[5]{x}}{y^2}}$
+\item $\log_{x}\sqrt{10}$
+\item $\log_{x}y$
+\end{enumerate} \vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+\item $\log_{0.001}x = \log_{10^{-3}}x = \frac{\log_{10}x}{\log_{10}10^{-3}} = \frac{u}{-3} = -\frac{u}{3}$
+\item $\log_{10}{\frac{\sqrt[5]{x}}{y^2}} = \log_{10}{\frac{x^{\frac{1}{5}}}{y^2}} =  \log_{10}x^{\frac{1}{5}} - \log_{10}y^2 = \frac{1}{5}\log_{10}x - 2\log_{10}y = \frac{u}{5}-2v$
+\item $\log_{x}\sqrt{10} = \log_{x}10^{\frac{1}{2}} = \frac{\log_{10}10^{\frac{1}{2}}}{\log_{10}x} = \frac{\frac{1}{2}}{u} = \frac{1}{2u}$
+\item $\log_{x}y = \frac{\log_{10}y}{\log_{10}x} = \frac{v}{u}$
+\end{enumerate} \vspace{6mm}
+
+\problem Solve the following equation:
+\[\log_{\frac{1}{\sqrt[3]{10}}}x - 3\log_{x}100 - 9 = 0\]
+(Hint: Change all the logarithms to base 10) \vspace{6mm}
+
+\answer 
+
+\begin{align*}
+    \frac{\log_{10}x}{\log_{10}\frac{1}{\sqrt[3]{10}}} - 3\frac{\log_{10}100}{\log_{10}x} - 9 &= 0\\
+    \frac{\log_{10}x}{-1/3} - 3\frac{2}{\log_{10}x} - 9 &= 0\\
+    -3y - \frac{6}{y} - 9 &= 0 \quad\text{(Let }y = \log_{10}{x}\text{)}\\
+    y^2 + 2 + 3y &= 0 \quad \text{(Multiply }-\frac{y}{3}\text{ on both sides)}\\
+    (y+1)(y+2) &= 0 \; \Rightarrow \; y = -1 \text{ or } -2 \; \Rightarrow \; x = 10^{-1} \text{ or } 10^{-2}
+\end{align*}
+Note that since $y = 0$ is not in our solution, we did not create extra roots by multiplying $-y/3$ on both sides of the equation.
+
+
+\end{document}

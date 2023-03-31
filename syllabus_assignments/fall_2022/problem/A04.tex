@@ -1,0 +1,140 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Limits and Continuity I, II}
+
+\bigskip
+
+In the following, if a limit does not exist but goes to infinity or negative infinity, please write it as $\infty$ or $-\infty$.
+
+\bigskip
+
+
+\problem Argue if the following functions are continuous or not at $x = 2$:
+\begin{enumerate}[(a)]
+    \item $f(x) = \tan(\pi/x)$
+    \item $f(x) = \frac{x^2-x-2}{x^2-4}$
+    \item $f(x) = \left\{\begin{array}{lr}
+        \frac{x^2-x-2}{x^2-4}, & x < 2\\
+        1, & x = 2\\
+        \frac{3}{2^x}, & x > 2
+        \end{array}\right.$
+    \item $f(x) = \left\{\begin{array}{lr}
+        \cos\left(\frac{3\pi}{2}x\right), & x < 2\\
+        x^2-x-3, & x \ge 2
+        \end{array}\right.$
+\end{enumerate}\vspace{6mm}
+
+\problem Let $f(x) = \left\{\begin{array}{lr}
+        2, & x < -1\\
+        ax+b, & -1 \le x \le 3\\
+        -2, & x > 3
+        \end{array}\right.$ be continuous in $\mathbb{R}$. Find $a$ and $b$.
+\vspace{6mm}
+
+\problem Evaluate the following limits
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to -6} \frac{x+6}{x^2+12x+36}$
+    \item $\lim\limits_{x \to 1} (x^2+2^x)^{\log_{2}(x+3)}$
+    \item $\lim\limits_{x \to 1} \left(\frac{1}{x^2} + \frac{1}{(x-1)^2}\right)$
+    \item $\lim\limits_{x \to 0} \left(\frac{1}{x^4} - \frac{1}{x^6}\right)$ (Hint: Reduce to common denominators)
+    \item $\lim\limits_{x \to -\frac{\pi}{2}} x \tan^2 x$
+\end{enumerate}\vspace{6mm}
+
+\problem Evaluate the following limits
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to 2} \frac{3x^2-5x-2}{x^3-x^2-x-2}$
+    \item $\lim\limits_{x \to 0} \frac{x^{-2} + x^{-4}}{5 + 3x^{-4}}$ (Hint: Multiply both the numerator and denominator with powers of $x$)
+    \item $\lim\limits_{x \to 4} \frac{\sqrt{x+5}-3}{x-4}$
+    \item $\lim\limits_{x \to 3} \frac{x^2-x-6}{\sqrt{x-2}-1}$
+    \item $\lim\limits_{x \to \frac{\pi}{4}} \sec{2x}(\sqrt{2}\cos x - 1)$
+\end{enumerate}\vspace{6mm}
+
+
+% \problem Let $f(x) = \left\{\begin{array}{lr} 
+%         \frac{x^2-1}{x-1}, & x < 1\\
+%         2, & x = 1\\
+%         \frac{3x^2+2x-1}{|x^2-4x+3|}, & 1 < x < 3\\
+%         \log_{10}(x-3), & x > 3
+%         \end{array}\right.$
+% \begin{enumerate}[(a)]
+%     \item Evaluate $f(1), \lim\limits_{x \to  1^-} f(x)$ and $\lim\limits_{x \to 1^+} f(x)$
+%     \item Evaluate $\lim\limits_{x \to  1} f(x)$. Is $f(x)$ continuous at $x=1$?
+%     \item Evaluate $f(3), \lim\limits_{x \to  3^-} f(x)$ and $\lim\limits_{x \to 3^+} f(x)$
+%     \item Evaluate $\lim\limits_{x \to  3} f(x)$. Is $f(x)$ continuous at $x=3$?
+% \end{enumerate}\vspace{6mm}
+
+% \problem Evaluate the following limits:
+% \begin{enumerate}[(a)]
+%     \item $\lim\limits_{x \to 0^+} \frac{x^2+1}{x}$
+%     \item $\lim\limits_{x \to 0} \frac{x}{\sqrt{x+3}-\sqrt{3}}$
+%     \item $\lim\limits_{x \to 0} \frac{(1-x)^{-\frac{1}{2}}-1}{x}$
+%     \item $\lim\limits_{x \to 0} \frac{\sin 5x}{x}$
+% \end{enumerate}\vspace{6mm}
+
+\end{document}

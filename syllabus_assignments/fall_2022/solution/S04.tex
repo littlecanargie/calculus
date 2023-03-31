@@ -1,0 +1,195 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\answer}{\noindent \textbf{Answer. }}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Limits and Continuity I, II (Answer Key)}
+
+\bigskip
+
+In the following, if a limit does not exist but goes to infinity or negative infinity, please write it as $\infty$ or $-\infty$.
+
+\bigskip
+
+
+\problem Argue if the following functions are continuous or not at $x = 2$:
+\begin{enumerate}[(a)]
+    \item $f(x) = \tan(\pi/x)$
+    \item $f(x) = \frac{x^2-x-2}{x^2-4}$
+    \item $f(x) = \left\{\begin{array}{lr}
+        \frac{x^2-x-2}{x^2-4}, & x < 2\\
+        1, & x = 2\\
+        \frac{3}{2^x}, & x > 2
+        \end{array}\right.$
+    \item $f(x) = \left\{\begin{array}{lr}
+        \cos\left(\frac{3\pi}{2}x\right), & x < 2\\
+        x^2-x-3, & x \ge 2
+        \end{array}\right.$
+\end{enumerate}\vspace{6mm}
+
+\answer
+
+\medskip
+
+\noindent A function $f(x)$ is continuous at $x=c$ if and only if \textit{all} of the following are satisfied:
+\begin{itemize}
+    \item $f(x)$ is defined at $c$
+    \item $\lim\limits_{x \to  c} f(x)$ exists
+    \item $\lim\limits_{x \to  c} f(x) = f(c)$
+\end{itemize}
+
+\begin{enumerate}[(a)]
+    \item Since $\pi/2$ is not in the domain of $\tan(x)$, $f(2)$ is undefined and $f(x)$ is \textit{not} continuous at $x=2$.
+    \item $f(2)$ is undefined since the denominator is zero when $x=2$. Therefore, $f(x)$ is \textit{not} continuous at $x=2$.
+    \item We have
+    \[\lim\limits_{x \to  2^-} f(x) = \lim\limits_{x \to  2^-} \frac{x^2-x-2}{x^2-4} = \lim\limits_{x \to  2^-} \frac{(x+1)(x-2)}{(x+2)(x-2)} = \lim\limits_{x \to  2^-} \frac{x+1}{x+2} = \frac{3}{4}\]
+    \[\lim\limits_{x \to  2^+} f(x) = \lim\limits_{x \to  2^-} \frac{3}{2^x} = \frac{3}{4}\]
+    Therefore, $\lim\limits_{x \to  2} f(x) = \lim\limits_{x \to  2^-} f(x) = \lim\limits_{x \to  2^+} f(x) = \frac{3}{4}$, yet $f(2) = 1$, so $\lim\limits_{x \to  2} f(x) \ne f(2)$ and $f(x)$ is \textit{not} continuous at $x=2$.
+    \item We have 
+    \[\lim\limits_{x \to  2^-} f(x) = \lim\limits_{x \to  2^-} \cos\left(\frac{3\pi}{2}x\right) = \cos \left(\frac{3\pi}{2}\cdot 2\right) = \cos 3\pi = -1\]
+    \[\lim\limits_{x \to  2^+} f(x) = \lim\limits_{x \to  2^-} x^2-x-3 = 2^2-2-3 = -1\]
+    Therefore, $\lim\limits_{x \to  2} f(x) = \lim\limits_{x \to  2^-} f(x) = \lim\limits_{x \to  2^+} f(x) = -1$.  Also note that $f(2) = 2^2-2-3 = -1$ according to the definition of $f(x)$.  Therefore $\lim\limits_{x \to  2} f(x) = f(2)$, so $f(x)$ is continuous at $x=2$.
+\end{enumerate}\vspace{6mm}
+
+\problem Let $f(x) = \left\{\begin{array}{lr}
+        2, & x < -1\\
+        ax+b, & -1 \le x \le 3\\
+        -2, & x > 3
+        \end{array}\right.$ be continuous in $\mathbb{R}$. Find $a$ and $b$.
+\vspace{6mm}
+
+\answer Since $f(x)$ is a polynomial at $(-\infty, -1), (-1, 3), (3, \infty)$, it must be continuous in these intervals and we only need to concern the points $x=-1$ and $x=3$. We note that 
+\[\left\{\begin{array}{l}
+    \lim\limits_{x \to  (-1)^-} f(x) = 2\\
+    f(-1) = -a+b\\
+    \lim\limits_{x \to  (-1)^+} f(x) = -a+b\\
+    \lim\limits_{x \to  3^-} f(x) = -3a+b\\
+    f(3) = -3a+b\\
+    \lim\limits_{x \to  3^+} f(x) = -2\\
+\end{array}\right.\]
+Therefore, $f(x)$ is continuous at $x=-1$ and $x=3$ if and only if $-a+b = 2$ and $-3a+b = -2$. Solving the system of equations leads to $a=2, b=4$
+\vspace{6mm}
+
+\problem Evaluate the following limits
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to -6} \frac{x+6}{x^2+12x+36}$
+    \item $\lim\limits_{x \to 1} (x^2+2^x)^{\log_{2}(x+3)}$
+    \item $\lim\limits_{x \to 1} \left(\frac{1}{x^2} + \frac{1}{(x-1)^2}\right)$
+    \item $\lim\limits_{x \to 0} \left(\frac{1}{x^4} - \frac{1}{x^6}\right)$ (Hint: Reduce to common denominators)
+    \item $\lim\limits_{x \to -\frac{\pi}{2}} x \tan^2 x$
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item Plug-in method leads to $0/0$, so we try dividing out factors that evaluates to 0: $\lim\limits_{x \to -6} \frac{x+6}{x^2+12x+36} = \lim\limits_{x \to -6} \frac{x+6}{(x+6)^2} = \lim\limits_{x \to -6} \frac{1}{x+6}$.  Plug-in method now leads to 1/0, so we need to investigate the behavior of the denominator: $(x+6)$ goes to $0$ from the positive side as $x \rightarrow (-6)^+$ but goes to $0$ from the negative side as $x \rightarrow (-6)^-$.  That is, $\lim\limits_{x \to (-6)^+} \frac{1}{x+6} = \infty$ but $\lim\limits_{x \to (-6)^-} \frac{1}{x+6} = -\infty$, so $\lim\limits_{x \to -6} \frac{x+6}{x^2+12x+36}$ \textbf{does not exist}. 
+    \item Plug-in method works here: $\lim\limits_{x \to 1} (x^2+2^x)^{\log_{2}(x+3)} = (1^2+2^2)^{\log_2(1+3)} = (1+2)^2 = 9$.
+    \item Plug-in method leads to $1 + 1/0$, so we need to investigate the denominator of the 1/0 part first: $(x-1)^2$ goes to 0 from the positive side no matter if $x \rightarrow 1^+$ or $x \rightarrow 1^-$, so $\lim\limits_{x \to 1} \frac{1}{(x-1)^2} = \lim\limits_{x \to 1^+} \frac{1}{(x-1)^2} = \lim\limits_{x \to 1^-} \frac{1}{(x-1)^2} = \infty$.  Therefore, the plug-in method leads us to $1+\infty$, implying $\lim\limits_{x \to 1} \left(\frac{1}{x^2} + \frac{1}{(x-1)^2}\right) = \infty$
+    \item Plug-in method leads to $\infty-\infty$, which is indeterminate.  However, we can rewrite the limit as $\lim\limits_{x \to 0} \left(\frac{1}{x^4} - \frac{1}{x^6}\right) = \lim\limits_{x \to 0} \frac{x^2-1}{x^6}$.  Now the plug-in method gets us $-1/0$ and we have to investigate the behavior of the denominator: $x^6$ goes to 0 from the positive side no matter if $x \rightarrow 0^+$ or $x \rightarrow 0^-$, so $\lim\limits_{x \to 0} \frac{1}{x^6} = \lim\limits_{x \to 0^+} \frac{1}{x^6} = \lim\limits_{x \to 0^-} \frac{1}{x^6} = \infty$.  So the plug-in methods gives us $-1/\infty$, implying $\lim\limits_{x \to 0} \left(\frac{1}{x^4} - \frac{1}{x^6}\right) = -\infty$
+    \item From the graph, $\lim\limits_{x \to \left(-\frac{\pi}{2}\right)^+} \tan x = -\infty$ and  $\lim\limits_{x \to \left(-\frac{\pi}{2}\right)^-} \tan x = \infty$, which implies that $\lim\limits_{x \to -\frac{\pi}{2}} \tan^2 x = \lim\limits_{x \to \left(-\frac{\pi}{2}\right)^+} \tan^2 x = \lim\limits_{x \to \left(-\frac{\pi}{2}\right)^-} \tan^2 x = \infty$.  Therefore, plug-in method gets us $\left(-\frac{\pi}/{2}\right)\cdot\infty$, which implies $\lim\limits_{x \to -\frac{\pi}{2}} x \tan^2 x = -\infty$
+\end{enumerate}\vspace{6mm}
+
+
+\problem Evaluate the following limits
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to 2} \frac{3x^2-5x-2}{x^3-x^2-x-2}$
+    \item $\lim\limits_{x \to 0} \frac{x^{-2} + x^{-4}}{5 + 3x^{-4}}$ (Hint: Multiply both the numerator and denominator with powers of $x$)
+    \item $\lim\limits_{x \to 4} \frac{\sqrt{x+5}-3}{x-4}$
+    \item $\lim\limits_{x \to 3} \frac{x^2-x-6}{\sqrt{x-2}-1}$
+    \item $\lim\limits_{x \to \frac{\pi}{4}} \sec{2x}(\sqrt{2}\cos x - 1)$
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item Plug-in method gives us $0/0$, so we try to divide out factors that evaluates to zero, i.e. $x-2$.  Using long division, we have $\lim\limits_{x \to 2} \frac{3x^2-5x-2}{x^3-x^2-x-2} = \lim\limits_{x \to 2} \frac{(x-2)(3x+1)}{(x-2)(x^2+x+1)} = \lim\limits_{x \to 2} \frac{3x+1}{x^2+x+1} = \frac{3\cdot 2+1}{2^2+2+1} = 1$
+    \item Plug-in method gives us $\infty/\infty$, so we try to multiply both the numerator and denominator with $x^4$, which gets us $\lim\limits_{x \to 0} \frac{x^{-2} + x^{-4}}{5 + 3x^{-4}} = \lim\limits_{x \to 0} \frac{x^2 + 1}{5x^4 + 3} = \frac{0^2+1}{5\cdot 0^2+3} = \frac{1}{3}$
+    \item Plug-in method gives us $0/0$, and we see addition / subtraction involving square root in the numerator, so we may try to rationalize the numerator: $\lim\limits_{x \to 4} \frac{\sqrt{x+5}-3}{x-4} = \lim\limits_{x \to 4} \frac{(\sqrt{x+5}-3)(\sqrt{x+5}+3)}{(x-4)(\sqrt{x+5}+3)} = \lim\limits_{x \to 4} \frac{\sqrt{x+5}^2-3^2}{(x-4)(\sqrt{x+5}+3)} = \lim\limits_{x \to 4} \frac{x-4}{(x-4)(\sqrt{x+5}+3)} = \lim\limits_{x \to 4} \frac{1}{\sqrt{x+5}+3} = \frac{1}{\sqrt{4+5}+3} = \frac{1}{6}$
+    \item Plug-in method gives us $0/0$, and we see addition / subtraction involving square root in the denominator, so we may try to rationalize the denominator: $\lim\limits_{x \to 3} \frac{x^2-x-6}{\sqrt{x-2}-1} = \lim\limits_{x \to 3} \frac{(x^2-x-6)(\sqrt{x-2}+1)}{(\sqrt{x-2}-1)(\sqrt{x-2}+1)} = \lim\limits_{x \to 3} \frac{(x+2)(x-3)(\sqrt{x-2}+1)}{\sqrt{x-2}^2-1^2} = \lim\limits_{x \to 3} \frac{(x+2)(x-3)(\sqrt{x-2}+1)}{x-3} = \lim\limits_{x \to 3} (x+2)(\sqrt{x-2}+1) = (3+2)(\sqrt{3-2}+1) = 10$
+    \item We can rewrite the limit as $\lim\limits_{x \to \frac{\pi}{4}} \frac{\sqrt{2}\cos x - 1}{\cos 2x}$, which the plug-in method evaluates to $0/0$.  However, we note that $\cos 2x = 2\cos^2 x -1 = (\sqrt{2}\cos x)^2 - 1$, so we have $\lim\limits_{x \to \frac{\pi}{4}} \frac{\sqrt{2}\cos x - 1}{\cos 2x} = \lim\limits_{x \to \frac{\pi}{4}} \frac{\sqrt{2}\cos x - 1}{(\sqrt{2}\cos x)^2 - 1^2} = \lim\limits_{x \to \frac{\pi}{4}} \frac{\sqrt{2}\cos x - 1}{(\sqrt{2}\cos x + 1)(\sqrt{2}\cos x - 1)} = \lim\limits_{x \to \frac{\pi}{4}} \frac{1}{\sqrt{2}\cos x + 1} = \frac{1}{\sqrt{2}\cos\frac{\pi}{4} +1} = \frac{1}{2}$
+\end{enumerate}\vspace{6mm}
+
+% \problem Let $f(x) = \left\{\begin{array}{lr} 
+%         \frac{x^2-1}{x-1}, & x < 1\\
+%         2, & x = 1\\
+%         \frac{3x^2+2x-1}{|x^2-4x+3|}, & 1 < x < 3\\
+%         \log_{10}(x-3), & x > 3
+%         \end{array}\right.$
+% \begin{enumerate}[(a)]
+%     \item Evaluate $f(1), \lim\limits_{x \to  1^-} f(x)$ and $\lim\limits_{x \to 1^+} f(x)$
+%     \item Evaluate $\lim\limits_{x \to  1} f(x)$. Is $f(x)$ continuous at $x=1$?
+%     \item Evaluate $f(3), \lim\limits_{x \to  3^-} f(x)$ and $\lim\limits_{x \to 3^+} f(x)$
+%     \item Evaluate $\lim\limits_{x \to  3} f(x)$. Is $f(x)$ continuous at $x=3$?
+% \end{enumerate}\vspace{6mm}
+
+% \problem Evaluate the following limits:
+% \begin{enumerate}[(a)]
+%     \item $\lim\limits_{x \to 0^+} \frac{x^2+1}{x}$
+%     \item $\lim\limits_{x \to 0} \frac{x}{\sqrt{x+3}-\sqrt{3}}$
+%     \item $\lim\limits_{x \to 0} \frac{(1-x)^{-\frac{1}{2}}-1}{x}$
+%     \item $\lim\limits_{x \to 0} \frac{\sin 5x}{x}$
+% \end{enumerate}\vspace{6mm}
+
+\end{document}

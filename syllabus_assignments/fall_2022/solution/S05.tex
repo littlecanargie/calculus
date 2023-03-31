@@ -1,0 +1,151 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\answer}{\noindent \textbf{Answer. }}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Limits and Continuity II, III (Answer Key)}
+
+\bigskip
+
+In the following, if a limit does not exist but goes to $\infty$ or $-\infty$, please write it as $\infty$ or $-\infty$.
+
+\bigskip
+
+
+\problem Evaluate the following limits (you can treat $\lim_{x\rightarrow0} \frac{\sin x}{x} = 1$ as known):
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to 0} \frac{\sin 2x}{5x}$ \quad (Hint: $x \rightarrow 0$ is equivalent to $2x \rightarrow 0$)
+    \item $\lim\limits_{x \to 0} \frac{x^3}{\sin^2 x}$
+    \item $\lim\limits_{x \to 0} \frac{1- \cos 2x}{x^2}$
+    \item $\lim\limits_{x \to 0} \frac{\tan x}{x}$
+    \item $\lim\limits_{x \to 0} \frac{\sin 3x}{\sin 4x}$ \quad (Hint: Construct functions shaped like $\frac{\sin\theta}{\theta}$)
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to 0} \frac{\sin 2x}{5x} = \lim\limits_{x \to 0} \frac{2}{5}\frac{\sin 2x}{2x} = \frac{2}{5}\left(\lim\limits_{x \to 0} \frac{\sin 2x}{2x}\right) = \frac{2}{5}\left(\lim\limits_{2x \to 0} \frac{\sin 2x}{2x}\right) = \frac{2}{5} \cdot 1 = \frac{2}{5}$
+    \item $\lim\limits_{x \to 0} \frac{x^3}{\sin^2 x} = \lim\limits_{x \to 0} x \cdot \frac{x}{\sin x} \cdot \frac{x}{\sin x} = \left(\lim\limits_{x \to 0} x\right) \left(\lim\limits_{x \to 0}  \frac{x}{\sin x}\right) \left(\lim\limits_{x \to 0}  \frac{x}{\sin x}\right) = 0 \cdot 1 \cdot 1 = 0$
+    \item $\lim\limits_{x \to 0} \frac{1- \cos 2x}{x^2} = \lim\limits_{x \to 0} \frac{1- (1-2\sin^2 x)}{x^2} = \lim\limits_{x \to 0} \frac{2\sin^2 x}{x^2} = \lim\limits_{x \to 0} 2\cdot \frac{\sin x}{x} \cdot \frac{\sin x}{x} = 2\left(\lim\limits_{x \to 0}  \frac{\sin x}{x}\right) \left(\lim\limits_{x \to 0}  \frac{\sin x}{x}\right) = 2 \cdot 1 \cdot 1 = 2$
+    \item $\lim\limits_{x \to 0} \frac{\tan x}{x} = \lim\limits_{x \to 0} \frac{\sin x}{x\cos x} = \lim\limits_{x \to 0} \frac{1}{\cos x} \frac{\sin x}{x} = \left(\lim\limits_{x \to 0}  \frac{1}{\cos x}\right) \left(\lim\limits_{x \to 0}  \frac{\sin x}{x}\right) = 1 \cdot 1 = 1$
+    \item $\lim\limits_{x \to 0} \frac{\sin 3x}{\sin 4x} = \lim\limits_{x \to 0} \frac{3}{4}\frac{\sin 3x}{3x}\frac{4x}{\sin 4x} = \frac{3}{4}\left(\lim\limits_{x \to 0}  \frac{\sin 3x}{3x}\right) \left(\lim\limits_{x \to 0}  \frac{4x}{\sin 4x}\right) = \frac{3}{4}\left(\lim\limits_{3x \to 0}  \frac{\sin 3x}{3x}\right) \left(\lim\limits_{4x \to 0}  \frac{4x}{\sin 4x}\right) = \frac{3}{4} \cdot 1 \cdot 1 = \frac{3}{4}$
+\end{enumerate}\vspace{6mm}
+
+\problem Evaluate the following limits:
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to -\infty} 2^{(x^3+x+1)}$
+    \item $\lim\limits_{x \to -\infty} (x^5+x^4+x^2+1)$
+    \item $\lim\limits_{x \to \infty} \log_{x}(10)$
+    \item $\lim\limits_{x \to \infty} \frac{1}{\sin(x^2+x+1)}$
+    \item $\lim\limits_{x \to \infty} \sqrt{x^2 + 1} - \sqrt{x^2 - 1}$ \quad (Hint: treat it as $\frac{\sqrt{x^2 + 1} - \sqrt{x^2 - 1}}{1}$ and rationalize)
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item Note that $\lim\limits_{x \to -\infty} x^3+x+1 = \lim\limits_{x \to -\infty} x^3 = -\infty$ ($\because$ the power is odd).  Therefore, the plugin method yield the form $2^{-\infty}$, implying $\lim\limits_{x \to -\infty} 2^{(x^3+x+1)} = 0$.
+    \item $\lim\limits_{x \to -\infty} (x^5+x^4+x^2+1) = \lim\limits_{x \to -\infty} x^5 = -\infty$  ($\because$ the power is odd)
+    \item First note that $\lim\limits_{x \to \infty} \log_{x}(10) = \lim\limits_{x \to \infty} \frac{1}{\log_{10}(x)}$, which the plug-in method evaluates to $1/\infty$. Therefore, $\lim\limits_{x \to \infty} \log_{x}(10) = 0$.
+    \item As $x \to \infty$, $x^2+x+1 \to \infty$.  The sine function of $x^2+x+1$ oscillates perpetually between $-1$ and $1$ along the way and does not tend to one value.  Therefore, $\lim\limits_{x \to \infty} \frac{1}{\sin(x^2+x+1)}$ does not exist.
+    \item Note that the plugin method yields the form $\infty-\infty$, which is indeterminate.  Since this function includes addition / subtraction of square roots, we can try rationalization: $\lim\limits_{x \to \infty} \sqrt{x^2 + 1} - \sqrt{x^2 - 1} = \lim\limits_{x \to \infty} \frac{(\sqrt{x^2 + 1} - \sqrt{x^2 - 1})(\sqrt{x^2 + 1} + \sqrt{x^2 - 1})}{\sqrt{x^2 + 1} + \sqrt{x^2 - 1}} = \lim\limits_{x \to \infty} \frac{\sqrt{x^2 + 1}^2 - \sqrt{x^2 - 1}^2}{\sqrt{x^2 + 1}+\sqrt{x^2 - 1}} = \lim\limits_{x \to \infty} \frac{2}{\sqrt{x^2 + 1}+\sqrt{x^2 - 1}}$.  The plug-in method now evaluates to $2/(\infty + \infty)$, which implies $\lim\limits_{x \to \infty} \sqrt{x^2 + 1} - \sqrt{x^2 - 1} = 0$
+\end{enumerate}\vspace{6mm}
+
+\problem Evaluate the following limits for rational functions:
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to -\infty} \frac{x+3}{3x^2-x+1}$
+    \item $\lim\limits_{x \to -\infty} \frac{x^5+3}{3x^7-x+1}$
+    \item $\lim\limits_{x \to \infty} \frac{3x+5x^2+1}{2x^2+4x+3}$
+    \item $\lim\limits_{x \to \infty} \frac{(x+1)^7-x^7}{3x^6+2x+1}$
+    \item $\lim\limits_{x \to -\infty} \frac{3x^4+4x+1}{x+3}$
+\end{enumerate}\vspace{6mm}
+
+\answer
+These are all limits of rational functions at positive or negative infinity, so we only need assess the degrees and leading coefficients of the numerator and denominator polynomial to evaluate these limits.
+\begin{enumerate}[(a)]
+    \item $\text{Deg}(x+3) = 1 < 2 = \text{Deg}(3x^2-x+1)$. Therefore, $\lim\limits_{x \to -\infty} \frac{x+3}{3x^2-x+1} = 0$
+    \item $\text{Deg}(x^5+3) = 5 < 7 = \text{Deg}(3x^7-x+1)$. Therefore, $\lim\limits_{x \to -\infty} \frac{x^5+3}{3x^7-x+1} = 0$
+    \item $\text{Deg}(3x + 5x^2 + 1) = 2 = \text{Deg}(2x^2 + 4x + 3)$.  Therefore, we extract the leading coefficients and yield $\lim\limits_{x \to \infty} \frac{3x+5x^2+1}{2x^2+4x+3} = \frac{5}{2}$
+    \item Note that from the binomial theorem, $(x+1)^7$ can be expanded as $x^7 + 7x^6 + a_5 x^5 + a_4 x^4 + a_3 x^3 + a_2 x + a_1x + a_0$.  The coefficients for powers less than $6$ do not matter so we leave them uncalculated.  Therefore, $(x+1)^7 - x^7$ is a degree-$6$ polynomial with leading coefficient $7$.  Now since $\text{Deg}((x+1)^7 - x^7) = 6 = \text{Deg}(3x^6+2x+1)$, we have $\lim\limits_{x \to \infty} \frac{(x+1)^7-x^7}{3x^6+2x+1} = \frac{7}{3}$, where the $7$ is the leading coefficient we just derived.
+    \item $\text{Deg}(3x^4 + 4x + 1) = 4 > 1 = \text{Deg}(x+3)$. Therefore, $\lim\limits_{x \to -\infty} \frac{3x^4+4x+1}{x+3} = \lim\limits_{x \to -\infty} \frac{3x^4}{x} = \lim\limits_{x \to -\infty} 3x^3 = -\infty$
+\end{enumerate}\vspace{6mm}
+
+
+\problem Let $f(x) = \frac{x^4-x^3-9x^2+9x^2}{x^3+2x^2-x-2}$
+\begin{enumerate}[(a)]
+    \item Show that $x=1$ is the root for both the numerator and denominator
+    \item Show that there are no horizontal asymptotes for $f(x)$
+    \item Find all the vertical asymptotes for $f(x)$
+    \item Find all the oblique asymptotes for $f(x)$
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item Plugging in $x=1$ into the numerator yields $1^4-1^3-9 \cdot 1^2+9 \cdot 1 = 0$, so $x=1$ is a root for the numerator.  Likewise, plugging in $x=1$ into the denominator yields $1^3+ 2 \cdot 1^2 - 1 - 2 = 0$, so $x=1$ is also a root for the denominator.
+    \item If $y=c$ is the horizontal asymptote for $f(x)$, then it must be $\lim\limits_{x \to \infty} f(x) = c$ or $\lim\limits_{x \to -\infty} f(x) = c$.  However, $\lim\limits_{x \to \infty} \frac{x^4-x^3-9x^2+9x^2}{x^3+2x^2-x-2} = \lim\limits_{x \to \infty} \frac{x^4}{x^3} = \lim\limits_{x \to \infty} x = \infty$ and $\lim\limits_{x \to -\infty} \frac{x^4-x^3-9x^2+9x^2}{x^3+2x^2-x-2} = \lim\limits_{x \to -\infty} \frac{x^4}{x^3} = \lim\limits_{x \to -\infty} x = -\infty$, i.e. both limits do not exist, so there is no horizontal asymptotes for $f(x)$.
+    \item We first note that $\frac{x^4-x^3-9x^2+9x^2}{x^3+2x^2-x-2} = \frac{x^3(x-1)}{(x-1)(x+1)(x+2)}$, so $x=1$, $x=-1$, $x=-2$ are three possible vertical asymptotes since under these three values of $x$, the denominator evaluates to zero.  However, for $x=1$, since $\lim\limits_{x \to 1}\frac{x^3(x-1)}{(x-1)(x+1)(x+2)} = \lim\limits_{x \to 1}\frac{x^3}{(x+1)(x+2)} = \frac{1}{6}$ which does not go to infinity, $x=1$ is not a vertical asymptote.  Therefore, there are only two vertical asymptotes, $x=-1$ and $x=-2$.
+    \item Doing long division yields $f(x) = (x-3) + \frac{7x^2-x-6}{x^3+2x^2-x-2}$.  Since the quotient is $(x+3)$, the oblique asymptote for $f(x)$ is $y = x-3$.
+\end{enumerate}
+
+\end{document}

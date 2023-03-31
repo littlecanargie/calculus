@@ -1,0 +1,194 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{fancyhdr, lastpage, bbding, pmboxdraw}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{ \fancyplain{}{Calculus I} }
+%\chead{ \fancyplain{}{} }
+\rhead{ \fancyplain{}{\today} }
+%\rfoot{\fancyplain{}{page \thepage\ of \pageref{LastPage}}}
+\fancyfoot[RO, LE] {page \thepage\ of \pageref{LastPage} }
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+{\Large \textsc{MSF\_10110 / AM\_\_1050AH : Calculus I}}
+\end{center}
+\begin{center}
+Fall 2022
+\end{center}
+%\date{September 26, 2014}
+
+\begin{center}
+\rule{6.5in}{0.4pt}
+\begin{minipage}[t]{.90\textwidth}
+\begin{tabular}{llcll}
+\textbf{Instructor:} & Ming-Chieh Shih & & \textbf{Time:} & Tue 11:10 -- 12:00, Thu 10:10 -- 12:00 \\
+\textbf{Email:} &  \href{mailto:mcshih@gms.ndhu.edu.tw}{mcshih@gms.ndhu.edu.tw} & & \textbf{Place:} & B101, Sci. and Eng. Bldg. I
+\end{tabular}
+\end{minipage}
+\rule{6.5in}{0.4pt}
+\end{center}
+\vspace{.5cm}
+\setlength{\unitlength}{1in}
+\renewcommand{\arraystretch}{2}
+
+\noindent\textbf{Course Page:} \url{https://classroom.google.com/c/NTQzOTI3NDM2NDk0?cjc=rapuizr}
+
+\vskip.15in
+\noindent\textbf{Teaching Assistant:} Yi-Hao Su, email:  \href{mailto:611011102@gms.ndhu.edu.tw}{611011102@gms.ndhu.edu.tw}
+
+\vskip.15in
+\noindent\textbf{Office Hours:} Book with email beforehand!
+\begin{enumerate}
+    \item TA (A311, S\&E): Wed 13:00 -- 14:00
+    \item Instructor (A425, S\&E): Wed 09:00 -- 11:00
+\end{enumerate}
+
+\vskip.15in
+\noindent\textbf{Textbook:} Ron Larson, {\textit{Calculus: An applied approach, international metric edition (10th ed.)}}. CENGAGE Learning Custom Publishing, 2016.
+% \footnotetext{Downloadable ebook versions are available on AeLP.}
+
+\vskip.15in
+\noindent\textbf{Prerequisites:} High school-level algebra. 
+
+\vskip.15in
+\noindent\textbf{Objectives:}  
+At the end of this course, you should know:
+\begin{itemize}
+\item The concept of limits
+\item The definition of derivatives and its physical/geometrical interpretation
+\item All differentiation techniques
+\item How to find extrema and graph functions using derivatives
+\item How to formulate real-world problems into objectives involving derivatives
+\item The link between derivatives and integrals
+\item Basic techniques of integration
+\item How integrals are used in the evaluation of areas and expected values / variance of random variables
+\end{itemize}
+
+\pagebreak
+\vspace*{.15in}
+\noindent \textbf{Tentative Course Schedule:}
+\renewcommand{\arraystretch}{1}% Tighter
+\begin{center}
+   \begin{tabular}{ccl}
+        \toprule
+        Week & Dates & Topic \\
+        \hline
+        1 & 09/13, 09/15 & Intro / Review of basic algebra and common functions \\
+        2 & 09/20, 09/22 & Definition and evaluation of limits \\
+        3 & 09/27, 09/29 & Rates of change, tangent lines and definition of derivatives\\
+        4 & 10/04, 10/06 & Power rule and rules for differentiation\\
+        5 & 10/11, 10/13 & Derivatives of special functions and high-order derivatives \\
+        6 & 10/18, 10/20 & Chain rule, implicit differentiation, differentiation of
+inverses and L'Hôpital rule\\
+        7 & 10/25, 10/27 & Extrema and first derivative test, concavity and second derivative
+test\\
+        8 & 11/01, 11/03 & Using differentiation to solve practical problems / \textbf{Midterm} \\
+        9 & 11/08, 11/10 & Discussion of Midterm (No class) / Antiderivatives and indefinite integrals \\
+        10 & 11/15, 11/17 & Area evaluation and Fundamental Theorem of Calculus \\
+        11 & 11/22, 11/24 & Integration techniques: Integration by substitution \\
+        12 & 11/29, 12/01 & Integration techniques: Integration by parts and reduction formula \\
+        13 & 12/06, 12/08 & Improper integrals; Discrete probability \\
+        14 & 12/13, 12/15 & Continuous random variables, expected value and variance\\
+        15 & 12/20, 12/22 & Primer on differential equations \\
+        16 & 12/27, 12/29 & Course Recap / \textbf{Final}  \\
+        \bottomrule
+    \end{tabular} 
+\end{center}
+
+\vskip.15in
+\noindent\textbf{Important Dates:}
+\begin{center} \begin{minipage}{3.8in}
+\begin{flushleft}
+Midterm      \dotfill  Nov 3, 2022 \\
+Final Exam       \dotfill  Dec 29, 2022 \\
+\end{flushleft}
+\end{minipage}
+\end{center}
+
+\vspace*{.15in}
+\noindent\textbf{Grading Policy:} Homework (35\%),  Midterm (30\%), Final (35\%). 
+
+\vskip.15in
+\noindent\textbf{Assignment Policy:}  
+\begin{itemize}
+    \item Given \textbf{every Thursday} (except for midterm and final weeks)
+    \item Assignments should (be):
+    \begin{itemize}
+        \item \textbf{hand-written} on \textbf{A4-sized} paper
+        \item include detailed explanation on how you derived your answer
+    \end{itemize} 
+    \item Turn in your assignment to the TA \textbf{before next Thursday's class starts}. No credits for late assignments.
+    \item In the case where you cannot make it to the class to turn in the assignment (due to sickness, quarantine, etc.), inform the TA in advance and turn in the photo of your assignment by email. The due time remains the same.
+    \item Grading by correct percentage:
+    \begin{itemize}
+        \item 100\%: 3 points
+        \item 75\% or more: 2.5 points
+        \item 50\% or more: 2 points
+        \item 25\% or more: 1 point
+        \item Less than 25\%: 0 points
+    \end{itemize}
+    \item The final grade for the assignments is the total grade of each assignment (but caps at 35\%).
+    \item \textbf{ZERO tolerance for plagiarism}. Final grade for the assignments caps at 15\% if plagiarism detected at any point.
+\end{itemize}
+
+
+%%%%%% THE END 
+\end{document} 

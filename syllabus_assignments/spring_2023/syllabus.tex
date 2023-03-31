@@ -1,0 +1,210 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{fancyhdr, lastpage, bbding, pmboxdraw}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{ \fancyplain{}{Calculus II} }
+%\chead{ \fancyplain{}{} }
+\rhead{ \fancyplain{}{\today} }
+%\rfoot{\fancyplain{}{page \thepage\ of \pageref{LastPage}}}
+\fancyfoot[RO, LE] {page \thepage\ of \pageref{LastPage} }
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+{\Large \textsc{MSF\_10010 / AM\_\_1080AH : Calculus II}}
+\end{center}
+\begin{center}
+Spring 2023
+\end{center}
+%\date{September 26, 2014}
+
+\begin{center}
+\rule{6.5in}{0.4pt}
+\begin{minipage}[t]{.90\textwidth}
+\begin{tabular}{llcll}
+\textbf{Instructor:} & Ming-Chieh Shih & & \textbf{Time:} & Thu 9:10 -- 12:00 \\
+\textbf{Email:} &  \href{mailto:mcshih@gms.ndhu.edu.tw}{mcshih@gms.ndhu.edu.tw} & & \textbf{Place:} & B101, Sci. and Eng. Bldg. I
+\end{tabular}
+\end{minipage}
+\rule{6.5in}{0.4pt}
+\end{center}
+\vspace{.5cm}
+\setlength{\unitlength}{1in}
+\renewcommand{\arraystretch}{2}
+
+\noindent\textbf{Course Page:} \url{https://classroom.google.com/c/NTkxMzM2NDIyNDE2?cjc=drgpply}
+
+\vskip.15in
+\noindent\textbf{Teaching Assistant:} Yi-Hao Su, email:  \href{mailto:611011102@gms.ndhu.edu.tw}{611011102@gms.ndhu.edu.tw}
+
+\vskip.15in
+\noindent\textbf{Office Hours:} Book with email beforehand!
+\begin{enumerate}
+    \item TA (A311, S\&E Bldg. I): Wed 13:00 -- 14:00
+    \item Instructor (A425, S\&E Bldg. I): Wed 10:00 -- 12:00
+\end{enumerate}
+
+\vskip.15in
+\noindent\textbf{Textbook:} Ron Larson, {\textit{Calculus: An applied approach, international metric edition (10th ed.)}}. CENGAGE Learning Custom Publishing, 2016.
+% \footnotetext{Downloadable ebook versions are available on AeLP.}
+
+\vskip.15in
+\noindent\textbf{Prerequisites:} 
+\begin{itemize}
+    \item High school-level algebra
+    \item Materials in Calculus I:
+    \begin{itemize}
+        \item Concept of limits
+        \item Derivatives of common functions
+        \item Rules for differentiation: power / product / quotient / chain rule
+        \item Finding extrema of a single-variable function
+    \end{itemize}
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Objectives:}  
+At the end of this course, you should know:
+\begin{itemize}
+    \item Techniques of deriving anti-derivatives
+    \item The link between anti-derivatives and integrals
+    \item How single-variable integrals are used in the evaluation of areas, volumes and expected values or variance of random variables
+    \item What first-order differential equations are and how to solve them
+    \item How to visualize multivariable functions and find their extrema with or without constraints
+    \item Application of double integrals
+    \item Basic concepts of series and convergence
+\end{itemize}
+
+\pagebreak
+\vspace*{.15in}
+\noindent \textbf{Tentative Course Schedule:}
+\renewcommand{\arraystretch}{1}% Tighter
+\begin{center}
+   \begin{tabular}{ccl}
+        \toprule
+        Week & Dates & Topic \\
+        \hline
+        1 & 02/16 & Course overview / Recap of Calculus I \\
+        \multirow{2}{*}{2} & \multirow{2}{*}{02/23} & Mean value theorem and antiderivatives \\
+        && Techniques for deriving
+antiderivatives : U-substitution \\
+        3 & 03/02 & Techniques for deriving
+antiderivatives : U-substitution and trigonometric substitution\\
+        4 & 03/09 & Techniques for deriving antiderivatives : Integration by parts and tabular method\\
+        5 & 03/16 & Techniques for deriving antiderivatives : Partial fractions \\
+        6 & 03/23 & Integrals and Fundamental Theorem of Calculus\\
+        7 & 03/30 & Application of integrals : Areas, arc length and solids of
+revolution\\
+        8 & 04/06 & \textbf{Midterm exam} \\
+        \multirow{2}{*}{9} & \multirow{2}{*}{04/13} & Improper integrals \\
+        && Application of integrals : Probabilities, expectation values and variance\\
+        \multirow{2}{*}{10} & \multirow{2}{*}{04/20} & Application of integrals : Probabilities, expectation values and
+variance \\
+        && First-order differential equations\\
+        11 & 04/27 & Functions of several variables and partial derivatives \\
+        12 & 05/04 & Extrema of functions of several variables \\
+        13 & 05/11 & Least squares regression analysis / Constrained optimization and
+Lagrange multipliers \\
+        14 & 05/18 & Double integrals and its applications\\
+        15 & 05/25 & Series and convergence \\
+        16 & 06/01 & \textbf{Final exam}  \\
+        \bottomrule
+    \end{tabular} 
+\end{center}
+
+\vskip.15in
+\noindent\textbf{Important Dates:}
+\begin{center} \begin{minipage}{3.8in}
+\begin{flushleft}
+Midterm      \dotfill  Apr 6, 2023 \\
+Final Exam       \dotfill  Jun 1, 2023 \\
+\end{flushleft}
+\end{minipage}
+\end{center}
+
+\vspace*{.15in}
+\noindent\textbf{Grading Policy:} Homework (35\%),  Midterm (30\%), Final (35\%). 
+
+\vskip.15in
+\noindent\textbf{Assignment Policy:}  
+\begin{itemize}
+    \item Given \textbf{every Thursday} (except for midterm and final weeks)
+    \item Assignments should (be):
+    \begin{itemize}
+        \item \textbf{hand-written} on \textbf{A4-sized} paper
+        \item include detailed explanation on how you derived your answer
+    \end{itemize} 
+    \item Turn in your assignment to the TA \textbf{before next class starts}. No credits for late assignments.
+    \item If you cannot make it to the class to turn in the assignment (sickness, quarantine, etc.), inform the TA in advance and turn in the photo of your assignment by email. The due time remains the same.
+    \item Grading by correct percentage:
+    \begin{itemize}
+        \item 100\%: 3 points
+        \item 75\% or more: 2.5 points
+        \item 50\% or more: 2 points
+        \item 25\% or more: 1 point
+        \item Less than 25\%: 0 points
+    \end{itemize}
+    \item The final grade for the assignments is the total grade of each assignment (but caps at 35\%).
+    \item \textbf{ZERO tolerance for plagiarism}. Final grade for the assignments caps at 15\% if plagiarism detected at any point.
+\end{itemize}
+
+
+%%%%%% THE END 
+\end{document} 

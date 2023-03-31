@@ -1,0 +1,174 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage{xcolor}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\answer}{\noindent \textbf{Answer. }}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Differentiation rules II, III (Answer Key)}
+
+\bigskip
+
+\problem Find the following limits
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to \infty} \big(1-\frac{2}{x}\big)^{3x}$
+    \item $\lim\limits_{x \to 2} \big(\frac{2x}{x+2}\big)^{\frac{4}{x-2}}$
+    \item $\lim\limits_{x \to \infty} (1+2^{-x})^{\left(2^x\right)}$
+    \item $\lim\limits_{x \to 0} (1+2^{-x})^{\left(2^x\right)}$
+    \item $\lim\limits_{x \to 0} (\cos x)^{\frac{2}{x^2}}$ \quad (Hint: Take the 2 in the exponent into the base)
+\end{enumerate}\vspace{4mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item Plug-in method gets us the $1^\infty$ indeterminate form.  We note that this limit is shaped like $\lim\limits_{x \to \infty} (1+f(x))^{g(x)}$ where $f(x) = -\frac{2}{x}$ and $g(x) = 3x$.  Since $\lim\limits_{x \to \infty} f(x) = 0$ and $\lim\limits_{x \to \infty} f(x)g(x) = \lim\limits_{x \to \infty} (-6) = -6$, we conclude that $\lim\limits_{x \to \infty} \big(1-\frac{2}{x}\big)^{3x} = e^{-6}$.
+    \item Plug-in method gets us the $1^{\pm\infty}$ indeterminate form.  Rewriting the base yields $\lim\limits_{x \to 2} \big(\frac{2x}{x+2}\big)^{\frac{4}{x-2}} = \lim\limits_{x \to 2} \big(1+\frac{x-2}{x+2}\big)^{\frac{4}{x-2}}$, so the limit is shaped like $\lim\limits_{x \to 2} (1+f(x))^{g(x)}$ where $f(x) = \frac{x-2}{x+2}$ and $g(x) = \frac{4}{x-2}$. Since $\lim\limits_{x \to 2} f(x) = 0$ and $\lim\limits_{x \to 2} f(x)g(x) = \lim\limits_{x \to 2} \frac{4}{x+2} = 1$, we conclude that $\lim\limits_{x \to 2} \big(\frac{2x}{x+2}\big)^{\frac{4}{x-2}} = e^1 = e$
+    \item Plug-in method gets us the $1^\infty$ indeterminate form.  We note that this limit is shaped like $\lim\limits_{x \to \infty} (1+f(x))^{g(x)}$ where $f(x) = 2^{-x}$ and $g(x) = 2^x$. Since $\lim\limits_{x \to \infty} f(x) = 0$ and $\lim\limits_{x \to \infty} f(x)g(x) = \lim\limits_{x \to \infty} 1 = 1$, we conclude that $\lim\limits_{x \to \infty} (1+2^{-x})^{\left(2^x\right)} = e^1 = e$
+    \item Plug-in method gets us $(1+2^0)^{2^0} = (1+1)^1 = 2$. 
+    \item Plug-in method gets us the $1^\infty$ indeterminate form.  If we rewrite the limit as 
+    $\lim\limits_{x \to 0} (\cos x)^{\frac{2}{x^2}} = \lim\limits_{x \to 0} (\cos^2 x)^{\frac{1}{x^2}} = \lim\limits_{x \to 0} (1-\sin^2 x)^{\frac{1}{x^2}}$, we note that this limit is shaped like $\lim\limits_{x \to 0} (1+f(x))^{g(x)}$ where $f(x) = -\sin^2 x$ and $g(x) = \frac{1}{x^2}$.  Since $\lim\limits_{x \to 0} f(x) = 0$ and $\lim\limits_{x \to 0} f(x)g(x) = \lim\limits_{x \to 0} \frac{-\sin^2 x}{x^2} = -\left(\lim\limits_{x \to 0} \frac{\sin x}{x}\right)^2 = -1$, we conclude that $\lim\limits_{x \to 0} (\cos x)^{\frac{2}{x^2}} = e^{-1}$
+\end{enumerate}\vspace{4mm}
+
+\problem Find the derivatives of the following functions
+\begin{enumerate}[(a)]
+    \item $(x+1)^{2022}$
+    \item $\ln(3x+4)$
+    \item $\sqrt[3]{(x^2+4)^2}$
+    \item $e^{-\frac{x}{8\pi}}$
+    \item $\sin(x^2+1)$
+\end{enumerate}\vspace{4mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item Let $u = x+1$, then $\frac{d}{dx}(x+1)^{2022} = \frac{d}{dx}u^{2022} = \frac{du^{2022}}{du}\frac{du}{dx} = 2022u^{2021}\frac{d(x+1)}{dx} = 2022(x+1)^{2021}$.
+    \item Let $u = 3x+4$, then $\frac{d}{dx}\ln(3x+4) = \frac{d}{dx}\ln u = \frac{d \ln u}{du}\frac{du}{dx} = \frac{1}{u}\frac{d (3x+4)}{dx} = \frac{1}{3x+4}\cdot(3) = \frac{3}{3x+4}$.
+    \item Let $u = x^2+4$, then $\frac{d}{dx}\sqrt[3]{(x^2+4)^2} = \frac{d}{dx} u^{2/3} = \frac{d u^{2/3}}{du}\frac{du}{dx} = \frac{2}{3}u^{-1/3}\frac{d (x^2+4)}{dx} = \frac{2}{3}\frac{1}{\sqrt[3]{x^2+4}}\cdot(2x) = \frac{4x}{3\sqrt[3]{x^2+4}}$.
+    \item Let $u = -\frac{x}{8\pi}$, then $\frac{d}{dx}e^{-\frac{x}{8\pi}} = \frac{d}{dx}e^u = \frac{d e^u}{du}\frac{du}{dx} = e^u \frac{d (-\frac{x}{8\pi})}{dx} = e^{-\frac{x}{8\pi}}(-\frac{1}{8\pi}) = -\frac{1}{8\pi}e^{-\frac{x}{8\pi}}$.
+    \item Let $u=x^2+1$, then $\frac{d}{dx}\sin(x^2+1) = \frac{d}{dx}\sin u = \frac{d \sin u}{du}\frac{du}{dx} = \cos u \frac{d (x^2+1)}{dx} = \cos (x^2+1) \cdot (2x) = 2x \cos(x^2+1)$.
+\end{enumerate}\vspace{4mm}
+
+\problem Find the derivatives of the following functions
+\begin{enumerate}[(a)]
+    \item $e^{\frac{2x+1}{x+3}}$
+    \item $\tan^{-1}(\sqrt{x^2-1})$
+    \item $\sqrt[4]{\sin\sqrt[3]{x}}$
+    \item $\log_{(x^2+1)} 3$
+    \item $x^x$ \quad (Hint: Write $x$ as $e^{\ln x}$)
+\end{enumerate}\vspace{4mm}
+
+\answer 
+
+\noindent In the following, I will use the chain rule implicitly.  Expressions treated as a "chunk" will be colored.
+
+\begin{enumerate}[(a)]
+    \item $(e^{\textcolor{red}{\frac{2x+1}{x+3}}})' = e^{\textcolor{red}{\frac{2x+1}{x+3}}}\cdot(\textcolor{red}{\frac{2x+1}{x+3}})' = e^{\frac{2x+1}{x+3}}(2-\frac{5}{x+3})' = e^{\frac{2x+1}{x+3}}\cdot(-5)(\frac{1}{\textcolor{blue}{x+3}})' = e^{\frac{2x+1}{x+3}}\cdot(-5)(-1)\frac{1}{(\textcolor{blue}{x+3})^2}(\textcolor{blue}{x+3})' = \frac{5}{(x+3)^2}e^{\frac{2x+1}{x+3}}$.
+    \item $[\tan^{-1}(\textcolor{red}{\sqrt{x^2-1}})]' = \frac{1}{1+(\textcolor{red}{\sqrt{x^2-1}})^2}(\textcolor{red}{\sqrt{x^2-1}})' = \frac{1}{x^2}(\sqrt{\textcolor{blue}{x^2-1}})' = \frac{1}{x^2}\frac{1}{2\sqrt{\textcolor{blue}{x^2-1}}}(\textcolor{blue}{x^2-1})' = \frac{1}{x^2}\frac{1}{2\sqrt{x^2-1}}(2x) = \frac{1}{x\sqrt{x^2-1}}$.
+    \item $(\sqrt[4]{\textcolor{red}{\sin\sqrt[3]{x}}})'=\frac{1}{4}\big[\textcolor{red}{\sin\sqrt[3]{x}}\big]^{-3/4}(\textcolor{red}{\sin}\textcolor{blue}{\sqrt[3]{x}})' = \frac{1}{4}\big[\sin\sqrt[3]{x}\big]^{-3/4}(\cos\textcolor{blue}{\sqrt[3]{x}})(\textcolor{blue}{\sqrt[3]{x}})'=\frac{1}{4}\big[\sin\sqrt[3]{x}\big]^{-3/4}(\cos\sqrt[3]{x})\frac{1}{3}x^{-2/3} = \frac{\cot \sqrt[3]{x}\sqrt[4]{\sin\sqrt[3]{x}}}{12(\sqrt[3]{x})^2}$.
+    \item $(\log_{(x^2+1)} 3)'= \left(\frac{\ln 3}{\textcolor{red}{\ln (x^2+1)}}\right)' = (\ln 3)\left(-\frac{1}{(\textcolor{red}{\ln(x^2+1)})^2}\right)(\textcolor{red}{\ln(}\textcolor{blue}{x^2+1}\textcolor{red}{)})' = -\frac{\ln 3}{(\ln(x^2+1))^2}\frac{1}{\textcolor{blue}{x^2+1}}(\textcolor{blue}{x^2+1})' = -\frac{2x\ln 3}{(x^2+1)(\ln(x^2+1))^2}$.
+    \item $(x^x)' = \left((e^{\ln x})^x\right)' = \left(e^{\textcolor{red}{x\ln x}}\right)' = e^{\textcolor{red}{x\ln x}} (\textcolor{red}{x\ln x})' = x^x [(x)'\ln x + x (\ln x)'] = x^x [\ln x + x \frac{1}{x}] = (1+ \ln x)x^x$.
+\end{enumerate}\vspace{4mm}
+
+\problem Find the following limits. You \textit{may} use the L'Hôpital's rule \textit{if applicable}.
+\begin{enumerate}[(a)]
+    \item $\lim\limits_{x \to 1} \frac{x^3+x^2+x-3}{x^3+2x^2+x-3}$
+    \item $\lim\limits_{x \to 0} \frac{e^{(3x^2+2x)}-1}{\sin(2x^2+3x)}$
+    \item $\lim\limits_{x \to 0} \frac{\sin (x^2)}{x \tan x}$
+    \item $\lim\limits_{x \to 0} x^2 \ln (x^2)$ \quad (Hint: Transform it into $\frac{\infty}{\infty}$ form)
+    \item $\lim\limits_{x \to 0} \frac{e^{-\frac{1}{x^2}}}{x^2}$ \quad (Hint: $\frac{0}{0}$ form can also be transformed into $\frac{\infty}{\infty}$ form)
+\end{enumerate}\vspace{4mm}
+
+
+\answer
+
+\begin{enumerate}[(a)]
+    \item Plug-in method gets us $\frac{0}{1} = 0$.
+    \item Plug-in method gets us $\frac{e^0-1}{\sin 0}$, which is a $\frac{0}{0}$ indeterminate form.  We thus use the L'Hôpital's rule: $\lim\limits_{x \to 0} \frac{e^{(3x^2+2x)}-1}{\sin(2x^2+3x)} = \lim\limits_{x \to 0} \frac{(e^{(3x^2+2x)}-1)'}{(\sin(2x^2+3x))'} = \lim\limits_{x \to 0} \frac{(6x+2)e^{(3x^2+2x)}}{(4x+3)\cos(2x^2+3x)} = \frac{(0+2)e^0}{(0+3)\cos 0} = \frac{2}{3}$.
+    \item $\lim\limits_{x \to 0} \frac{\sin (x^2)}{x \tan x}  = \lim\limits_{x \to 0} \frac{\sin (x^2)}{x^2}\frac{x}{\sin x}\cos x = \left(\lim\limits_{x^2 \to 0} \frac{\sin (x^2)}{x^2}\right)\left(\lim\limits_{x \to 0} \frac{x}{\sin x}\right)\left(\lim\limits_{x \to 0} \cos x\right) = 1 \cdot 1 \cdot 1 = 1$.
+    \item $\lim\limits_{x \to 0} x^2 \ln (x^2) = \lim\limits_{x \to 0} \frac{\ln(x^2)}{\frac{1}{x^2}}$, which yield a $\frac{-\infty}{\infty}$ indeterminate form using the plug-in method.  We thus use the L'Hôpital's rule: $\lim\limits_{x \to 0} \frac{\ln(x^2)}{\frac{1}{x^2}} = \lim\limits_{x \to 0} \frac{(\ln(x^2))'}{(\frac{1}{x^2})'} = \lim\limits_{x \to 0} \frac{\frac{2x}{x^2}}{-\frac{2}{x^3}} = \lim\limits_{x \to 0} (-x^2) = 0$.
+    \item As we have elaborated in class, although plug-in leads to a $\frac{0}{0}$ indeterminate form, using L'Hôpital's rule directly will only make things worse.  However, we can transform the function into $\lim\limits_{x \to 0} \frac{e^{-\frac{1}{x^2}}}{x^2} = \lim\limits_{x \to 0} \frac{\frac{1}{x^2}}{e^{\frac{1}{x^2}}}$, which is now a $\frac{\infty}{\infty}$ indeterminate form upon plug-in.  We can now use the L'Hôpital's rule: $\lim\limits_{x \to 0} \frac{\frac{1}{x^2}}{e^{\frac{1}{x^2}}} = \lim\limits_{x \to 0} \frac{(\frac{1}{x^2})'}{(e^{\frac{1}{x^2}})'} = \lim\limits_{x \to 0} \frac{-\frac{2}{x^3}}{(-\frac{2}{x^3})e^{\frac{1}{x^2}}} = \lim\limits_{x \to 0} e^{-\frac{1}{x^2}} = 0$.
+\end{enumerate}\vspace{4mm}
+
+% \problem Determine if the following statements are true or false and explain. (You can just provide a counterexample if you determine them as false)
+% \begin{enumerate}[(a)]
+%     \item If $f'(x) = g'(x)$ (for all $x\in \mathbb{R}$), then $f(x) = g(x)$
+%     \item If $f(1) = 0$, then $f'(1) = 0$
+%     \item If $f'(x) = 0$ (for all $x\in \mathbb{R}$), then $f(x) = 0$
+% \end{enumerate}\vspace{6mm}
+
+% \problem Let $f(x) = \sqrt[4]{x} - \sqrt{x}$,
+% \begin{enumerate}[(a)]
+%     \item Find the tangent line of $f(x)$ at the point where $x=16$.
+%     \item At which point(s) on $f(x)$ is its tangent line horizontal?
+%     \item Is $f(x)$ differentiable at $x = 0$? Why?
+% \end{enumerate}\vspace{6mm}
+
+% \problem A ball is expanding with its radius $r$ as a function of time $t$: $r(t) = \sqrt{t} + 2, t \ge 0$
+% \begin{enumerate}[(a)]
+%     \item Find the rate its radius is growing at $t = 1$
+%     \item Find the rate its surface area is growing at $t = 1$
+%     \item Find the rate its volume is growing at $t = 1$
+% \end{enumerate}\vspace{6mm}
+
+\end{document}

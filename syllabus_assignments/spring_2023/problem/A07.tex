@@ -1,0 +1,99 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus II (MSF\_10010 / AM\_\_1080AH) \\ 2023 Spring \\ Problem List VII (Due Apr 6)}
+
+\bigskip
+\noindent \textbf{Reminder:} Remember the $+C$!\\
+\noindent \textbf{Note:} Your answer need not be exactly the hinted answer, as long as it is a legit antiderivative.
+\bigskip
+
+\problem Find the following antiderivative:
+\[\int \frac{5x+9}{(x+5)(x-3)}~dx\]
+\vspace{15mm}
+
+\problem Find the following antiderivative:
+\[\int \frac{x^3+2x^2-x+1}{(x+2)(x-1)}~dx\]
+\vspace{15mm}
+
+\problem Find the following antiderivative:
+\[\int \frac{x+2}{x^2+4x-24}~dx\]
+\vspace{15mm}
+
+
+\problem Find the following antiderivative:
+\[\int \frac{x+2}{x^3+x^2+x-3}~dx\]
+(Hint: Note the denominator evaluates to $0$ when $x=1$.  This may help you with the factorization.)
+\vspace{15mm}
+
+\problem Find the following antiderivative:
+\[\int \frac{x+2}{x^2+2x+2}~dx\]
+(Hint 1: Complete the squares in the denominator.)
+
+\noindent(Hint 2: One answer for the antiderivative would be $\frac{1}{2}\ln|x^2+2x+2| + \arctan(x+1) + C$)
+\end{document}

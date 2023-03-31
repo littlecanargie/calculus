@@ -1,0 +1,111 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus II (MSF\_10010 / AM\_\_1080AH) \\ 2023 Spring \\ Problem List III (Due Mar 9)}
+
+\bigskip
+\noindent \textbf{Reminder:} Remember the $+C$!
+\bigskip
+
+\problem Find the following antiderivatives
+    \begin{enumerate}[(a)]
+        \item $\int \big(\sqrt[2]{x} + \frac{1}{\sqrt[3]{x}}\big)~dx$
+        \item $\int (3 \sin x - 4 \cos x + 2) dx$
+        \item $\int (2x\sqrt[4]{x} + e^x) dx$
+        \item $\int \frac{(x+1)^2}{x^3} dx$
+        \item $\int \big(\sqrt[3]{x} + \frac{1}{\sqrt[3]{x}}\big)^3 dx$
+    \end{enumerate} \vspace{6mm}
+
+\problem Find the following antiderivatives
+    \begin{enumerate}[(a)]
+        \item $\int (x+2)^{15}~dx$
+        \item $\int \sqrt{2x+1}~dx$
+        \item $\int \frac{2}{3x+5}~dx $
+        \item $\int \frac{7}{(4x+1)^2+1}~dx$
+        \item $\int \cos\big(5x+\frac{\pi}{4}\big)~dx$
+    \end{enumerate} \vspace{6mm}
+
+\problem Find the following antiderivatives
+    \begin{enumerate}[(a)]
+        \item $\int \frac{2x+1}{\sqrt{x^2+x+1}}~dx$
+        \item $\int \frac{\sqrt[3]{\ln x}}{x}~dx$
+        \item $\int (x+1)\sin(x^2 + 2x)~dx$
+        \item $\int e^{3 \sin x} \cos x~dx$
+        \item $\int \frac{x}{1+x^4}~dx$ \quad (Hint: let $u = x^2$)
+    \end{enumerate} \vspace{6mm}
+
+\problem Find the following antiderivatives
+    \begin{enumerate}[(a)]
+        \item $\int \frac{\sin x - \cos x}{\sin x + \cos x}~dx$
+        \item $\int \cot x~dx$ \quad (Hint: Write $\cot x$ as a combination of $\sin x$ and $\cos x$)
+        \item $\int \frac{5x}{4x^2 + 9}~dx$
+        \item $\int \frac{5}{4x^2 + 9}~dx$ \quad (Hint: Coerce the denominator to be something like $\frac{1}{1+u^2}$)
+        \item $\int \frac{(\arctan x)^3}{x^2 + 1}~dx$ \quad (Hint: The convenient $u$ does not always reside in the denominator)
+    \end{enumerate} \vspace{6mm}
+
+\end{document}

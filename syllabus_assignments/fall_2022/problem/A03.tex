@@ -1,0 +1,126 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Homework List for Pre-calculus III / Limits and Continuity I}
+
+\bigskip
+
+\problem Evaluate the following quantities:
+\begin{enumerate}[(a)]
+    \item $\sin 225\degree$
+    \item $\cos (-330\degree)$
+    \item $\tan\frac{7}{4}\pi$
+    \item $\cot\frac{5}{3}\pi$
+\end{enumerate}\vspace{6mm}
+
+\problem Let $u = \tan \theta, 3\pi < \theta < \frac{7}{2}\pi$. Express the following quantities with $u$: 
+\begin{enumerate}[(a)]
+    \item $\sec \theta$
+    \item $\cos \theta$
+    \item $\cos 2\theta$
+    \item $\cos\left(\frac{\theta}{2}\right)$
+\end{enumerate}\vspace{6mm}
+
+\problem A triangle $ABC$ is placed on a Cartesian plane with coordinates $A(0, 0)$ and $B(c, 0)$ where $c>0$. Point $C$ is in the first or second quadrant where $\overline{AC} = b$ and $\angle BAC = \theta$, $0 < \theta < \pi$
+\begin{enumerate}[(a)]
+    \item Give the coordinate of $C$
+    \item Show that the area of triangle $ABC$ is $\frac{1}{2} bc \sin \theta$
+    \item Show that $\overline{BC}^2 = \overline{AC}^2 + \overline{AB}^2 - 2\overline{AC}~\overline{AB} \cos\theta$
+\end{enumerate}\vspace{6mm}
+
+\problem Let $f(x) = \frac{\sin 4x}{|\sin 2x|}$, 
+\begin{enumerate}[(a)]
+    \item Plot $f(x)$ on a Cartesian plane
+    \item What is the domain, range and period of $f(x)$?
+    \item Evaluate $f\left(\frac{\pi}{4}\right), \lim\limits_{x \to  \left(\frac{\pi}{4}\right)^-} f(x)$ and $\lim\limits_{x \to \left(\frac{\pi}{4}\right)^+} f(x)$
+    \item Evaluate $f(\pi), \lim\limits_{x \to  \pi^-} f(x)$ and $\lim\limits_{x \to \pi^+} f(x)$
+\end{enumerate}
+
+
+% \problem Let $f(x) = \left\{\begin{array}{lr} 
+%         \frac{x^2-1}{x-1}, & x < 1\\
+%         2, & x = 1\\
+%         \frac{3x^2+2x-1}{|x^2-4x+3|}, & 1 < x < 3\\
+%         \log_{10}(x-3), & x > 3
+%         \end{array}\right.$
+% \begin{enumerate}[(a)]
+%     \item Evaluate $f(1), \lim\limits_{x \to  1^-} f(x)$ and $\lim\limits_{x \to 1^+} f(x)$
+%     \item Evaluate $\lim\limits_{x \to  1} f(x)$. Is $f(x)$ continuous at $x=1$?
+%     \item Evaluate $f(3), \lim\limits_{x \to  3^-} f(x)$ and $\lim\limits_{x \to 3^+} f(x)$
+%     \item Evaluate $\lim\limits_{x \to  3} f(x)$. Is $f(x)$ continuous at $x=3$?
+% \end{enumerate}\vspace{6mm}
+
+% \problem Evaluate the following limits:
+% \begin{enumerate}[(a)]
+%     \item $\lim\limits_{x \to 0^+} \frac{x^2+1}{x}$
+%     \item $\lim\limits_{x \to 0} \frac{x}{\sqrt{x+3}-\sqrt{3}}$
+%     \item $\lim\limits_{x \to 0} \frac{(1-x)^{-\frac{1}{2}}-1}{x}$
+%     \item $\lim\limits_{x \to 0} \frac{\sin 5x}{x}$
+% \end{enumerate}\vspace{6mm}
+
+\end{document}

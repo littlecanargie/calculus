@@ -1,0 +1,151 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\answer}{\noindent \textbf{Answer. }}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus I (AM\_\_1050AH / MSF\_10110) \\ 2022 Fall \\ Def. of derivatives, Differentiation rules I (Answer Key)}
+
+\bigskip
+
+\problem Let $f(x) = |2\sin(2x)|$
+\begin{enumerate}[(a)]
+    \item Graph $f(x)$ on a Cartesian plane.
+    \item Argue why $f(x)$ is not differentiable at $x=0$ using the graph. 
+    \item Argue why $f(x)$ is not differentiable at $x=0$ using limits.
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item Note that $2\sin (2x)$ is a sine function with double the amplitude (2) and half the period ($\pi$).  Once we've graphed $y = 2\sin (2x)$, $y = f(x)$ is just taking the absolute value, i.e. flipping the curves under the $x$-axis up to the positive side.
+    \item After graphing $f(x)$, we can see that the function has a kink at $x=0$, which leads to non-differentiability.
+    \item By definition, $f'(0) = \lim\limits_{h \to 0} \frac{f(0+h)-f(0)}{h} = \lim\limits_{h \to 0}\frac{|2\sin(2h)|-|2\sin (0)|}{h} = 2\lim\limits_{h \to 0} \frac{|\sin(2h)|}{h}$.  Now we show that this limit does not exist by evaluating the right and left limits at $h=0$:\vspace{1mm}
+    
+    For right limit, $\lim\limits_{h \to 0^+}\frac{|\sin(2h)|}{h} = \lim\limits_{h \to 0^+}\frac{\sin(2h)}{h} = 2\lim\limits_{2h \to 0^+}\frac{\sin(2h)}{2h} = 2 \cdot 1 = 2$, where the first equality is true since $\sin(2h)>0$ as $h$ approaches from the positive side.  \vspace{1mm}
+    
+    For the left limit, $\lim\limits_{h \to 0^-}\frac{|\sin(2h)|}{h} = \lim\limits_{h \to 0^-}\frac{-\sin(2h)}{h} = -2\lim\limits_{2h \to 0^-}\frac{\sin(2h)}{2h} = (-2) \cdot 1 = -2$, where we add a negative sign to first equality since $\sin(2h)<0$ as $h$ approaches from the negative side. \vspace{1mm}
+    
+    Since the left and right limits are not identical, $\lim\limits_{h \to 0} \frac{|\sin(2h)|}{h}$ does not exist and thus $f(x)$ is not differentiable at $x=0$.
+\end{enumerate}\vspace{6mm}
+
+\problem Give the derivatives of the following functions:
+\begin{enumerate}[(a)]
+    \item $f(x) = 2x^5 - 5x^2 + 1$
+    \item $f(x) = \frac{2}{3x^{-5}}$
+    \item $f(x) = \frac{-x^4 + 3x^2 + 2}{x^2}$
+    \item $f(x) = \frac{\sqrt[5]x + 2x^3}{\sqrt[3]{x}}$
+    \item $f(x) = \left(\sqrt[3]{2x} + \sqrt[5]{3x}\right)^2$
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item $f'(x) =  2\cdot 5 x^{5-1} - 5 \cdot 2x^{2-1} + 0 = 10x^4-10x$
+    \item $f(x) = \frac{2}{3x^{-5}} = \frac{2}{3}x^5$.  Therefore $f'(x) = \frac{2}{3}\cdot 5x^{5-1} = \frac{10}{3}x^4$
+    \item $f(x) = \frac{-x^4 + 3x^2 + 2}{x^2} = -x^2+3+2x^{-2}$.  Therefore $f'(x) = -2x^{2-1}+0+2\cdot(-2)x^{-3} = -2x-4x^{-3}$
+    \item $f(x) = \frac{\sqrt[5]x + 2x^3}{\sqrt[3]{x}} = \frac{x^{\frac{1}{5}}+2x^3}{x^{\frac{1}{3}}} = x^{\frac{1}{5}-\frac{1}{3}} + 2x^{3-\frac{1}{3}} = x^{-\frac{2}{15}} + 2x^{\frac{8}{3}}$.  Therefore $f'(x) = -\frac{2}{15}x^{-\frac{2}{15}-1} + 2 \cdot \frac{8}{3} x^{\frac{8}{3}-1} = -\frac{2}{15}x^{-\frac{17}{15}} + \frac{16}{3} x^{\frac{5}{3}}$
+    \item $f(x) = \left(\sqrt[3]{2x} + \sqrt[5]{3x}\right)^2 = \left(\sqrt[3]{2}x^{\frac{1}{3}}+\sqrt[5]{3}x^{\frac{1}{5}}\right)^2 = \sqrt[3]{4}x^{\frac{2}{3}} + 2\cdot\sqrt[3]{2}\sqrt[5]{3}x^{\frac{8}{15}} + \sqrt[5]{9}x^{\frac{2}{5}}$.  Therefore $f'(x) = \frac{2}{3}\sqrt[3]{4}x^{\frac{2}{3}-1} + 2\cdot\frac{8}{15}\sqrt[3]{2}\sqrt[5]{3}x^{\frac{8}{15}-1} + \frac{2}{5}\sqrt[5]{9}x^{\frac{2}{5}-1} = \frac{2}{3}\sqrt[3]{4}x^{-\frac{1}{3}} + \frac{16}{15}\sqrt[3]{2}\sqrt[5]{3}x^{-\frac{7}{15}} + \frac{2}{5}\sqrt[5]{9}x^{-\frac{3}{5}}$
+\end{enumerate}\vspace{6mm}
+
+% \problem Determine if the following statements are true or false and explain. (You can just provide a counterexample if you determine them as false)
+% \begin{enumerate}[(a)]
+%     \item If $f'(x) = g'(x)$ (for all $x\in \mathbb{R}$), then $f(x) = g(x)$
+%     \item If $f(1) = 0$, then $f'(1) = 0$
+%     \item If $f'(x) = 0$ (for all $x\in \mathbb{R}$), then $f(x) = 0$
+% \end{enumerate}\vspace{6mm}
+
+\problem Let $f(x) = \sqrt[4]{x} - \sqrt{x}$,
+\begin{enumerate}[(a)]
+    \item Find the tangent line of $f(x)$ at the point where $x=16$.
+    \item At which point(s) on $f(x)$ is its tangent line horizontal?
+    \item Is $f(x)$ differentiable at $x = 0$? Why?
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item First, the tangent line should pass through $(16, f(16)) = (16, -2)$.  Second, the slope of the tangent line should be $f'(16)$.  Since $f'(x) = \frac{1}{4}x^{-\frac{3}{4}} - \frac{1}{2}x^{-\frac{1}{2}} = \frac{1}{4(\sqrt[4]{x})^3} - \frac{1}{2\sqrt{x}}$, we have $f'(16) = -\frac{3}{32}$.  Therefore, the tangent line can be expressed as $y-(-2) = -\frac{3}{32}(x-16)$, or $y = -\frac{3}{32}x-\frac{1}{2}$.
+    \item When the tangent line is horizontal, its slope should be $0$.  Therefore, we solve for $f'(x) = 0$:
+    \[f'(x) = \frac{1}{4}x^{-\frac{3}{4}} - \frac{1}{2}x^{-\frac{1}{2}} = 0\]
+    Multiply $4x^{\frac{3}{4}}$ to both sides and we yield
+    \[1-2x^{\frac{1}{4}} = 0 \Rightarrow \sqrt[4]{x} = \frac{1}{2} \Rightarrow x = \frac{1}{16}\]
+    After verifying $f'\left(\frac{1}{16}\right) = 0$, we conclude that at $\left(\frac{1}{16}, f\left(\frac{1}{16}\right)\right) = \left(\frac{1}{16}, \frac{1}{4}\right)$, the tangent line is horizontal.
+    \item For $f(x)$ to be differentiable at $x=0$, it must be continuous at $x=0$.  For it to be continuous at $x=0$, its limit at $x=0$ must exist.  For its limit at $x=0$ to exist, both the left and right limits $x=0$ must exist.  However, $f(x)$ is undefined when $x < 0$, so its left limit at $x=0$ does not exist.  Therefore, $f(x)$ is not differentiable at $x=0$.
+\end{enumerate}\vspace{6mm}
+
+\problem A ball is expanding with its radius $r$ as a function of time $t$: $r(t) = \sqrt{t} + 2, t \ge 0$
+\begin{enumerate}[(a)]
+    \item Find the rate its radius is growing at $t = 1$
+    \item Find the rate its surface area is growing at $t = 1$
+    \item Find the rate its volume is growing at $t = 1$
+\end{enumerate}\vspace{6mm}
+
+\answer
+\begin{enumerate}[(a)]
+    \item $r'(t) = \frac{1}{2}t^{-\frac{1}{2}} = \frac{1}{2\sqrt{t}}$.  Therefore, the growth rate of the radius at $t=1$ is $r'(1) = \frac{1}{2}$.
+    \item The surface area $S(t) = 4\pi(r(t))^2 = 4\pi(t+4\sqrt{t}+4) = 4\pi t + 16 \pi \sqrt{t} + 16 \pi$.  Taking the derivative, we have $S'(t) = 4\pi + 16\pi\cdot \frac{1}{2}t^{-\frac{1}{2}} = 4\pi + \frac{8\pi}{\sqrt{t}}$.  Therefore, the growth rate of the surface area at $t=1$ is $S'(1) = 12\pi$.
+    \item The volume $V(t) = \frac{4}{3}\pi(r(t))^3 = \frac{4}{3}\pi((\sqrt{t})^3+3 \cdot (\sqrt{t})^2 \cdot 2+ 3 \cdot \sqrt{t} \cdot 2^2 + 2^3) = \frac{4}{3}\pi t^{\frac{3}{2}} + 8 \pi t + 16 \pi t^{\frac{1}{2}} + \frac{32}{3}\pi$.  Taking the derivative, we have $V'(t) = 2\pi t^{\frac{1}{2}} + 8 \pi + 8 \pi t^{-\frac{1}{2}} = 2\pi\sqrt{t} + \frac{8 \pi}{\sqrt{t}} + 8 \pi$.  Therefore, the growth rate of the volume at $t=1$ is $V'(1) = 18\pi$.
+\end{enumerate}\vspace{6mm}
+
+\end{document}
