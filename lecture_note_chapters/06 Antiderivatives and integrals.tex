@@ -1665,9 +1665,230 @@ In the previous examples, the choice of $u$ and $dv/dx$ in integration by parts 
         Note that we again have our original antiderivative $\int \sec^3 x~dx$ on both sides, so we can rearrange the equation and yield:
         \begin{align*}
             2\int \sec^3 x~dx &= \sec x \tan x + \int \sec x~dx\\
-            2\int \sec^3 x~dx &= \sec x \tan x + \ln |\sec x \tan x| + C^*\\
-            \int \sec^3 x~dx &= \frac{1}{2}(\sec x \tan x + \ln |\sec x \tan x|) + C
+            2\int \sec^3 x~dx &= \sec x \tan x + \ln |\sec x + \tan x| + C^*\\
+            \int \sec^3 x~dx &= \frac{1}{2}(\sec x \tan x + \ln |\sec x + \tan x|) + C
         \end{align*}
         where we define $C = 2C^*$ for brevity.  Note that this approach can be used to derive the antiderivative for other powers of secant functions (except power of $1$).
+    \end{enumerate}
+\end{egsol}
+
+As we have seen in the previous examples, sometimes integration by parts needs to be applied several times before we can get a tractable antiderivative, or get back to the original antiderivative so that we can solve our problem with algebra.  To avoid mixing up the signs and formula along the way, we can summarize integration by parts into the following \textbf{tabular method} or \textbf{DI method}, so that we can easily nagivate through repeated integration by parts.  We demonstrate the steps as follows using $\int x^3e^x~dx$ as example: 
+
+\underline{\textbf{Step 1}}: Set up a table with three columns: the first column with alternating positive and negative signs (starting with positive), the second column titled as \textbf{D} standing for differentiation, and the third column titled as \textbf{I} standing for integration (which we will later elaborate its link to antidifferentiation).
+
+\begin{table}[hbt!]
+    \centering
+    \begin{tabular}{ccc}
+         & \textbf{D} & \textbf{I} \\
+        + & \textcolor{white}{$x^3$} & \textcolor{white}{$e^x$}\\
+        - & \textcolor{white}{$3x^2$} & \textcolor{white}{$e^x$}\\
+        + & \textcolor{white}{$6x$} & \textcolor{white}{$e^x$}\\
+        - & \textcolor{white}{$6$} & \textcolor{white}{$e^x$}\\
+    \end{tabular}
+\end{table}
+
+\underline{\textbf{Step 2}}: Factor the integrand into two parts.  Place the part you are going to (repeatedly) differentiate in the \textbf{D} column, and the part to (repeatedly) antidifferentiate in the \textbf{I} column.
+
+\begin{table}[hbt!]
+    \centering
+    \begin{tabular}{ccc}
+         & \textbf{D} & \textbf{I} \\
+        + & $x^3$ & $e^x$\\
+        - & \textcolor{white}{$3x^2$} & \textcolor{white}{$e^x$}\\
+        + & \textcolor{white}{$6x$} & \textcolor{white}{$e^x$}\\
+        - & \textcolor{white}{$6$} & \textcolor{white}{$e^x$}\\
+    \end{tabular}
+\end{table}
+
+In our example of $\int x^3e^x~dx$, since repeatedly differentiating $x^3$ would make it simpler, we put $x^3$ in the \textbf{D} column and $e^x$ in the \textbf{I} column.
+
+\underline{\textbf{Step 3}}: In the next row, put in the derivative of the \textbf{D} column and \textit{one} antiderivative of the \textbf{I} column (That is, you do not need to put in the $+C$).  
+
+\begin{table}[hbt!]
+    \centering
+    \begin{tabular}{ccc}
+         & \textbf{D} & \textbf{I} \\
+        + & $x^3$ & $e^x$\\
+        - & $3x^2$ & $e^x$\\
+        + & \textcolor{white}{$6x$} & \textcolor{white}{$e^x$}\\
+        - & \textcolor{white}{$6$} & \textcolor{white}{$e^x$}\\
+    \end{tabular}
+\end{table}
+
+\underline{\textbf{Step 4}}: Based on the table, the original antiderivative can be written as the sum of \textit{products of descending diagonals} and \textit{the antiderivative of the product of the last row}, where the signs are merged into the products.  The problem is solved if either (1) we can evaluate the remaining antiderivative (2) the remaining antiderivative is a multiple of the original antiderivative.  For the first situation, we plug in the antiderivative and call it a day.  For the second situation, we can use algebra to finesse out the solution, as we have done for $\int e^x\sin x~dx$.  In none of above occurs, redo \textbf{Step 3} and hope for the best.
+
+\begin{table}[hbt!]
+    \centering
+    \begin{tabular}{ccc}
+         & \textbf{D} & \textbf{I} \\
+        + & $x^3$\tikzmark{d1_dem1} & $e^x$\\
+        - & $3x^2$\tikzmark{d2_dem1} & \tikzmark{i2_dem1}$e^x$\\
+        + & \textcolor{white}{$6x$} & \textcolor{white}{$e^x$}\\
+        - & \textcolor{white}{$6$} & \textcolor{white}{$e^x$}\\
+    \end{tabular}
+    \begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+    \draw [->] ([yshift=-2pt]{pic cs:d1_dem1}) -- ([yshift=2pt]{pic cs:i2_dem1});
+    \draw [->] ({pic cs:d2_dem1}) -- ({pic cs:i2_dem1});
+  \end{tikzpicture}
+\end{table}
+
+In our example, as of now we only have one descending diagonal $(+x^3 \rightarrow e^x)$, so we have 
+\[\int x^3e^x~dx = (+x^3)e^x + \int (-3x^2)e^x~dx\]
+You can verify that using integration by parts with $u = x^3$ and $dv/dx = e^x$ would lead to the same result.  Now we do not know how to evaluate $\int -3x^2e^x~dx$, so we do \textbf{Step 3} again:
+\pagebreak
+\begin{table}[hbt!]
+    \centering
+    \begin{tabular}{ccc}
+         & \textbf{D} & \textbf{I} \\
+        + & $x^3$\tikzmark{d1_dem2} & $e^x$\\
+        - & $3x^2$\tikzmark{d2_dem2} & \tikzmark{i2_dem2}$e^x$\\
+        + & $6x$\tikzmark{d3_dem2} & \tikzmark{i3_dem2}$e^x$\\
+        - & \textcolor{white}{$6$} & \textcolor{white}{$e^x$}\\
+    \end{tabular}
+    \begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+    \draw [->] ([yshift=-2pt]{pic cs:d1_dem2}) -- ([yshift=2pt]{pic cs:i2_dem2});
+    \draw [->] ([yshift=-2pt]{pic cs:d2_dem2}) -- ([yshift=2pt]{pic cs:i3_dem2});
+    \draw [->] ({pic cs:d3_dem2}) -- ({pic cs:i3_dem2});
+  \end{tikzpicture}
+\end{table}
+
+Now we have 
+\[\int x^3e^x~dx = (+x^3)e^x + (-3x^2)e^x + \int (+6x)e^x~dx\]
+which still has an intractable antiderivative, so we do \textbf{Step 3} again:
+
+\begin{table}[hbt!]
+    \centering
+    \begin{tabular}{ccc}
+         & \textbf{D} & \textbf{I} \\
+        + & $x^3$\tikzmark{d1_dem3} & $e^x$\\
+        - & $3x^2$\tikzmark{d2_dem3} & \tikzmark{i2_dem3}$e^x$\\
+        + & $6x$\tikzmark{d3_dem3} & \tikzmark{i3_dem3}$e^x$\\
+        - & $6$\tikzmark{d4_dem3} & \tikzmark{i4_dem3}$e^x$\\
+    \end{tabular}
+    \begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+    \draw [->] ([yshift=-2pt]{pic cs:d1_dem3}) -- ([yshift=2pt]{pic cs:i2_dem3});
+    \draw [->] ([yshift=-2pt]{pic cs:d2_dem3}) -- ([yshift=2pt]{pic cs:i3_dem3});
+    \draw [->] ([yshift=-2pt]{pic cs:d3_dem3}) -- ([yshift=2pt]{pic cs:i4_dem3});
+    \draw [->] ({pic cs:d4_dem3}) -- ({pic cs:i4_dem3});
+  \end{tikzpicture}
+\end{table}
+
+Now we can finally evaluate the remaining antiderivative:
+\begin{align*}
+    \int x^3e^x~dx &= (+x^3)e^x + (-3x^2)e^x + (+6x)e^x + \int (-6)e^x~dx\\
+    &= x^3e^x - 3x^2e^x + 6xe^x - \int 6e^x~dx\\
+    &= x^3e^x - 3x^2e^x + 6xe^x - 6e^x + C\\
+    &= (x^3-3x^2+6x-6)e^x + C
+\end{align*}
+
+Now we show how the DI method works for other antiderivatives with the following examples.  Note that the DI method is only a concise summary of repeated integration by parts, so it is perfectly OK if you still prefer to solve the antiderivatives using the original formula for integration by parts, like we have done in previous examples. 
+
+\begin{eg}[]{eg: DI}
+    Find the following antiderivatives:
+    \begin{tasks}(3)
+        \task $\int x^3\ln x~dx$
+        \task $\int x^3\sin(4x)~dx$
+        \task $\int e^{2x}\cos(3x)~dx$
+    \end{tasks}
+\end{eg}
+
+\begin{egsol}[]{egsol: DI}
+    \begin{enumerate}[a)]
+        \item Here we try to use the DI method to solve this antiderivative.  Since getting the antiderivative of $\ln x$ gets pretty messy, we put $\ln x$ in the \textbf{D} column and the remaining $x^3$ in the \textbf{I} column, leading to the following:
+        \begin{center}
+            \begin{tabular}{ccc}
+                 & \textbf{D} & \textbf{I} \\
+                + & $\ln x$\tikzmark{d1_eg1} & $x^3$\\
+                - & $1/x$\tikzmark{d2_eg1} & \tikzmark{i2_eg1}$\frac{1}{4}x^4$
+            \end{tabular}
+            \begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+                \draw [->] ([yshift=-2pt]{pic cs:d1_eg1}) -- ([yshift=2pt]{pic cs:i2_eg1});
+                \draw [->] ({pic cs:d2_eg1}) -- ({pic cs:i2_eg1});
+            \end{tikzpicture}
+        \end{center}
+        where we stop after one iteration since we are able to evaluate $\int (-1/x)\cdot\frac{1}{4}x^4~dx$.  For the DI table, we now have
+        \begin{align*}
+            \int x^3 \ln x~dx &= (+\ln x) \cdot \frac{1}{4}x^4 + \int \Big(-\frac{1}{x}\Big)\cdot \frac{1}{4}x^4~dx\\
+            &= \frac{1}{4}x^4\ln x - \frac{1}{4}\int x^3~dx \\
+            &= \frac{1}{4}x^4\ln x - \frac{1}{4}\cdot\frac{1}{4}x^4 + C\\
+            &= \frac{1}{4}x^4\ln x - \frac{1}{16}x^4 + C
+        \end{align*}
+        \item To tackle this antiderivative with the DI method, we first need to determine which parts of the integrand to put in the \textbf{D} and \textbf{I} column.  Since anti-differentiating $\sin(4x)$ does not complicate it too much and differentiating $x^3$ reduces its power, we put $x^3$ in the \textbf{D} column and $\sin(4x)$ in the \textbf{I} column.  We then have the following DI table
+        \begin{center}
+            \begin{tabular}{ccc}
+                 & \textbf{D} & \textbf{I} \\
+                + & $\phantom{3}x^3$\tikzmark{d1_eg2} & $\phantom{-\frac{1}{4}}\sin(4x)$\\
+                - & $3x^2$\tikzmark{d2_eg2} & \tikzmark{i2_eg2}$-\frac{1}{4}\cos(4x)$\\
+                + & $6x\phantom{^2}$\tikzmark{d3_eg2} & \tikzmark{i3_eg2}$-\frac{1}{16}\sin(4x)$\\
+                - & $6\phantom{x^2}$\tikzmark{d4_eg2} & \tikzmark{i4_eg2}$\phantom{-}\frac{1}{64}\cos(4x)$\\
+            \end{tabular}
+            \begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+                \draw [->] ([yshift=-2pt]{pic cs:d1_eg2}) -- ([yshift=2pt]{pic cs:i2_eg2});
+                \draw [->] ([yshift=-2pt]{pic cs:d2_eg2}) -- ([yshift=2pt]{pic cs:i3_eg2});
+                \draw [->] ([yshift=-2pt]{pic cs:d3_eg2}) -- ([yshift=2pt]{pic cs:i4_eg2});
+                \draw [->] ({pic cs:d4_eg2}) -- ({pic cs:i4_eg2});
+            \end{tikzpicture}
+        \end{center}
+        where we stop after three iterations since we are able to evaluate $\int 6\cdot \frac{1}{64}\cos(4x)~dx$.  Based on the DI table, we have
+        \begin{align*}
+            \int x^3\sin(4x)~dx &= (+x^3)\Big(-\frac{1}{4}\cos(4x)\Big) + (-3x^2)\Big(-\frac{1}{16}\sin(4x)\Big)+\\
+            &\qquad\qquad\qquad\qquad (+6x)\Big(\frac{1}{64}\cos(4x)\Big) + \int (-6)\Big(\frac{1}{64}\cos(4x)\Big)~dx\\
+            &= -\frac{1}{4}x^3\cos(4x) + \frac{3}{16}x^2\sin(4x) + \frac{3}{32}\cos(4x) - \frac{3}{32}\int \cos(4x)~dx\\
+            &= -\frac{1}{4}x^3\cos(4x) + \frac{3}{16}x^2\sin(4x) + \frac{3}{32}\cos(4x) - \frac{3}{32} \Big(\frac{1}{4}\sin(4x)\Big) + C\\
+            &= \Big(\frac{3}{16}x^2-\frac{3}{128}\Big)\sin(4x) - \Big(\frac{1}{4}x^3-\frac{3}{32}\Big)\cos(4x) + C
+        \end{align*}
+        Alternatively, we may do another iteration in the DI table and yield
+        \begin{center}
+            \begin{tabular}{ccc}
+                 & \textbf{D} & \textbf{I} \\
+                + & $\phantom{3}x^3$\tikzmark{d1_eg2x} & $\phantom{-\frac{1}{4}}\sin(4x)$\\
+                - & $3x^2$\tikzmark{d2_eg2x} & \tikzmark{i2_eg2x}$-\frac{1}{4}\cos(4x)$\\
+                + & $6x\phantom{^2}$\tikzmark{d3_eg2x} & \tikzmark{i3_eg2x}$-\frac{1}{16}\sin(4x)$\\
+                - & $6\phantom{x^2}$\tikzmark{d4_eg2x} & \tikzmark{i4_eg2x}$\phantom{-}\frac{1}{64}\cos(4x)$\\
+                + & $0\phantom{x^2}$\tikzmark{d5_eg2x} & \tikzmark{i5_eg2x}$\phantom{-}\frac{1}{256}\sin(4x)$
+            \end{tabular}
+            \begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+                \draw [->] ([yshift=-2pt]{pic cs:d1_eg2x}) -- ([yshift=2pt]{pic cs:i2_eg2x});
+                \draw [->] ([yshift=-2pt]{pic cs:d2_eg2x}) -- ([yshift=2pt]{pic cs:i3_eg2x});
+                \draw [->] ([yshift=-2pt]{pic cs:d3_eg2x}) -- ([yshift=2pt]{pic cs:i4_eg2x});
+                \draw [->] ([yshift=-2pt]{pic cs:d4_eg2x}) -- ([yshift=2pt]{pic cs:i5_eg2x});
+                \draw [->] ({pic cs:d5_eg2x}) -- ({pic cs:i5_eg2x});
+            \end{tikzpicture}
+        \end{center}
+        So that we have 
+        \begin{align*}
+            &\int x^3\sin(4x)~dx\\
+            = &(+x^3)\Big(-\frac{1}{4}\cos(4x)\Big) + (-3x^2)\Big(-\frac{1}{16}\sin(4x)\Big)+ \\
+            &\qquad\qquad\qquad (+6x)\Big(\frac{1}{64}\cos(4x)\Big) +(-6)\Big(\frac{1}{256}\sin(4x)\Big) + \int 0~dx\\
+            = &-\frac{1}{4}x^3\cos(4x) + \frac{3}{16}x^2\sin(4x) + \frac{3}{32}\cos(4x) - \frac{3}{128}\sin(4x)~dx + C\\
+            = &\Big(\frac{3}{16}x^2-\frac{3}{128}\Big)\sin(4x) - \Big(\frac{1}{4}x^3-\frac{3}{32}\Big)\cos(4x) + C
+        \end{align*}
+        which yields the same result as above.
+        \item To tackle this antiderivative with the DI method, we first need to determine which parts of the integrand to put in the \textbf{D} and \textbf{I} column.  Since anti-differentiating exponential functions is easier than antidifferentiating trigonometric functions, we put $\cos(3x)$ in the \textbf{D} column and $e^{2x}$ in the \textbf{I} column.  We then have the following DI table
+        \begin{center}
+            \begin{tabular}{ccc}
+                 & \textbf{D} & \textbf{I} \\
+                + & $\phantom{-3}\cos(3x)$\tikzmark{d1_eg3} & $\phantom{\frac{1}{2}}e^{2x}$\\
+                - & $-3\sin(3x)$\tikzmark{d2_eg3} & \tikzmark{i2_eg3}$\frac{1}{2}e^{2x}$\\
+                + & $-9\cos(3x)$\tikzmark{d3_eg3} & \tikzmark{i3_eg3}$\frac{1}{4}e^{2x}$
+            \end{tabular}
+            \begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+                \draw [->] ([yshift=-2pt]{pic cs:d1_eg3}) -- ([yshift=2pt]{pic cs:i2_eg3});
+                \draw [->] ([yshift=-2pt]{pic cs:d2_eg3}) -- ([yshift=2pt]{pic cs:i3_eg3});
+                \draw [->] ({pic cs:d3_eg3}) -- ({pic cs:i3_eg3});
+            \end{tikzpicture}
+        \end{center}
+        where we stop after two iterations since a multiple of the original integrand $e^{2x}\cos(3x)$ appears, and we can use algebra to find the antiderivative. To see this, based on the DI table, we have
+        \begin{align*}
+            \int e^{2x}\cos(4x)~dx &= \cos(3x)\Big(\frac{1}{2}e^{2x}\Big) + 3\sin(3x)\Big(\frac{1}{4}e^{2x}\Big)+\int (-9\cos(3x))\Big(\frac{1}{4}e^{2x}\Big)~dx\\
+            &= \frac{1}{2}e^{2x}\cos(3x) + \frac{3}{4}e^{2x}\sin(3x) -\frac{9}{4}\int e^{2x}\cos(3x)~dx\\
+            &= \frac{1}{4}e^{2x}(3\sin(3x)+2\cos(3x)) -\frac{9}{4}\int e^{2x}\cos(3x)~dx
+        \end{align*}
+        Now the original antiderivative appears on both sides of the equation, so we can combine them to the left hand side:
+        \begin{align*}
+            \frac{13}{4} \int e^{2x}\cos(4x)~dx &= \frac{1}{4}e^{2x}(3\sin(3x)+2\cos(3x)) + C^*\\
+            \int e^{2x}\cos(4x)~dx &= \frac{1}{13}e^{2x}(3\sin(3x)+2\cos(2x)) + C
+        \end{align*}
+        where we redefine $C = \frac{4}{13}C^*$ to ease notation.
     \end{enumerate}
 \end{egsol}

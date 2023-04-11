@@ -22,7 +22,8 @@
 \RequirePackage{gensymb}
 \RequirePackage{luacolor}
 \RequirePackage{tasks}
-\usepackage{lipsum}
+\RequirePackage{tikz}
+\usetikzlibrary{tikzmark}
 
 \newcommand\myshade{90}
 \colorlet{mylinkcolor}{NavyBlue}
