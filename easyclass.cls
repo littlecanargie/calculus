@@ -5,8 +5,8 @@
 %%  written by Naijia Fan, 2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\newcommand{\std}{1} % for students
-\newcommand{\std}{0} % for teacher
+\newcommand{\std}{1} % for students
+%\newcommand{\std}{0} % for teacher
 
 \newcommand{\includegraphicsex}[3]{
     \ifnum\std=1 \includegraphics[#1]{#3} \else \includegraphics[#2]{#3} \fi
@@ -347,8 +347,12 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
     \vspace{1cm}
     {\huge\bfseries{\@title} \par}
     \vspace{2cm}
-    \@instructor
-    \vspace{4cm}
+    %\@instructor
+    \vspace{2cm}
+    
+    \textbf{\ifnum\std=1 Student \else Teacher \fi Version}
+    
+    \vspace{2cm}
     \includegraphics[width=0.25\textwidth]{figures/LOGO_NDHU.png}
     \vfill
     % Bottom of the page
