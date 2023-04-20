@@ -1,0 +1,109 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus II (MSF\_10010 / AM\_\_1080AH) \\ 2023 Spring \\ Problem List VIII (Due Apr 27)}
+
+\bigskip
+\noindent \textbf{Reminder:} Remember the $+C$ for indefinite integrals!
+\bigskip
+
+\problem Find the following antiderivatives:
+\begin{enumerate}[(a)]
+    \item $\int \arcsin x~dx$ (Hint: $\frac{d}{dx} \arcsin x = \frac{1}{\sqrt{1-x^2}}$)
+    \item $\int x \cos(3-2x)~dx$
+    \item $\int \frac{\ln x}{(x+1)^2}~dx$
+    \item $\int \frac{\arctan \sqrt{x}}{\sqrt{x}}~dx$ 
+\end{enumerate}
+\vspace{6mm}
+
+\problem Find the following antiderivatives:
+\begin{enumerate}[(a)]
+    \item $\int x\sqrt{x+2}~dx$
+    \item $\int x^3e^{4x}~dx$
+    \item $\int (x+1)^2\sin(2x)~dx$
+    \item $\int e^{3x}\cos(5x)~dx$
+\end{enumerate}
+\vspace{6mm}
+
+\problem Evaluate the following definite integrals:
+\begin{enumerate}[(a)]
+    \item $\int_0^1 (4x^3+\cos(\pi x))~dx$
+    \item $\int_0^1 \frac{x+1}{(x^2+2x+1)^2}~dx$
+    \item $\int_2^{2\sqrt{3}} \frac{2}{x^2\sqrt{x^2+4}}~dx$
+    \item $\int_0^1 xe^x~dx$
+\end{enumerate}
+\vspace{6mm}
+
+\problem Let $f(x) = 2|x+1| - |x-2|$,
+\begin{enumerate}[(a)]
+    \item Derive reduced expressions for $f(x)$ under three scenarios: $x \le -1$, $-1 \le x \le 2$ and $x \ge 2$.
+    \item Based on the above, graph $f(x)$ on a Cartesian plane with $x$-axis ranging from $x = -2$ to $x = 3$.
+    \item Based on the above, evaluate
+    \[\int_{-2}^3 f(x)~dx\]
+\end{enumerate}
+\end{document}
