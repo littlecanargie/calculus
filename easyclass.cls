@@ -293,9 +293,9 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 
 %=================================
 % header and footer
-\RequirePackage{scrpage2}
+\RequirePackage{scrlayer-scrpage}
 \pagestyle{scrheadings}
-\deftripstyle{pagestyle}
+\deftriplepagestyle{pagestyle}
 %   [0.5pt]
 %   [0.3pt]
   {}
