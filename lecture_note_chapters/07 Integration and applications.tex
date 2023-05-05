@@ -347,7 +347,7 @@ Suppose a solid of revolution can be created by taking a curve $y = f(x)$ from $
     \includegraphics[width = 0.6\textwidth]{figures/chap 07/revolution_vol.png}
 \end{figure}
 
-The right panel of the graph above shows one slice of the thin disk.  As the disk gets thinner and thinner, it is approaching the shape of the cylinder.  Therefore, to evaluate the volume of the disk, we need to know the area of its base and its width.  For the height, since we are slicing along the $x$-axis, the width of the disk would be the differential $dx$.  For the area of its base, since this is a rotational solid, the section of each disk would a circle, with its radius as $f(x)$ since we are rotating $y = f(x)$ around the $x$-axis.  Therefore, the area of the base should be $\pi (f(x))^2$, and the volume of the disk is then $\pi (f(x))^2 dx$.  At last, the volume for the solid of revolution would be
+The right panel of the graph above shows one slice of the thin disk.  As the disk gets thinner and thinner, it is approaching the shape of the cylinder.  Therefore, to evaluate the volume of the disk, we need to know the area of its base and its width.  For the width, since we are slicing along the $x$-axis, the width of the disk would be the differential $dx$.  For the area of its base, since this is a rotational solid, the section of each disk would be a circle, with its radius as $f(x)$ since we are rotating $y = f(x)$ around the $x$-axis.  Therefore, the area of the base should be $\pi (f(x))^2$, and the volume of the disk is then $\pi (f(x))^2 dx$.  At last, the volume for the solid of revolution would be
 \[V = \int_a^b \pi (f(x))^2~dx\]
 
 \begin{figure}[ht]
@@ -355,7 +355,7 @@ The right panel of the graph above shows one slice of the thin disk.  As the dis
     \includegraphics[width = 0.6\textwidth]{figures/chap 07/revolution_vol_ring.png}
 \end{figure}
 
-In the case where the solid revolution is formed by rotating the area between two curves along the $x$-axis, such as the graph above where the area between $y=f(x)$ and $y=g(x)$ are rotated, then volume of the thin disks would be instead $\pi [(f(x))^2-(g(x))^2] dx$ since we have to subtract the volume of the inner cylinder from the outer cylinder.  Therefore, the volume for the hallow solid of revolution would be 
+In the case where the solid revolution is formed by rotating the area between two curves along the $x$-axis, such as the graph above where the area between $y=f(x)$ and $y=g(x)$ are rotated, then volume of the thin disks, which is now a thing ring, would be $\pi [(f(x))^2-(g(x))^2] dx$ instead since we have to subtract the volume of the inner cylinder from the outer cylinder.  Therefore, the volume for the hallow solid of revolution would be 
 \[V = \int_a^b \pi [(f(x))^2-(g(x))^2]~dx\]
 
 Here our method slices the solid of revolution into disks or rings, depending on if the solid is hallow inside.  Therefore, this method is sometimes termed as the \textit{method of disks} or \textit{method of rings}.  We now show how they work with some examples:
@@ -370,7 +370,7 @@ Here our method slices the solid of revolution into disks or rings, depending on
 
 \begin{egsol}[]{egsol: rev_solid_vol_ring}
     \begin{enumerate}[a)]
-        \item If we put a semi-circle of radius $r$ on the $x$-axis and rotate it about the axis, then we would get a ball or radius $r$ as the solid of revolution.  Therefore, as shown in the graph below, we can let $y = f(x) = \sqrt{r^2-x^2}$, which represents a semi-circle of radius $r$ with center at the origin, and evaluate the volume for the solid of revolution from $x = -r$ to $x = r$, which yields
+        \item If we put a semi-circle of radius $r$ on the $x$-axis and rotate it about the axis, then we would get a ball of radius $r$ as the solid of revolution.  Therefore, as shown in the graph below, we can let $y = f(x) = \sqrt{r^2-x^2}$, which represents a semi-circle of radius $r$ with center at the origin, and evaluate the volume for the solid of revolution from $x = -r$ to $x = r$, which yields
         \begin{center}
             \includegraphics[width = 0.3\textwidth]{figures/chap 07/rev_solid_ball.png}
         \end{center}
@@ -392,5 +392,191 @@ Here our method slices the solid of revolution into disks or rings, depending on
             &= \pi \frac{r^2}{h^2} \cdot \frac{1}{3}h^3 = \frac{1}{3} \pi r^2 h
         \end{align*}
     \end{enumerate}
-
 \end{egsol}
+
+\begin{ex}[]{ex: rev_solid_vol_ring}
+    Find the volume of the solid constructed by revolving the area enclosed by $y = x$ and $y = \sqrt{x}$ around the $x$-axis.
+\end{ex}
+
+\begin{exsol}[]{exsol: rev_solid_vol_ring}
+    \begin{center}
+        \includegraphicsex{width = 0.65\textwidth, draft}{width = 0.65\textwidth}{figures/chap 07/method_of_rings.png}
+    \end{center}
+    As shown in the graph above, the range of $x$-coordinate for the area enclosed by $y=x$ and $y=\sqrt{x}$ is $x=0$ to $x=1$.  When this area is revolved around the axis to form a solid of revolution, we can slice the solid along the $x$-axis and get rings shaped as the right hand side, with width $dx$ and area of the base made up of two concentric circles, the larger one with radius $\sqrt{x}$ (since $\sqrt{x} \ge x$ within $x \in [0, 1]$) and the smaller one with radius $x$.  Therefore, the ring slice has volume
+    \[\pi [(\sqrt{x})^2 - x^2] dx = \pi (x - x^2) dx\]
+    and the volume the whole solid can be found by integrating the volume of the ring slices and letting $x$ go from $0$ to $1$:
+    \[\int_0^1 \pi (x - x^2) dx = \pi \int_0^1 (x - x^2) dx = \pi \Big(\frac{1}{2}x^2 - \frac{1}{3}x^3\Big)\Big]_0^1 = \pi \Big(\frac{1}{2}-\frac{1}{3}) = \frac{\pi}{6}\]
+\end{exsol}
+
+\begin{ex}[]{ex: rev_solid_vol_y}
+    Find the volume of the solid constructed by revolving the area between the $y$-axis and the curve of $y = x^2$ from $x = 0$ to $x = 2$ around the $y$-axis. 
+\end{ex}
+
+\begin{exsol}[]{exsol: rev_solid_vol_y}
+    \begin{center}
+        \includegraphicsex{width = 0.6\textwidth, draft}{width = 0.6\textwidth}{figures/chap 07/method_of_disks_y.png}
+    \end{center}
+    In this problem, the solid of revolution is not revolving about the $x$-axis but instead the $y$-axis, so we cannot directly use the formula shown in the previous text.  However, we can still use the method of disks, but now as shown in the graph, we need to slice the solid of revolution along the $y$-axis instead of the $x$-axis to get slices of disks shaped as shown on the right.  The height of the disk would be $dy$, and when the $y$-coordinate of the disk is denoted as $y$, the radius of the disk would be $\sqrt{y}$ since $(\sqrt{y}, y)$ would be on the curve.  Therefore, the volume of the slice of disk is
+    \[\pi (\sqrt{y})^2 dy = \pi y~dy\]
+    and the volume of the whole solid can be evaluated by integrating the volume of the disks from $y = 0^2 = 0$ to $y = 2^2 = 4$
+    \[\int_0^4 \pi y~dy = \pi \int_0^4 y~dy = \pi \Big(\frac{1}{2}y^2\Big)\Big]_0^4 = \frac{1}{2}\cdot 16 = 8\]
+\end{exsol}
+
+In the previous exercise, we found the volume of a solid revolving about the $y$-axis with the method of disks.  This approach worked since we could express the radius of each disk with $y$ by solving for $x$ in $y = x^2$.  However, in the case where the curve revolving the $y$-axis is more complex, eg. $y =  e^x - x$, we cannot solve for $x$ anymore, so the method of disks does not work.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width = 0.9\textwidth]{figures/chap 07/method_of_shells.png}
+\end{figure}
+
+\medskip
+Aside from the method of disks, we still have another trick up our sleeves that can help us evaluate the volume of a solid of revolution.  Suppose we would like to find the volume of the solid constructed by revolving the area between the $y$-axis and $y = f(x)$ from $x = 0$ to $x = a$ around the $y$-axis.  In the method of disks, we would slice up the solid along the $y$-axis so that each slice is a thin disk.  However, we can alternatively slice up the solid into thin cylindrical shells with inner radius $x$ and thickness, as shown in the graph above.  The height of the shells depends on how the function behaves, but in this case it is $f(a)-f(x)$.  The solid can then be seen as a collection of thin shells with inner radius $x$ ranging from $0$ to $a$.  To derive the volume of each thin shell, we can cut it open as in the right panel and we would get a thin sheet with thickness $dx$, width $2 \pi x$ and height $f(a) - f(x)$.  Therefore, the volume of the thin shell is
+\[2\pi x (f(a)-f(x))~dx\]
+and the volume of the solid of revolution can be found by the integral
+\[V = \int_0^a 2\pi x (f(a)-f(x))~dx\]
+Since this method slices the solid of revolution into shells, it is terms as the \textit{method of shells}.  We now show how it works with the following example:
+
+\begin{eg}[]{eg: rev_solid_vol_y_shell}
+    Find the volume of the solid constructed by revolving the area between the $x$-axis and the curve of $y = e^x - x$ from $x = 0$ to $x = 1$ around the $y$-axis. 
+\end{eg}
+
+\begin{egsol}[]{exsol: rev_solid_vol_y_shell}
+    \begin{center}
+        \includegraphicsex{width = 0.7\textwidth, draft}{width = 0.7\textwidth}{figures/chap 07/method_of_shells_eg.png}
+    \end{center}
+
+    \medskip
+    If we sketch out the solid, it is shaped like a cylinder with a bowl-like dent on the top, as shown in the graph above.  If we try to use the method of disks / rings to solve for it volume, then we will have to slice up the solid along the $y$-axis.  The bottom part of the slices will be easy to tackle, since they are all disks of radius $1$.  However, when we get to the top part with the dent, we will get rings instead of disks, and the inner radius of the rings will not be tractable since we will have to solve for $x$ in $y = e^x - x$. 
+    
+    Since the method of disks / rings is not viable for this problem, we turn to the method of shells.  If we slice the solid into concentric thin shells with inner radius $x$ and thickness $dx$, then the height of the shells, from the graph, would be $e^x - x$.  Therefore, the volume of the shells would be $2 \pi x (e^x-x)~dx$, and the volume of the solid can be obtained by integrating the volume of shells with $x$ going from $0$ to $1$:
+    \begin{align*}
+        \int_0^1 2 \pi x (e^x-x)~dx &= 2\pi\Big[\int_0^1 xe^x~dx - \int_0^1 x^2~dx\Big]\\
+        &= 2\pi\Big[xe^x\big]_0^1 - \int_0^1 e^x~dx - \int_0^1 x^2~dx\Big]\\
+        &= 2\pi\Big[xe^x\big]_0^1 - e^x\big]_0^1 - \frac{1}{3}x^3\big]_0^1\Big] = 2\pi\Big[e - (e - 1) - \frac{1}{3}\Big] = \frac{4}{3}\pi
+    \end{align*}
+\end{egsol}
+
+We have now known how to evaluate the volume for a solid of revolution using definite integrals.  A natural follow-up question is that how do we find the surface area for a solid of revolution.  The approach we are taking is basically the same as finding arc lengths, only that now we are not chopping the curve into small segments, but slicing the surface area into "onion rings" demonstrated below, where we are trying to find the surface area for the solid revolving $y = f(x)$ from $x = a$ to $x = b$ around the $x$-axis:
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width = 0.7\textwidth]{figures/chap 07/surface_area.png}
+\end{figure}
+
+here the slanted width of the ring is exactly the length of small segment in the derivation of arc lengths, so the width is also $\sqrt{1+(df(x)/dx)^2}~dx$.  Since this slanted width is revolved around the $x$-axis with radius $f(x)$ to form the surface of the solid, the surface area it sweeps through would be
+\[2\pi f(x) \sqrt{1+\Big(\frac{df(x)}{dx}\Big)^2}~dx\]
+Therefore, the surface area of the whole solid (excluding the left and right round caps by default) can be evaluated by integrating the surface area of the ring where $x$ goes from $a$ to $b$:
+\[A = \int_a^b 2\pi f(x) \sqrt{1+\Big(\frac{df(x)}{dx}\Big)^2}~dx\]
+We will end this section demonstrating how the surface area of balls and cones can also be evaluated using integrals.
+
+\begin{eg}[]{eg: rev_solid_surf}
+    Verify the surface area of the following solids
+    \begin{enumerate}[a)]
+        \item A ball of radius $r$ has surface area $4\pi r^2$.
+        \item The lateral surface area of a cone of height $h$ and radius of base $r$ is $\pi r \sqrt{r^2+h^2}$.
+    \end{enumerate}
+\end{eg}
+
+\begin{egsol}[]{egsol: rev_solid_surf}
+    \begin{enumerate}[a)]
+        \item As we have elaborate previously, a ball of radius $r$ can be constructed by revolving $y = f(x) = \sqrt{r^2-x^2}$ about the $x$-axis, as shown in the graph below. 
+        \begin{center}
+            \includegraphics[width = 0.3\textwidth]{figures/chap 07/rev_solid_ball.png}
+        \end{center}
+        Therefore, we can use our formula to find the surface area of the ball:
+        \begin{align*}
+            A &= \int_{-r}^r 2 \pi f(x)\sqrt{1+\Big(\frac{df(x)}{dx}\Big)^2}~dx\\
+            &= \int_{-r}^r 2 \pi \sqrt{r^2-x^2}\sqrt{1+\Big(\frac{-x}{\sqrt{r^2-x^2}}\Big)^2}~dx\\
+            &= \int_{-r}^r 2 \pi \sqrt{r^2-x^2}\sqrt{\frac{r^2}{r^2-x^2}}~dx\\
+            &= \int_{-r}^r 2 \pi r~dx = 2 \pi r x\big]_{-r}^r = 4 \pi r^2
+        \end{align*}
+        \item We have shown that if we revolve $y = f(x) = (r/h)x$ from $x = 0$ to $x = h$ around the $x$-axis, we would arrive at the cone for our problem, shown in the graph below:
+        \begin{center}
+            \includegraphics[width = 0.3\textwidth]{figures/chap 07/rev_solid_cone.png}
+        \end{center}
+        \allowdisplaybreaks
+        Therefore, we can use our formula to find the lateral surface area of the cone:
+        \begin{align*}
+            A &= \int_0^h 2 \pi f(x)\sqrt{1+\Big(\frac{df(x)}{dx}\Big)^2}~dx\\
+            &= \int_0^h 2 \pi \frac{r}{h} x \sqrt{1+\Big(\frac{r}{h}\Big)^2}~dx\\
+            &= \int_0^h 2 \pi \frac{r\sqrt{r^2+h^2}}{h^2} x~dx = 2 \pi \frac{r\sqrt{r^2+h^2}}{h^2} \cdot \frac{1}{2}x^2\Big]_0^h = 2 \pi \frac{r\sqrt{r^2+h^2}}{h^2} \cdot \frac{1}{2}h^2 = \pi r \sqrt{r^2+h^2}
+        \end{align*}
+    \end{enumerate}
+\end{egsol}
+
+\section{Improper integrals}
+Up until now, when we are talking about definite integrals shaped as the following:
+\[\int_a^b f(x) dx\]
+we require (1) $a$ and $b$ are real numbers and cannot be $\pm \infty$ (2) $f(x)$ is continuous within $[a,b]$.  However, in certain applications, we would want to relax these requirements.  For example, we may want to evaluate the area under curve for $y = e^{-x}$ over the whole positive real line, then we would use the expression
+\[\int_0^\infty e^{-x}~dx\]
+where the upper limit of integration is $\infty$.  Or, we would want to know the area under curve for $y = \frac{1}{|\sqrt[3]{x}|}$ between $x = -1$ and $x = 1$, then we would need the evaluate
+\[\int_{-1}^1 \frac{1}{|\sqrt[3]{x}|}~dx\]
+However, $\frac{1}{|\sqrt[3]{x}|}$ tends to positive infinity when $x$ approaches $0$ from either side, so it has an infinite discontinuity at $x=0$.  These types of definite integrals are called \textbf{improper integrals}, and can be given a concrete definition using limits.  We first deal with the case where the limits of integration goes to $\pm \infty$:
+
+\begin{defi}[Improper integrals with infinite limits of integration]{def: improper_inf}
+    \begin{enumerate}
+        \item If $f(x)$ is continuous within $[a, \infty)$, then
+        \[\int_a^{\infty} f(x)dx = \lim_{b \rightarrow \infty} \int_a^b f(x)dx\]
+        \item If $f(x)$ is continuous within $(-\infty, b]$, then
+        \[\int_{-\infty}^b f(x)dx = \lim_{a \rightarrow -\infty} \int_a^b f(x)dx\]
+        \item If $f(x)$ is continuous within $\mathbb{R}$, then
+        \[\int_{-\infty}^{\infty} f(x)dx = \int_{-\infty}^c f(x)dx + \int_c^{\infty} f(x)dx\]
+        where $c$ is any real number.
+    \end{enumerate}
+\end{defi}
+
+This implies that when evaluating improper integrals with $\pm \infty$ at either limit of integration, after the phase of finding the antiderivative, we can interpret the step of "evaluating the antiderivative at $\pm 
+\infty$" as taking the limit of the antiderivative as the variable of interest goes to $\pm \infty$.  Also note that in the definition above, if any of the limit on the right hand side does not exist, then we say that the improper integral to be evaluated does not exist or \textit{diverges}.
+
+\begin{ex}[]{ex: improper_inf}
+    Evaluate the following improper integrals:
+    \begin{tasks}(3)
+        \task $\int_0^\infty e^{-x}~dx$
+        \task $\int_0^\infty \frac{1}{x^2+1}~dx$
+        \task $\int_0^\infty xe^{-x}~dx$
+        \task $\int_{-\infty}^1 \sqrt{3-x}~dx$
+        \task $\int_{-\infty}^{-1} \frac{e^{1/x}}{x^2}~dx$
+        \task $\int_{-\infty}^{\infty} \frac{x^3}{(x^4+1)^2}~dx$
+    \end{tasks}
+\end{ex}
+
+\begin{exsol}[]{exsol: improper_inf}
+    \lipsum[2-4]
+    \lipsum[2-4]
+    \lipsum[2-3]
+\end{exsol}
+
+We then deal with the case where the integrand has one or several infinite discontinuities within the limits or integration:
+
+\begin{defi}[Improper integrals with infinite discontinuities]{def: improper_dis}
+    \begin{enumerate}
+        \item If $f(x)$ is continuous within $[a, b)$ and has an infinite discontinuity at $x = b$, then
+        \[\int_a^b f(x)dx = \lim_{c \rightarrow b^-} \int_a^c f(x)dx\]
+        \item If $f(x)$ is continuous within $(a, b]$ and has an infinite discontinuity at $x = a$, then
+        \[\int_a^b f(x)dx = \lim_{c \rightarrow a^+} \int_c^b f(x)dx\]
+        \item If $f(x)$ is continuous within $[a, b]$ except for $x = c \in [a, b]$, where it has an infinite discontinuity, then
+        \[\int_a^b f(x)dx = \int_a^c f(x)dx + \int_c^b f(x)dx\]
+    \end{enumerate}
+\end{defi}
+
+The first two definition implies that when the infinite discontinuity occurs at the limits of integration, we can proceed with normal procedures for definite integrals, and take limits when plugging values into the antiderivatives as needed.  The third definition presents a pitfall: if $F(x)$ is one of the antiderivative for $f(x)$, then we should evaluate the integral by
+\[\big[\lim_{t \rightarrow c^-} F(t)\big] - F(a) + F(b) - \big[\lim_{t \rightarrow c^+} F(t)\big]\]
+When either of the two limits does not exist, then the improper integral diverges.  However, if we erroneously ignored the infinite discontinuity and just evaluated $F(b)-F(a)$ as we often do in proper integrals, we will not be able to realize that the improper integral diverges. 
+
+\begin{ex}[]{ex: improper_dis}
+    Evaluate the following improper integrals:
+    \begin{tasks}(3)
+        \task $\int_0^1 \frac{1}{\sqrt[3]{x}}~dx$
+        \task $\int_0^1 \frac{1}{x^3}~dx$
+        \task $\int_{0}^{\infty} \frac{1}{\sqrt{x}(x+1)}~dx$
+        \task $\int_{-2}^1 \frac{1}{x^2}~dx$
+        \task $\int_1^3 \frac{x}{x^2-4}~dx$
+        \task $\int_1^5 \frac{x}{\sqrt[3]{x^2-9}}~dx$
+    \end{tasks}
+\end{ex}
+
+\begin{exsol}[]{exsol: improper_dis}
+    \lipsum[2-4]
+    \lipsum[2-4]
+    \lipsum[2-4]
+\end{exsol}
