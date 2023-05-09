@@ -294,8 +294,8 @@ Let us try to evaluate a few arc lengths with our new formula:
         \begin{align*}
             S &= \int_0^4\sqrt{1+\frac{9}{4}x}~dx\\
             &=\frac{4}{9} \int_0^4\sqrt{1+\frac{9}{4}x}~\Big(\frac{9}{4}dx\Big)\\
-            &=\frac{4}{9}  \int_1^10\sqrt{u}~du\\
-            &= \frac{4}{9}\cdot \frac{2}{3}u^{3/2}\Big]_1^10 = \frac{8}{27}(10\sqrt{10}-1)
+            &=\frac{4}{9}  \int_1^{10}\sqrt{u}~du\\
+            &= \frac{4}{9}\cdot \frac{2}{3}u^{3/2}\Big]_1^{10} = \frac{8}{27}(10\sqrt{10}-1)
         \end{align*}
         \item Since $\frac{dy}{dx} = \frac{d \ln(\sec x)}{dx} = \tan x$, the arc length can be evaluated by
         \begin{align*}
@@ -303,7 +303,7 @@ Let us try to evaluate a few arc lengths with our new formula:
             &= \int_{\pi/6}^{\pi/4}\sqrt{1+\tan^2 x}~dx\\
             &= \int_{\pi/6}^{\pi/4} \sec x~dx\\
             &= \ln|\sec x + \tan x|\big]_{\pi/6}^{\pi/4}\\
-            &= \ln|\sqrt{2} + 1| - \ln|\frac{2}{\sqrt{3}}+\frac{1}{\sqrt{3}}| = \ln \frac{\sqrt{2}+1}{\sqrt{3}}
+            &= \ln|\sqrt{2} + 1| - \ln\Big|\frac{2}{\sqrt{3}}+\frac{1}{\sqrt{3}}\Big| = \ln \frac{\sqrt{2}+1}{\sqrt{3}}
         \end{align*}
     \end{enumerate}
 \end{egsol}
@@ -528,7 +528,7 @@ However, $\frac{1}{|\sqrt[3]{x}|}$ tends to positive infinity when $x$ approache
 This implies that when evaluating improper integrals with $\pm \infty$ at either limit of integration, after the phase of finding the antiderivative, we can interpret the step of "evaluating the antiderivative at $\pm 
 \infty$" as taking the limit of the antiderivative as the variable of interest goes to $\pm \infty$.  Also note that in the definition above, if any of the limit on the right hand side does not exist, then we say that the improper integral to be evaluated does not exist or \textit{diverges}.
 
-\begin{ex}[]{ex: improper_inf}
+\begin{eg}[]{eg: improper_inf}
     Evaluate the following improper integrals:
     \begin{tasks}(3)
         \task $\int_0^\infty e^{-x}~dx$
@@ -538,15 +538,55 @@ This implies that when evaluating improper integrals with $\pm \infty$ at either
         \task $\int_{-\infty}^{-1} \frac{e^{1/x}}{x^2}~dx$
         \task $\int_{-\infty}^{\infty} \frac{x^3}{(x^4+1)^2}~dx$
     \end{tasks}
-\end{ex}
+\end{eg}
 
-\begin{exsol}[]{exsol: improper_inf}
+\begin{egsol}[]{egsol: improper_inf}
     \begin{enumerate}[a)]
-        \item test
+        \item Since there is an infinity in the upper limit of integration, we may transform this improper integral into a limit by definition:
+        \begin{align*}
+            \int_0^\infty e^{-x} dx &= \lim_{b \rightarrow \infty} \Big[\int_0^b e^{-x} dx\Big]\\
+            &= \lim_{b \rightarrow \infty} \Big[-e^{-x}\big]_0^b \Big]\\
+            &= \lim_{b \rightarrow \infty} \Big[(-e^{-b}) - (-e^{0})\Big]\\
+            &= \big[\lim_{b \rightarrow \infty} (-e^{-b})\big] + 1 = 1
+        \end{align*}
+        Alternatively, we can avoid writing a lot of limit signs and treat the $\infty$ symbol as sort of a number (although it isn't!), and remember that evaluating any expression at $\infty$ is actually taking the limit of that expression at $\infty$:
+        \[\int_0^\infty e^{-x} dx = -e^{-x}\Big]_0^\infty = \big[\lim_{x \rightarrow \infty} (-e^{-x})\big] - (- e^0) = 1\]
+        \item Here the upper limit is $\infty$, so the integral is an improper integral, and we should evaluate the integral with limits:
+        \[\int_0^\infty \frac{1}{x^2+1}~dx = \arctan x\Big]_0^\infty = \big[\lim_{x \rightarrow \infty} \arctan x\big] - \arctan 0 = \frac{\pi}{2} - 0 = \frac{\pi}{2}\]
+        Here $\lim_{x \rightarrow \infty} \arctan x = \pi/2$ since as $\theta$ approaches $\pi/2$ from the left side, $\tan \theta$ shoots up to $\infty$.
+        \item The shape of this integrand hints us to use integration by parts, setting $u = x$, $dv/dx = e^{-x}$ so that $du/dx = 1$, $v = -e^{-x}$.  Note that since this is an improper integral with infinite integration limits, the "$uv$" term in the integration by parts will also need to be evaluated with limits:
+        \begin{align*}
+            \int_0^\infty xe^{-x}~dx &= x(-e^{-x})\Big]_0^\infty - \int_0^\infty 1\cdot(-e^{-x})~dx\\
+            &= x(-e^{-x})\Big]_0^\infty - e^{-x}\Big]_0^\infty\\
+            &= \Big[\big[\lim_{x \rightarrow \infty} (-xe^{-x})\big] - 0)\Big] - \Big[\lim_{x \rightarrow \infty} e^{-x} - 1\Big]
+        \end{align*}
+        For the first limit, we can use L'Hôpital's rule since if we write $-xe^{-x}$ as $\frac{-x}{e^x}$, we get an $\frac{-\infty}{\infty}$ indefinite form from the plug-in method:
+        \[\lim_{x \rightarrow \infty} -xe^{-x} = \lim_{x \rightarrow \infty} \frac{-x}{e^x} = \lim_{x \rightarrow \infty} \frac{(-x)'}{(e^x)'} = \lim_{x \rightarrow \infty} \frac{-1}{e^x} = \lim_{x \rightarrow \infty} -e^{-x} = 0\]
+        Therefore, our integral evaluates to 
+        \[\Big[\big[\lim_{x \rightarrow \infty} (-xe^{-x})\big] - 0)\Big] - \Big[\lim_{x \rightarrow \infty} e^{-x} - 1\Big] = \Big[0 - 0\Big] - \Big[0 - 1\Big] = 1\]
+        \item For this integrand, clearly we need to do a U-substitution with $u = 3-x$, so that $du = -dx$.  Since this is a (improper) definite integral, we have to substitute the limits of integration as well: when $x = 1$, we have $u = 3 - 1 = 2$; when $x$ goes to $-\infty$, then $u$ goes to $\infty$.  Therefore we have
+        \begin{align*}
+            \int_{-\infty}^1 \sqrt{3-x}~dx &= - \int_{-\infty}^1 \sqrt{3-x}~(-dx)\\
+            &= - \int_{\infty}^2 \sqrt{u}~du\\
+            &= \int_2^{\infty} u^{1/2}~du\\
+            &= \frac{2}{3}u^{3/2}\Big]_2^{\infty}\\
+            &= \lim_{u \rightarrow \infty} \frac{2}{3}u^{3/2} - \frac{2}{3} 2^{3/2}
+        \end{align*}
+        Since the first limit term goes to $\infty$, the whole improper integral goes to $\infty$.  So we have
+        \[\int_{-\infty}^1 \sqrt{3-x}~dx = \infty\]
+        \item For this integrand, we can do a U-substitution for the exponent so that $u = \frac{1}{x}$ and $du = -\frac{1}{x^2} dx$, which yields a multiple of the remainder of the integrand, $\frac{1}{x^2}$.  We will also need to substitute the limits of integration: when $x = -1$, we have $u = \frac{1}{-1} = -1$; when $x$ goes to $-\infty$, then $u$ goes to $0$ from the negative side.  Therefore we have,
+        \[\int_{-\infty}^{-1} \frac{e^{1/x}}{x^2}~dx = -\int_{-\infty}^{-1} e^{1/x}\Big(-\frac{1}{x^2}~dx\Big) = -\int_{0}^{-1} e^u~du = \int_{-1}^0 e^u~du = e^u\Big]_{-1}^0 = 1 - e^{-1}\]
+        \item For this integrand, we can try U-substitution for the expression within the parentheses.  This yields $u = x^4+1$ and $du = 4x^3~dx$, which works since $x^3$ appears in the integrand as the remainder.  We will also need to substitute the limits of integreation: when $x$ goes to $\infty$, $u$ also goes to $\infty$; when $x$ goes to $-\infty$, $u$ also goes to $\infty$.  Therefore in this case,
+        \[\int_{-\infty}^{\infty} \frac{x^3}{(x^4+1)^2}~dx = \frac{1}{4}\int_{-\infty}^{\infty} \frac{1}{(x^4+1)^2}~(4x^3dx) = \frac{1}{4}\int_{\infty}^{\infty}\frac{1}{u^2}~du = -\frac{1}{4u}\Big]_{\infty}^{\infty} = 0 - 0 = 0\]
+        This integral eventually evaluates to $0$ since the integrand $f(x) := \frac{x^3}{(x^4+1)^2}$ is an \textit{odd function}, which means that $f(x) = -f(-x)$ for all $x$.  Therefore, when we graph the integrand on the Cartesian plane, the curve at the left side of the plane is just flipping the curve on the right side of the plane about the $y$-axis then the $x$-axis, as shown in the graph below: 
+        \begin{center}
+            \includegraphics[trim = {0 0 0 2cm}, clip, width = 0.6\textwidth]{figures/chap 07/odd_function.png}
+        \end{center}
+        Therefore, when we integrate over the whole real line, the negative signed area on the left side of the plane cancels out the with positive signed area on the right, leading to an integral of zero.  (A subtlty here is that, even if the integrand is an odd function, the area under curve on the right side of the plane must be finite for us to conclude that the whole improper integral evaluates to $0$.  Otherwise, we would get an $\infty - \infty$ indeterminate form and the improper integral just does not exist.  You may try evaluating $\int_{-\infty}^{\infty} x~dx$ to see this.)
     \end{enumerate}
-\end{exsol}
+\end{egsol}
 
-We then deal with the case where the integrand has one or several infinite discontinuities within the limits or integration:
+There is still one case that makes a definite integral improper, which is when the integrand has one or several infinite discontinuities within the limits or integration.  We now provide a definition for how this type of improper integral should be evaluated:
 
 \begin{defi}[Improper integrals with infinite discontinuities]{def: improper_dis}
     \begin{enumerate}
@@ -559,9 +599,11 @@ We then deal with the case where the integrand has one or several infinite disco
     \end{enumerate}
 \end{defi}
 
-The first two definition implies that when the infinite discontinuity occurs at the limits of integration, we can proceed with normal procedures for definite integrals, and take limits when plugging values into the antiderivatives as needed.  The third definition presents a pitfall: if $F(x)$ is one of the antiderivative for $f(x)$, then we should evaluate the integral by
+The first two definitions imply that when the infinite discontinuities occur at the limits of integration, we can proceed with normal procedures for definite integrals, and take limits when plugging values into the antiderivatives as needed.  The third definition presents a pitfall: if $F(x)$ is one of the antiderivative for $f(x)$, then we should evaluate the integral by
 \[\big[\lim_{t \rightarrow c^-} F(t)\big] - F(a) + F(b) - \big[\lim_{t \rightarrow c^+} F(t)\big]\]
-When either of the two limits does not exist, then the improper integral diverges.  However, if we erroneously ignored the infinite discontinuity and just evaluated $F(b)-F(a)$ as we often do in proper integrals, we will not be able to realize that the improper integral diverges. 
+When either of the two limits does not exist, then the improper integral diverges.  However, if we erroneously ignored the infinite discontinuity and just evaluated $F(b)-F(a)$ as we often do in proper integrals, we will not be able to realize that the improper integral actually diverges. 
+
+Let us see how this type of improper integrals should be evaluated in the examples below:
 
 \begin{ex}[]{ex: improper_dis}
     Evaluate the following improper integrals:
@@ -577,6 +619,6 @@ When either of the two limits does not exist, then the improper integral diverge
 
 \begin{exsol}[]{exsol: improper_dis}
     \begin{enumerate}
-        \item test
+        \item To be added
     \end{enumerate}
 \end{exsol}
