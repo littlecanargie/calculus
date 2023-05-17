@@ -1,0 +1,114 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+\providecommand{\savepicturepage}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus II (MSF\_10010 / AM\_\_1080AH) \\ 2023 Spring \\ Problem List XI (Due May 18)}
+
+\bigskip
+
+\problem Evaluate the following integrals (note that they may not exist!):
+\begin{enumerate}[a)]
+    \item $\int_0^{\infty} \frac{1}{(x+1)^2}~dx$
+    \item $\int_0^{\infty} x^2e^{-2x}~dx$
+    \item $\int_{-27}^8 \frac{1}{(\sqrt[3]{x})^2}~dx$
+    \item $\int_0^{\pi} \tan x~dx$
+    \item $\int_0^\infty \sin x~dx$
+\end{enumerate}
+\vspace{3mm}
+
+\problem A random variable $X$ is said to follow a uniform distribution of support $[a, b]$ if it has the following probability density function:
+\[f_X(x) = \begin{cases}
+    c, \quad a \le x \le b\\
+    0, \quad \text{otherwise}
+\end{cases}\]
+\begin{enumerate}[a)]
+    \item Express $c$ with $a$ and $b$ so that $f_X(x)$ is a probability density function.
+    \item Derive the expected value of $X$.
+    \item Derive the variance of $X$.
+\end{enumerate}
+\vspace{3mm}
+
+\problem Although it seems intuitive that every random variable should have an expected value, this is not the case for some weird random variables.  Suppose a continuous random variable $X$ follows a standard Cauchy distribution and has the following probability density function
+\[f_X(x) = \frac{1}{\pi(1+x^2)}\]
+\begin{enumerate}[a)]
+    \item Verify that $f_X(x)$ is a probability density function.
+    \item Show that the expected value of $X$ does not exist.
+\end{enumerate}
+\vspace{3mm}
+
+\problem Normal distribution is the most important and commonly used distribution for continuous variables.  The probability density function for a continuous variable distributed as a standard normal distribution is given by
+\[\phi(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}\]
+Given the fact that 
+\[\int_{-\infty}^{\infty} e^{-t^2}~dt = \sqrt{\pi}\]
+\begin{enumerate}[a)]
+    \item Verify that $\phi(x)$ is a probability density function.
+    \item Verify that the expected value of a standard normal distibution is $0$.  (Note: You also have to argue that the expected value exists!)
+    \item Verify that the variance of a standard normal distribution is $1$. (Hint: Factor out one $x$ from the integrand and use integration by parts.)
+\end{enumerate}
+
+\end{document}
