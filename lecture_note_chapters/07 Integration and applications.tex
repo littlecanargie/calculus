@@ -576,7 +576,7 @@ This implies that when evaluating improper integrals with $\pm \infty$ at either
         \[\int_{-\infty}^1 \sqrt{3-x}~dx = \infty\]
         \item For this integrand, we can do a U-substitution for the exponent so that $u = \frac{1}{x}$ and $du = -\frac{1}{x^2} dx$, which yields a multiple of the remainder of the integrand, $\frac{1}{x^2}$.  We will also need to substitute the limits of integration: when $x = -1$, we have $u = \frac{1}{-1} = -1$; when $x$ goes to $-\infty$, then $u$ goes to $0$ from the negative side.  Therefore we have,
         \[\int_{-\infty}^{-1} \frac{e^{1/x}}{x^2}~dx = -\int_{-\infty}^{-1} e^{1/x}\Big(-\frac{1}{x^2}~dx\Big) = -\int_{0}^{-1} e^u~du = \int_{-1}^0 e^u~du = e^u\Big]_{-1}^0 = 1 - e^{-1}\]
-        \item For this integrand, we can try U-substitution for the expression within the parentheses.  This yields $u = x^4+1$ and $du = 4x^3~dx$, which works since $x^3$ appears in the integrand as the remainder.  We will also need to substitute the limits of integreation: when $x$ goes to $\infty$, $u$ also goes to $\infty$; when $x$ goes to $-\infty$, $u$ also goes to $\infty$.  Therefore in this case,
+        \item For this integrand, we can try U-substitution for the expression within the parentheses.  This yields $u = x^4+1$ and $du = 4x^3~dx$, which works since $x^3$ appears in the integrand as the remainder.  We will also need to substitute the limits of integreation: when $x$ goes to $\infty$, $u$ also goes to $\infty$; when $x$ goes to $-\infty$, $u$ also goes to $\infty$.  Therefore,
         \[\int_{-\infty}^{\infty} \frac{x^3}{(x^4+1)^2}~dx = \frac{1}{4}\int_{-\infty}^{\infty} \frac{1}{(x^4+1)^2}~(4x^3dx) = \frac{1}{4}\int_{\infty}^{\infty}\frac{1}{u^2}~du = -\frac{1}{4u}\Big]_{\infty}^{\infty} = 0 - 0 = 0\]
         This integral eventually evaluates to $0$ since the integrand $f(x) := \frac{x^3}{(x^4+1)^2}$ is an \textit{odd function}, which means that $f(x) = -f(-x)$ for all $x$.  Therefore, when we graph the integrand on the Cartesian plane, the curve at the left side of the plane is just flipping the curve on the right side of the plane about the $y$-axis then the $x$-axis, as shown in the graph below: 
         \begin{center}
@@ -587,6 +587,8 @@ This implies that when evaluating improper integrals with $\pm \infty$ at either
 \end{egsol}
 
 There is still one case that makes a definite integral improper, which is when the integrand has one or several infinite discontinuities within the limits or integration.  We now provide a definition for how this type of improper integral should be evaluated:
+
+\pagebreak
 
 \begin{defi}[Improper integrals with infinite discontinuities]{def: improper_dis}
     \begin{enumerate}
@@ -605,7 +607,7 @@ When either of the two limits does not exist, then the improper integral diverge
 
 Let us see how this type of improper integrals should be evaluated in the examples below:
 
-\begin{ex}[]{ex: improper_dis}
+\begin{eg}[]{eg: improper_dis}
     Evaluate the following improper integrals:
     \begin{tasks}(3)
         \task $\int_0^1 \frac{1}{\sqrt[3]{x}}~dx$
@@ -613,12 +615,201 @@ Let us see how this type of improper integrals should be evaluated in the exampl
         \task $\int_{0}^{\infty} \frac{1}{\sqrt{x}(x+1)}~dx$
         \task $\int_{-2}^1 \frac{1}{x^2}~dx$
         \task $\int_1^3 \frac{x}{x^2-4}~dx$
-        \task $\int_1^5 \frac{x}{\sqrt[3]{x^2-9}}~dx$
+        \task $\int_1^6 \frac{x}{\sqrt[3]{x^2-9}}~dx$
     \end{tasks}
-\end{ex}
+\end{eg}
 
-\begin{exsol}[]{exsol: improper_dis}
-    \begin{enumerate}
-        \item To be added
+\begin{egsol}[]{egsol: improper_dis}
+    \begin{enumerate}[a)]
+        \allowdisplaybreaks
+        \item The integrand has an infinite discontinuity at the lower limit of integration $x = 0$.  Therefore, we can rewrite the lower limit as $0^+$ to remind us to take the limit after finding the antiderivative and proceed on: 
+        \[\int_0^1 \frac{1}{\sqrt[3]{x}}~dx = \int_{0^+}^1 x^{-1/3}~dx = \frac{3}{2}x^{2/3}\Big]_{0^+}^1 = \frac{3}{2} - 0 = \frac{3}{2}\]
+        Note that since $x^{2/3}$ is actually continuous at $x = 0$, so we can just plug $0$ into $x$ and obtain the right limit.
+        \item The integrand has an infinite discontinuity at the lower limit of integration $x = 0$.  We use the same approach and write $0$ as $0^+$:
+        \[\int_0^1 \frac{1}{x^3}~dx = \int_{0^+}^1 x^{-3}~dx = -\frac{1}{2}x^{-2}\Big]_{0^+}^1 = -\frac{1}{2} - \lim_{x \rightarrow 0^+} \Big(-\frac{1}{2x^2}\Big) = \infty\]
+        Here as $x$ approaches $0$ from the right side, the limit approaches negative infinity since the denominator is a positive number that gets smaller and smaller.  Therefore, the whole expression goes to positive infinity since there is a negative sign before the limit.
+        \item Here we have two elements that makes this integral improper: we have an infinite upper limit for integration, as well as an infinite discontinuity at $x = 0$, which is the lower limit for integration.  We therefore write the lower limit as $0^+$ and proceed on finding the antiderivative for the integrand, which can be done by first noting we can write integrand as 
+        \[\frac{1}{\sqrt{x}(x+1)} = \frac{1}{\sqrt{x}((\sqrt{x})^2+1)}\]
+        Therefore, we can use U-substitution with $u = \sqrt{x}$, $du = \frac{1}{2\sqrt{x}}dx$.  For the integration limits, as $x$ goes to $\infty$, $u$ also goes to $\infty$; as $x$ approaches $0$ from the right side, $u$ also approaches $0$ from the right side.  Now we have
+        \begin{align*}
+            \int_0^{\infty} \frac{1}{\sqrt{x}(x+1)}~dx &= \int_{0^+}^{\infty} \frac{1}{\sqrt{x}(x+1)}~dx\\
+            &= 2\int_{0^+}^{\infty} \frac{1}{(\sqrt{x})^2+1}~\Big(\frac{1}{2\sqrt{x}}dx\Big)\\
+            &= 2\int_{0^+}^{\infty} \frac{1}{u^2+1}~du\\
+            &= 2 \arctan u\Big]_{0^+}^{\infty} = 2\Big(\frac{\pi}{2} - 0\Big) = \pi
+        \end{align*}
+        In the last line, we have shown in the previous example that $\arctan x$ goes to $\pi/2$ as $x$ goes to $\infty$.  Also, since $\arctan x$ is continuous at $x = 0$, its right limit at $x = 0$ can be found with the plugin method, leading to $\arctan 0 = 0$. 
+        \item In this integral, since the integrand $1/x^2$ has an infinite discontinuity at $x = 0$, we have to split up the integral into integrating from $-2$ to $0$ and from $0$ to $1$:
+        \[\int_{-1}^2 \frac{1}{x^2}~dx = \int_{-1}^{0} \frac{1}{x^2}~dx + \int_{0}^2 \frac{1}{x^2}~dx\]
+        Now the two new integrals have infinite discontinuties at their upper or lower integration, so we write $0$ as $0^-$ and $0^+$, then proceed on to antidifferentiation:
+        \begin{align*}
+            \int_{-1}^{0} \frac{1}{x^2}~dx + \int_{0}^2 \frac{1}{x^2}~dx &= \int_{-1}^{0^-} \frac{1}{x^2}~dx + \int_{0^+}^2 \frac{1}{x^2}~dx\\
+            &= \big(-\frac{1}{x}\big)\Big]_{-1}^{0^-} + \big(-\frac{1}{x}\big)\Big]_{0^+}^{2}\\
+            &= \Big[\lim_{x \rightarrow 0^-} \big(-\frac{1}{x}\big) - 1\Big] + \Big[-\frac{1}{2}-\lim_{x \rightarrow 0^+} \big(-\frac{1}{x}\big)\Big]
+        \end{align*}
+        Now since the first limit goes to positive infinity and the second limit goes to negative infinity, the improper integral goes to \textbf{positive infinity}.  Note that if we carelessly ignored the infinite discontinuity, we would get 
+        \[\int_{-1}^2 \frac{1}{x^2}~dx = -\frac{1}{x}\Big]_{-1}^2 = \big(-\frac{1}{2}\big)-1 = -\frac{3}{2}\]
+        which is clearly incorrect (note that the integrand $1/x^2$ is always positive).
+        \item For this integral, we have an infinite discontinuity for the integrand at $x = 2$, so we have to split the integral as
+        \[\int_1^3 \frac{x}{x^2-4}~dx = \int_1^{2^-} \frac{x}{x^2-4}~dx + \int_{2^+}^3 \frac{x}{x^2-4}~dx\]
+        where we write $2$ as $2^-$ and $2^+$ to remind us to take the left and right limits when evaluating the antiderivatives.  Now the integrand can be antidifferentiated with U-substitution where $u = x^2-4$ and $du = 2xdx$.  For the integration limits, when $x = 1$ we have $u = -3$, when $x = 3$ we have $u = 5$, when $x$ approaches $2$ from the left and right side we have $u$ approaching $0$ from the left and right side.  Therefore,
+        \begin{align*}
+            \int_1^{2^-} \frac{x}{x^2-4}~dx + \int_{2^+}^3 \frac{x}{x^2-4}~dx &= \frac{1}{2}\int_1^{2^-} \frac{1}{x^2-4}~(2xdx) + \frac{1}{2} \int_{2^+}^3 \frac{1}{x^2-4}~(2xdx)\\
+            &= \frac{1}{2}\int_{-3}^{0^-} \frac{1}{u}du + \frac{1}{2}\int_{0^+}^5 \frac{1}{u}du\\
+            &= \frac{1}{2} \ln|u|\big]_{-3}^{0^-} + \frac{1}{2} \ln|u|\big]_{0^+}^{5}\\
+            &= \frac{1}{2}\Big[\lim_{u \rightarrow 0^-} \ln|u| - \ln 3\Big] + \frac{1}{2}\Big[\ln 5-\lim_{u \rightarrow 0^+} \ln|u|\Big]
+        \end{align*}
+        Now both limits in the last line evaluate to $-\infty$, so the expression becomes a $\infty - \infty$ indeterminate form.  Therefore, this improper integral simply \textbf{does not exist}.  Note that if we ignored the infinite discontinuity, we would get a wrong answer of $\frac{1}{2}\ln\frac{5}{3}$. 
+        \item In this integral, we have an infinite discontinuity for the integrand at $x = 3$, so we have to split the integral as
+        \[\int_1^6 \frac{x}{\sqrt[3]{x^2-9}}~dx = \int_1^{3^-} \frac{x}{\sqrt[3]{x^2-9}}~dx + \int_{3^+}^6 \frac{x}{\sqrt[3]{x^2-9}}~dx\]
+        where we again write $3$ as $3^-$ and $3^+$.  The integrand can be antidifferentiated with U-substitutioin setting $u = x^2-9$ and $du = 2dx$.  For the integration limits, when $x = 1$ we have $u = -8$, when $x = 6$ we have $u = 27$, and when $x$ approaches $3$ from the left and right side we have $u$ approaching $0$ from the left and right side.  Therefore,
+        \begin{align*}
+            \int_1^{3^-} \frac{x}{\sqrt[3]{x^2-9}}~dx + \int_{3^+}^6 \frac{x}{\sqrt[3]{x^2-9}}~dx &= \frac{1}{2}\int_1^{3^-} \frac{1}{\sqrt[3]{x^2-9}}~(2xdx) + \frac{1}{2}\int_{3^+}^6 \frac{1}{\sqrt[3]{x^2-9}}~(2xdx)\\
+            &= \frac{1}{2}\int_{-8}^{0^-} \frac{1}{\sqrt[3]{u}}~du + \frac{1}{2}\int_{0^+}^{27} \frac{1}{\sqrt[3]{u}}~du\\
+            &= \frac{1}{2}\int_{-8}^{0^-} u^{-1/3}~du + \frac{1}{2}\int_{0^+}^{27} u^{-1/3}~du\\
+            &= \frac{1}{2}\cdot\frac{3}{2} u^{2/3}\big]_{-8}^{0^-} + \frac{1}{2}\cdot\frac{3}{2} u^{2/3}\big]_{0^+}^{27}\\
+            &= \frac{3}{4}[(\sqrt[3]{0})^2-(\sqrt[3]{-8})^2] + \frac{3}{4}[(\sqrt[3]{27})^2-(\sqrt[3]{0})^2]\\
+            &= \frac{3}{4}(9-4) = \frac{15}{4}
+        \end{align*}
+        In the phase of antiderivative evaluation, since $u^{2/3}$ is continutous at $u=0$, we plug in $0$ to obtain the right and left limits (though they are eventually cancelled out). 
     \end{enumerate}
-\end{exsol}
+\end{egsol}
+
+\section{Probability, expectation value and variance}
+Integrals are also useful in statistics, which is a specialty that uses mathematical tools to extract information from data, and then produce predictions or draw conclusions based on the information.  The information within the data cannot be readily identified before the noise in the data is properly modelled and controlled.  Therefore, the tools statistician use relies heavily on probability, which can involve a bit of integrals.
+
+Suppose we are interested in a quantity whose possible value ranges over a continuous interval of number, eg. the length of time customers spent waiting in a queue, the height of students within an univeristy, or the price of a stock over time.  Each time we observed this quantity, its value can vary randomly (eg. different students will have different heights).  Therefore, statisticians call these quantities \textbf{random variables}.  In particular, since the possible values for these random variables are continuous (unlike, say, the outcome of die, which can be only one of $1,2,3,4,5,6$), they are called \textbf{continuous random variables}. 
+
+The most intuitive way to describe a random variable is to specify the probability of observing each possible value.  For example, for a fair die, we can describe the random variable for its outcome, denote as $X$, by
+\[\PP(X=1) = \PP(X=2) = \PP(X=3) = \PP(X=4) = \PP(X=5) = \PP(X=6) = \frac{1}{6}\]
+However, we cannot describe a continuous random variable as above, since the probability of observing each possible outcome is actually $0$ (eg. the probability of observing a student of exactly $168.523$ cm is $0$).  Therefore, for a continuous random variable $X$, we would describe it by providing its \textbf{probability density function} $f_X(x)$, so that
+\[\PP(a \le X \le b) = \int_a^b f_X(x)~dx\]
+That is, if we graph $f_X(x)$ on a Cartesian plane, then the area under curve for $f_X(x)$ between $x=a$ and $x=b$ is the probability of $X$ being between $a$ and $b$.  Under this definition, we will have two implications:
+\begin{enumerate}
+    \item Since the area under curve for $f_X(x)$ represents probability, $f_X(x)$ cannot be negative or we will sometimes derive negative probabilities.
+    \item Since $X$ will always be between $-\infty$ to $\infty$, the probability of "$-\infty \le X \le \infty$ would be $1$.
+\end{enumerate}
+We can write these two requirements for probability density functions as follows:
+\begin{gather*}
+    f_X(x) \ge 0, \text{ for all }x\\
+    \int_{-\infty}^{\infty} f_X(x)~dx = 1
+\end{gather*}
+Let's look at how probability density functions work with the following example:
+\begin{eg}[]{eg: pdf}
+    Suppose the random variable for the waiting time (in minutes) for a queue of customers is denoted as $X$.  The probability density function for $X$ is 
+    \[f_X(x) = \begin{cases}
+        \frac{1}{2}e^{-\frac{x}{2}}, x \ge 0\\
+        0, \quad \;\; x < 0
+    \end{cases}\]
+    \begin{enumerate}[a)]
+        \item Verify that $f_X(x)$ is a probability density function.
+        \item Calculate the probability of a customer waiting between $1$ to $2$ minutes.
+        \item Calculate the probability of a customer waiting less than $1$ minute.
+    \end{enumerate}
+\end{eg}
+
+\begin{egsol}[]{egsol: pdf}
+    \begin{enumerate}[a)]
+        \item The two requirements for a function to be a probability density function is that (1) it is non-negative for all inputs (2) its area under curve over the real line, i.e. definite integral from $-\infty$ to $\infty$, is $1$.  The first requirement is trivial since the exponential function is always non-negative.  For the second requirement, since $f_X(x)$ is defined piecewisely, we can also seperate the integral into two parts
+        \[\int_{-\infty}^{\infty} f_X(x)~dx = \int_{-\infty}^{0} f_X(x)~dx + \int_{0}^{\infty} f_X(x)~dx\]
+        We can then plug in the expression for $f_X(x)$ in the respective range of integration and yield
+        \begin{align*}
+            \int_{-\infty}^{0} f_X(x)~dx + \int_{0}^{\infty} f_X(x)~dx &= \int_{-\infty}^{0} 0~dx + \int_{0}^{\infty} \frac{1}{2}e^{-\frac{x}{2}}~dx\\
+            &= 0 + \big(-e^{-\frac{x}{2}}\big)\Big]_0^{\infty} = 0 - (-1) = 1
+        \end{align*}
+        which proves that $f_X(x)$ is a legit probabiltiy density function.
+        \item The probabiltiy of a customer waiting between $1$ to $2$ minutes is exactly the probability of $1 \le X \le 2$, so we can write:
+        \[\PP(1 \le X \le 2) = \int_1^2 f_X(x)~dx = \int_1^2 \frac{1}{2}e^{-\frac{x}{2}} = -e^{-\frac{x}{2}}\Big]_1^2 = e^{-\frac{1}{2}} - e^{-1}\]
+        \item Since the waiting time cannot be negative (which is also implied by $f_X(x)$ begin zero when $x$ is negative), the probability of a customer waiting under $1$ minute is the probability of $0 \le X \le 1$, so we can write:
+        \[\PP(0 \le X \le 1) = \int_0^1 f_X(x)~dx = \int_0^1 \frac{1}{2}e^{-\frac{x}{2}}~dx = -e^{-\frac{x}{2}}\Big]_0^1 = 1-e^{-\frac{1}{2}}\]
+    \end{enumerate}
+\end{egsol}
+
+With the probability density function in hand, we can then calculate the two most important charateristics of a (continuous) random variable: its \textbf{expected value} and \textbf{variance}.  A random variable's expected value is the average value that you would see from this random variable.  For example, suppose $X$ represents the waiting time of customers in the queue, then the expected value for $X$, often written as $\EE[X]$, is the average time of waiting.  To gauge how to derive the expected value using probability density functions, let us first go back to the die example again.  When a fair die is rolled, the expected value for its outcome $X$ is intuitively
+\[\EE[X] = \frac{1+2+3+4+5+6}{6} = 3.5\] 
+which is just the average of all outcomes.  Alternatively, we can write the above equation as
+\[\EE[X] = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5 \cdot \frac{1}{6} + 6 \cdot \frac{1}{6} = 3.5\]
+That is, we are multiplying the value of possible outcomes and their probabilities (which is uniformly $1/6$ for a fair die), and then summing all these products together.  If the die is not a fair die, and it always shows $4$, $5$, or $6$ with probability $\frac{1}{4}$, $\frac{1}{4}$ and $\frac{1}{2}$, then the expected value of its outcome would then be
+\[\EE[X] = 4 \cdot \frac{1}{4} + 5 \cdot \frac{1}{4} + 6 \cdot \frac{1}{2} = 5.25\]
+
+Now we're prepped for deriving the expected value of a continuous random variable.  Suppose a continuous random variable $X$ has probability denstiy function $f_X(x)$ graphed below.  Then, we can slice the $x$-axis into small strips, each strip representing a small range of possible values for $X$.  For the strip shown in the graph ranging from $x$ to $x+dx$, the probability of $x \le X \le x+dx$ would be the area under curve between $x$ and $x+dx$, which is approximately a rectangle of height $f_X(x)$ and width $dx$.  In the virtue of how we calculated the expected value of a die, we should multiply this probability with the outcome tied to it, which is $x$ to $x + dx$ and can basically be replaced by $x$, as $dx$ is small.  Therefore, the product contributed by this strip would be $x f_X(x) dx$, and eventually we want to add up the products provided by all strips to arrive at the expected value, which yields
+\[\EE[X] = \int_{-\infty}^{\infty} x f_X(x)~dx\]
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width = 0.5\textwidth]{figures/chap 07/expectation.png}
+\end{figure}
+
+Another characteristic that is important to a random variable is its variance.  The variance is trying to measure how dispersed is the outcome of a random variable $X$ relative to its expectation value $\EE[X]$.  An intuitive way to define this dispersion is to find the expected value of the distance between $X$ and $\EE[X]$, which can be written as $\EE[|X - \EE[X]|]$.  However, this expression does not have good mathematical properties and is difficult to maneuver, so statistician prefer using the expected value of the squared distance between $X$ and $\EE[X]$.  Therefore, we have the definition of variance $var[X]$:
+\[var[X] = \EE[(X-\EE(X))^2] = \int_{-\infty}^{\infty} (x - \EE[X])^2 f_X(x)~dx\]
+In addition, we can expand the term $(x-\EE[x])^2$ in the integrand and arrive at another expression for the variance:
+
+\pagebreak
+
+\begin{align*}
+    var[X] &= \int_{-\infty}^{\infty} (x-\EE[X])^2 f_X(x)~dx\\
+    &= \int_{-\infty}^{\infty} (x^2 - 2x\EE[X] + (\EE[X])^2) f_X(x)~dx\\
+    &= \int_{-\infty}^{\infty} x^2 f_X(x)~dx - 2\EE[X] \int_{-\infty}^{\infty} x f_X(x)~dx + (\EE[X])^2 \int_{-\infty}^{\infty} f_X(x)~dx\\
+    &= \EE[X^2] - 2 \EE[X] \EE[X] + (\EE[X])^2 = \EE[X^2] - (\EE[X])^2
+\end{align*}
+which is often easier to evaluate than the original definition.  Let's now see how expected value and variance are calculated in the following example.
+
+\begin{eg}[]{eg: expected_variance}
+    In the previous example, we have the random variable for waiting time $X$ with probability density function
+    \[f_X(x) = \begin{cases}
+        \frac{1}{2}e^{-\frac{x}{2}}, x \ge 0\\
+        0, \quad \;\; x < 0
+    \end{cases}\]
+    \begin{enumerate}[a)]
+        \item How long should the customer be expected to wait on average?
+        \item Find the variance of the waiting time.
+    \end{enumerate}
+\end{eg}
+
+\begin{egsol}[]{egsol: expected_variance}
+    \begin{enumerate}[a)]
+        \item The averge waiting time is the expected value of the waiting time $X$ (measured in minutes), which can be found by 
+        \[\EE[X] = \int_{\infty}^{\infty} xf_X(x)~dx\]
+        Since $f_X(x)$ is zero when $x$ is negative, we can just do the integral from $0$ to $\infty$, which leads to
+        \[\int_{\infty}^{\infty} xf_X(x)~dx = \int_0^{\infty} xf_X(x)~dx = \int_0^{\infty} x \cdot \frac{1}{2}e^{-\frac{x}{2}}~dx = \frac{1}{2}\int_0^\infty xe^{-\frac{x}{2}}~dx\]
+        Now we use integration by parts where $u = x$ and $dv/dx = e^{-\frac{x}{2}}$, so that $du/dx = 1$ and $v = -2e^{-\frac{x}{2}}$, and we have
+        \begin{align*}
+            \frac{1}{2}\int_0^\infty xe^{-\frac{x}{2}}~dx &= \frac{1}{2}\Big[x \cdot (-2e^{-\frac{x}{2}})\big]_0^{\infty} - \int_0^\infty 1 \cdot (-2e^{-\frac{x}{2}}) ~dx \Big]\\
+            &= \frac{1}{2}\Big[-2xe^{-\frac{x}{2}}\big]_0^{\infty} +2 \int_0^\infty e^{-\frac{x}{2}}~dx \Big]\\
+            &= \frac{1}{2}\Big[-2xe^{-\frac{x}{2}}\big]_0^{\infty} +2 (-2e^{-\frac{x}{2}})\big]_0^\infty \Big]\\
+            &= \frac{1}{2}\Big[-2xe^{-\frac{x}{2}}\big]_0^{\infty} -4 e^{-\frac{x}{2}}\big]_0^\infty \Big]\\
+            &= \frac{1}{2}\Big[(0-0)-(0-4)\Big] = 2
+        \end{align*}
+        In the last line where we need to evaluate $\lim_{x \rightarrow \infty}(-2xe^{-x/2})$, we can rewrite the expression as $\frac{-2x}{e^{x/2}}$ and use L'Hôpital's rule to find that this limit evaluates to $0$.  Therefore, the average waiting time for the customers is $2$ minutes.
+        \item From the definition of variance and the fact that $\EE[X] = 2$, we have
+        \[var[X] = \EE[X^2] - (\EE[X])^2 = \EE[X^2] - 4\]
+        Now for $\EE[X^2]$:
+        \[\EE[X^2] = \int_{-\infty}^{\infty} x^2 f_X(x)~dx= \int_{0}^{\infty} x^2 \cdot \frac{1}{2}e^{-\frac{x}{2}}~dx = \frac{1}{2}\int_0^\infty x^2e^{-\frac{x}{2}}~dx\]
+        We may use the DI method to find the antiderivative for $x^2e^{-\frac{x}{2}}$, setting $x^2$ in the D column and $e^{-\frac{x}{2}}$ in the I column:
+        \begin{center}
+            \begin{tabular}{ccc}
+                 & \textbf{D} & \textbf{I} \\
+                + & $x^2$\tikzmark{prob_d1} & $\phantom{-2}e^{-\frac{x}{2}}$\\
+                - & $2x$\tikzmark{prob_d2} & \tikzmark{prob_i2}$-2e^{-\frac{x}{2}}$\\
+                + & $2$\tikzmark{prob_d3} & \tikzmark{prob_i3}$\phantom{-}4e^{-\frac{x}{2}}$\\
+                - & $0$\tikzmark{prob_d4} & \tikzmark{prob_i4}$-8e^{-\frac{x}{2}}$\\
+            \end{tabular}
+            \begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+                \draw [->] ([yshift=-2pt]{pic cs:prob_d1}) -- ([yshift=2pt]{pic cs:prob_i2});
+                \draw [->] ([yshift=-2pt]{pic cs:prob_d2}) -- ([yshift=2pt]{pic cs:prob_i3});
+                \draw [->] ([yshift=-2pt]{pic cs:prob_d3}) -- ([yshift=2pt]{pic cs:prob_i4});
+                \draw [->] ({pic cs:prob_d4}) -- ({pic cs:prob_i4});
+            \end{tikzpicture}
+        \end{center}
+        The last row produces the integration constant $C$, which is not relevant in the evaluation of definite integrals, so we can just add up the products of the descending diagonals:
+        \begin{align*}
+            \frac{1}{2}\int_0^\infty x^2e^{-\frac{x}{2}}~dx &= \frac{1}{2}[(x^2)(-2e^{-\frac{x}{2}}) + (-2x)(4e^{-\frac{x}{2}}) + 2(-8e^{-\frac{x}{2}})]\Big]_0^\infty\\
+            &= -(x^2+4x+8)e^{-\frac{x}{2}}\Big]_0^\infty\\
+            &= 8-\lim_{x \rightarrow \infty} (x^2+4x+8)e^{-\frac{x}{2}} = 0
+        \end{align*}
+        where the limit in the last line can be found to be $0$ by rewriting it into $\frac{x^2+4x+8}{e^{\frac{x}{2}}}$ and repeatedly using the L'Hôpital's rule.  In the end, we have $var[X] = \EE[X^2] - 4 = 8 - 4 = 4$.
+    \end{enumerate}
+\end{egsol}
+
+\section{Differential equations}
+Differential equations are equations that involves derivatives, for example
+\[\frac{dy}{dx} + 3y = 2x\]
