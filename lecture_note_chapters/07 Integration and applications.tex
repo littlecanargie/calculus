@@ -800,7 +800,7 @@ which is often easier to evaluate than the original definition.  Let's now see h
                 \draw [->] ({pic cs:prob_d4}) -- ({pic cs:prob_i4});
             \end{tikzpicture}
         \end{center}
-        The last row produces the integration constant $C$, which is not relevant in the evaluation of integrals, so we can just add up the products of the descending diagonals for the antiderivative:
+        The last row produces the integration constant $C$, which is not relevant in the evaluation of definite integrals, so we can just add up the products of the descending diagonals:
         \begin{align*}
             \frac{1}{2}\int_0^\infty x^2e^{-\frac{x}{2}}~dx &= \frac{1}{2}[(x^2)(-2e^{-\frac{x}{2}}) + (-2x)(4e^{-\frac{x}{2}}) + 2(-8e^{-\frac{x}{2}})]\Big]_0^\infty\\
             &= -(x^2+4x+8)e^{-\frac{x}{2}}\Big]_0^\infty\\
@@ -809,3 +809,7 @@ which is often easier to evaluate than the original definition.  Let's now see h
         where the limit in the last line can be found to be $0$ by rewriting it into $\frac{x^2+4x+8}{e^{\frac{x}{2}}}$ and repeatedly using the L'Hôpital's rule.  In the end, we have $var[X] = \EE[X^2] - 4 = 8 - 4 = 4$.
     \end{enumerate}
 \end{egsol}
+
+\section{Differential equations}
+Differential equations are equations that involves derivatives, for example
+\[\frac{dy}{dx} + 3y = 2x\]
