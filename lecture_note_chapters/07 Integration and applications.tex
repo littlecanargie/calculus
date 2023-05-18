@@ -811,5 +811,163 @@ which is often easier to evaluate than the original definition.  Let's now see h
 \end{egsol}
 
 \section{Differential equations}
-Differential equations are equations that involves derivatives, for example
-\[\frac{dy}{dx} + 3y = 2x\]
+Differential equations, as their name suggests, are equations that involves derivatives.  For example, the following equations is a differential equation:
+\[y' + y\sin x = 0\]
+where $y'$ is the first derivative of $y$ with respect to $x$.  The goal of this differential equation is to solve for $y$ as a function of $x$.  For instance, $y = e^{\cos x}$ is one of the solutions, since we have, after substituting $y$ with $e^{\cos x}$ into the left side of the equation:
+\[(e^{\cos x})' + (e^{\cos x})\sin x = -\sin x e^{\cos x} + \sin x e^{\cos x} = 0\]
+We said that $y = e^{\cos x}$ is \textit{one of} the solution since for any constant $C$, $y = Ce^{\cos x}$ will also be a solution.  In general, differential equations will have a set of solutions with undetermined constants (like the $C$ here), which we term as the \textit{general solution}.  To solve for the undertermined constant and get a \textit{particular solution} like $y = e^{\cos x}$, we will need one or more \textit{initial conditions} that give the value of the function or its derivatives at a certain input.  To see this, let's look at the example below.
+
+\begin{eg}[]{eg: diff_eqn}
+    Given the differential equation $y'' + 4y = 0$:
+    \begin{enumerate}[a)]
+        \item Show that $y = C_1\cos 2x + C_2\sin 2x$ is a solution for this equation.
+        \item Given the initial conditions $y(0) = 3$ and $y''(0) = -2$, find the particular solution for $y$.
+    \end{enumerate}
+\end{eg}
+
+\begin{egsol}[]{egsol: diff_eqn}
+    \begin{enumerate}[a)]
+        \item Plug in the solution into the left side of the differential equation and we yield:
+        \begin{align*}
+            &[C_1\cos 2x + C_2\sin 2x]''+ 4[C_1\cos 2x + C_2\sin 2x]\\
+            =&[-4C_1\cos 2x -4C_2\sin 2x] + [4C_1\cos 2x + 4C_2\sin 2x]= 0
+        \end{align*}
+        which confirms that $y = C_1\cos 2x + C_2\sin 2x$ is indeed a solution.
+        \item From the general solution, we have $y' = -2C_1 \sin 2x + 2C_2 \cos 2x$
+        \begin{align*}
+            y(0) &= C_1 \cos (2 \cdot 0) + C_2 \sin (2 \cdot 0) = C_1 = 3 \\
+            y'(0) &= -2 C_1 \sin (2 \cdot 0) + 2 C_2 \cos (2 \cdot 0) = 2C_2 = -2
+        \end{align*}
+        Therefore, we have $C_1 = 3$ and $C_2 = -1$, and the particular solution is
+        \[y = 3\cos 2x -\sin 2x\]
+    \end{enumerate}
+\end{egsol}
+
+The most important characteristic of a differential equation is its \textit{order}, which is the highest order of derivatives within the equation.  For example, regarding to the two differential equations mentioned above, $y' + y \sin x = 0$ is a first-order differential equation, and $y'' + 4y = 0$ is a second-order differential equation.  In this course, we will demonstrate how to solve some of the first-order differential equations using indefinite integrals.
+
+\subsection{Separation of variables}
+One useful technique that helps solving first-order differential equations is separation of variables.  Suppose the differential equation can be rearranged into the following form:
+\[\frac{dy}{dx} = \frac{f(x)}{g(y)}\]
+where $f$ and $g$ are any continuous functions.  We may treat $dy$ and $dx$ as differentials and move $dx$ to the right side and $g(y)$ to the left side of the equation, which yields
+\[g(y)~dy = f(x)~dx\]
+Now we can integrate both sides and get the general solution of this differential equation:
+\[\int g(y)~dy = \int f(x)~dx\]
+Notice that 
+Let's put this approach to work in the following example and exercise.
+\begin{eg}[]{eg: sep_var}
+    Give the general solution to the following differential equations.
+    \begin{tasks}(3)
+        \task $y' - 2e^{x-y} = 0$
+        \task $y' = 3y - 2$
+        \task $y' = x^2y^2+x^2$
+    \end{tasks}
+\end{eg}
+
+\begin{egsol}[]{egsol: sep_var}
+    \begin{enumerate}[a)]
+        \item Rearraging the differential equation, we get
+        \begin{align*}
+            y' &= 2e^{x-y}\\
+            \frac{dy}{dx} &= 2e^xe^{-y}\\
+            e^y~dy &= 2e^x~dx\\
+            \int e^y~dy &= \int 2e^x~dx\\
+            e^y &= 2e^x + C\\
+            y &= \ln(2e^x + C)
+        \end{align*}
+        Therefore, the general solution for this differential equation is $y = \ln(2e^x + C)$, where $C$ is any constant.  Notice that in the penultimate line, although the two indefinite integrals will both produce a constant of integration, we combine them into a single $C$. 
+        \item At first glance, it may seem like there isn't a function of $x$ on the right hand side of the equation.  However, we can just move $3y-2$ to the left side and yield
+        \begin{align*}
+            \frac{dy}{dx} &= 3y-2\\
+            \frac{1}{3y-2}~dy &= dx\\
+            \int \frac{1}{3y-2}~dy &= \int dx\\
+            \frac{1}{3}\ln|3y-2| &= x + C_1\\
+            |3y-2| &= C_2e^{3x}, C_2 \ge 0
+        \end{align*}
+        where in the last line we redefine $C_2 = e^{3C_1}$ so $C_2 \ge 0$.  We may further solve for $y$ and yield
+        \[y = \frac{2}{3} \pm \frac{1}{3}C_2e^{3x} := \frac{2}{3} + Ce^{3x}\]
+        Here $\pm \frac{1}{3}C_2$ can take on any value since $C_2 \ge 0$, so we redefine it as $C$ where $C$ is any number.  Therefore, the general solution for this differential equation is $y = \frac{2}{3} + Ce^{3x}$, where $C$ is any constant.
+        \item The right hand side of the equation can be factored as $x^2(y^2+1)$.  Therefore we have,
+        \begin{align*}
+            \frac{dy}{dx} &= x^2(y^2+1)\\
+            \frac{1}{y^2 + 1}~dy &= x^2~dx\\
+            \int \frac{1}{y^2 + 1}~dy &= \int x^2~dx\\
+            \arctan y &= \frac{1}{3}x^3 + C\\
+            y &= \tan \Big(\frac{1}{3}x^3 + C\Big)
+        \end{align*}
+        Therefore, the general solution for this differential equation is $y = \tan\big(\frac{1}{3}x^3 + C\big)$, where $C$ is any constant.
+    \end{enumerate}
+\end{egsol}
+
+\pagebreak
+
+\begin{ex}[]{ex: sep_var}
+    The initial phase of a emerging infectious disease can be described with the differential equation
+    \[\frac{dI}{dt} =  (\beta - \gamma)I\]
+    where $I$ is the total number of incident case at time $t$ (measured in days),  $\beta$ is the disease transmission rate (measured in 1/days) and $\gamma$ is the disease recovery rate (measured in 1/days).  Suppose at time $0$ we have 30 people infected.  Derive the particular solution for the epidemic curve $I(t)$.
+\end{ex}
+
+\begin{exsol}[]{exsol: sep_var}
+    Using seperation of variables, we have
+    \begin{align*}
+        \frac{1}{I}~dI &= (\beta - \gamma)~dt\\
+        \int \frac{1}{I}~dI &= \int (\beta - \gamma)~dt\\
+        \ln |I| &= (\beta - \gamma)t + C^*\\
+        |I| &= e^{(\beta-\gamma)t + C^*} := Ce^{(\beta-\gamma)t}
+    \end{align*}
+    In the last line we redefined $C = e^{C^*}$, so $C \ge 0$.  Note that $I(t)$ is the number of infected individuals so it is always non-negative, so we have the general solution $I(t) = Ce^{(\beta-\gamma)t}$.  Now since we have $I(0) = 30$, we yield $30 = Ce^0 = C$, so the particular solution for $I(t)$ is
+    \[I(t) = 30e^{(\beta-\gamma)t}\]
+    Therefore, as long as $\beta > \gamma$, the number of patients grow exponentially and has the potential to evolve into an epidemic or even pandemic disease.  In constrast, if $\beta < \gamma$, then the infection dies out gradually and does not grow into a epidemic.  In light of this, we can re-express $I(t)$ by defining $R_0 = \beta/\gamma$, leading to
+    \[I(t) = 30e^{(R_0 - 1)\gamma t}\]
+    so that when $R_0 > 1$, the epidemic curve will grow, and when $R_0 < 1$, the epidemic dies down.  $R_0$ is called the basic reproduction number, and is considered as the most important parameter for any infectious disease in epidemic modelling. 
+\end{exsol}
+
+\subsection{First-order linear differential equations}
+Apart from first-order differential equations that can be treated with seperation of varibles, there is another class of differential equations that merits investigation, which is the first-order linear differential equations that can be expressed in the following \textit{standard form}:
+\[y' + P(x) y = Q(x)\]
+where $P$ and $Q$ are continuous functions of $x$.  To tackle this class of equations, let us first multiply both sides of the equation with a function $I(x)$ to be determined later, yielding
+\[I(x) y' + I(x)P(x) y = I(x)Q(x)\]
+The left hand side now looks a little like the result for product rule of differentiation, so our goal here is to pick just the right $I(x)$ so that the left hand side is exactly the derivative of $I(x)y$.  This implies that
+\[I(x) y' + I(x)P(x) y = I(x) y' + I'(x) y\]
+After comparing both sides, we have 
+\begin{align*}
+    I'(x) &= I(x)P(x)\\
+    \frac{dI(x)}{dx} &= I(x) P(x)\\
+    \frac{1}{I(x)}~dI(x) &= P(x)~dx\\
+    \int \frac{1}{I(x)}~dI(x) &= \int P(x)~dx\\
+    ln |I(x)| &= \int P(x)~dx\\
+    |I(x)| &= e^{\int P(x)~dx}
+\end{align*}
+Since we are only looking for one suitable $I(x)$, we can take the positive solution and just take one of the antiderivative for $P(x)$ in the exponent.  Here $I(x)$ is called the \textbf{integration factor} and can be formally defined as 
+\[I(x) = e^{\int P(x)~dx}\]
+Now we have the suitable $I(x)$, we can get back to our original differential equation and yield
+\begin{align*}
+    \frac{dI(x)y}{dx} &= I(x)Q(x)\\
+    I(x)y &= \int I(x)Q(x)~dx\\
+    y &= \frac{1}{I(x)} \int I(x)Q(x)~dx
+\end{align*}
+which is the formula for the general solution of a first-order linear differential equation. 
+
+Let us put this formula to the test in the following example:
+
+\begin{eg}[]{eg: linear_diff_eq}
+    Find the solution of the following differential equation with the initial condition $y(-1) = 0$:
+    \[xy' - 2y = x^3e^x\]
+\end{eg}
+
+\begin{egsol}[]{egsol: linear_diff_eq}
+    With slight algebraic manipulations, this differential equation can be expressed in the standard form of first-order linear differential equations:
+    \[y' - \frac{2}{x}y = x^2e^x\]
+    with $P(x) = -\frac{2}{x}$ and $Q(x) = x^2e^x$ as described in the definition.  We first derive the integrating factor $I(x)$.  Since one of the antiderivatives of $P(x) = -\frac{2}{x}$ is $-2\ln x$, we have 
+    \[I(x) = e^{-2\ln x} = (e^{\ln x})^{-2} = x^{-2}\]
+    Therefore, we can multiple $x^{-2}$ on both sides of the differential equation and yield
+    \begin{align*}
+        x^{-2}y' - 2x^{-3}y &= e^x\\
+        (x^{-2}y)' &= e^x\\
+        x^{-2}y &= e^x + C\\
+        y &= x^2(e^x + C)
+    \end{align*}
+    Therefore, the general solution is $y = x^2(e^x + C)$, where $C$ is any constant.  Given the initial condition, we have
+    \[0 = (-1)^2(e^{-1} + C) = e^{-1} + C\]
+    Therefore, $C = -e^{-1}$ and our particular solution is
+    \[y = x^2 (e^x - e^{-1})\]
+\end{egsol}
