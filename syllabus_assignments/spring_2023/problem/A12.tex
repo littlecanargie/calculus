@@ -1,0 +1,114 @@
+\providecommand{\pgfsyspdfmark}[3]{}
+\providecommand{\savepicturepage}[3]{}
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% Math Environments
+	amssymb,			% Extended Symbols
+	enumerate,		    % Enumerate Environments
+	graphicx,			% Include Images
+	lastpage,			% Reference Lastpage
+	multicol,			% Use Multi-columns
+	multirow,			% Use Multi-rows
+	gensymb
+}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+
+\newcommand{\prob}{\noindent\textbf{Problem. }}
+\newcounter{problem}
+\newcommand{\problem}{
+	\stepcounter{problem}%
+	\noindent \textbf{Problem \theproblem. }%
+}
+\newcommand{\pspace}{\par\vspace{\baselineskip}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=14pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\noindent\textbf{\large Calculus II (MSF\_10010 / AM\_\_1080AH) \\ 2023 Spring \\ Problem List XII (Due May 25)}
+
+\bigskip
+
+\noindent (In the following, we denote $\frac{dy}{dx}$ and $\frac{d^2y}{dx^2}$ as $y'$ and $y''$.)
+
+\bigskip
+
+\problem Given the following differential equation:
+\[y'' - 2y' + y = 0\]
+\begin{enumerate}[a)]
+	\item Verify that $y = (C_1 + C_2x)e^x$ is a general solution to this differential equation.
+	\item Given $y(0) = 1$ and $y'(0) = 2$, find the particular solution of this differential equation.
+\end{enumerate}
+
+\vspace{6mm}
+
+\problem Find the general solutions to following differential equations:
+\begin{enumerate}[a)]
+    \item $y' = 2xe^y$
+    \item $y' = \frac{\sqrt{1-y^2}}{x}$
+    \item $(2y\cos^2 x)y' = 1$
+    \item $x^2y' = 1-x+y^2-xy^2$
+\end{enumerate}
+\vspace{6mm}
+
+\problem Find the particular solution of the following differential equation where $y(0) = 0$:
+\[y' + y = 2\sin x\]
+\vspace{6mm}
+
+\problem Continuous compounding is the mathematical limit that compound interest reaches when the compound period is taken to be infinitely small.  Although practically the period cannot be infinitely small, continuous compounding often serves as a good approximation.  
+
+Suppose a home buyer borrows $P_0$ NT dollars at a stated yearly interest rate of $r$ with continuous compounding.  The buyer pays back $s$ NT dollars per year, with payments spread uniformly and continously across the year. 
+
+Let $P(t)$ be the amount of money the home buyer owes at time $t$.  Then, within the time interval $t$ to $t+dt$,  the buyer should pay back $sdt$ dollars, but there will be an accrued interest of $rPdt$ dollars.  Therefore, we have
+\[dP = -(s-rP)dt\]
+or, equivalently
+\[\frac{dP}{dt} = -(s-rP)\]
+\begin{enumerate}[a)]
+	\item Find the general solution to the differential equation above.  You may assume that $s$ is always greater than $rP$.
+	\item Let $t = 0$ be the time the home buyer borrowed the money, so $P(0) = P_0$.  Based on this initial condition, find the particular solution of the differential equation.
+	\item Suppose $P_0 = 7,500,000$, $r = 2\%$.  Find how much money the home buyer needs to pay monthy (which is $\frac{s}{12}$ NT dollars) so that he can pay off the mortgage in $25$ years. 
+\end{enumerate}
+
+\end{document}
