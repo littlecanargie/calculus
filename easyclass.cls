@@ -278,6 +278,8 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 
 \newcommand{\ind}{\mathbb{1}}
 
+\newcommand{\p}{\partial}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Typography, change document font

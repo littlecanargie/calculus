@@ -14,16 +14,169 @@ Previously when we set out to visualize a uni-variable function, say $f(x)$, we 
     \includegraphics[width = 0.7\textwidth]{figures/chap 08/3D-graph.png}
 \end{figure}
 
-\subsection{Partial derivatives of a function of two variables}
-When we were dealing with univariable functions, we used derivatives to evaluate the slope of their tangent lines at a certain point, which reflects the rate of change of these functions at that very point.  In functions of two variables, we can still try to evaluate the rate of change of these functions.  What is different from univariable functions is that, for a univariable function, say, $f(x)$, when we are moving a tiny bit away from $(x_0, f(x_0))$, we can only go to $(x_0 + \delta x, f(x_0+ \delta x))$ or $(x_0 - \delta x, f(x_0 - \delta x))$, both of which have the same rate of change relative to $(x_0, f(x_0))$ as long as $f(x)$ is continuous.  However, for a function of two variables, say, $g(x,y)$, for every point on the surface $(x_0, y_0, f(x_0, y_0))$, there are countless direction we can move away from this point, and each direction would have a different rate of change.  Therefore, before we evaluate the derivative of a fucntion of two variables, we have to specify which direction are we moving away from the point of interest.  Two most obvious directions are along the $x$-axis (holding the $y$-coordinate as constant) and along the $y$-axis (holding the $x$-coordinate as constant).  These directions lead to the two first-order partial derivatives of the function, defined as below:
+\section{Partial derivatives}
+When we were dealing with univariable functions, we used derivatives to evaluate the slope of their tangent lines at a certain point, which reflects the rate of change of these functions at that very point.  In functions of two variables, we can still try to evaluate the rate of change of these functions.  What is different from univariable functions is that, for a univariable function, say, $f(x)$, when we are moving a tiny bit away from $(x_0, f(x_0))$, we can only go to $(x_0 + \delta x, f(x_0+ \delta x))$ or $(x_0 - \delta x, f(x_0 - \delta x))$, both of which have the same rate of change relative to $(x_0, f(x_0))$ as long as $f(x)$ is continuous.  However, for a function of two variables, say, $g(x,y)$, for every point on the surface $(x_0, y_0, f(x_0, y_0))$, there are countless direction we can move away from this point, and each direction would have a different rate of change.  
 
-\begin{defi}[First-order Partial Derivatives]{}
+For example, suppose $g(x,y) = x^2 - xy$, and we are trying to find the derivative of $g$ at $(x,y) = (1,2)$.  In the calculation of the derivative, if we are moving away from $(1,2)$ along the direction parallel to $x$-axis, then we are essentially fixing the $y$-coordinate at $2$ while moving the $x$-coordinate.  Therefore, the trace of our movement would be on the plane $y=2$ with $z = g(x,2) = x^2 - 2x$, and the derivative would be 
+\[\frac{d}{dx}g(x,0)\Big|_{x=1} = 2x-2|_{x=1} = 0\]
+In contrast, if we are moving away from $(1,2)$ along the parallel the $y$-axis, then we are fixing the $x$-coordinate at $1$ while moving the $y$-coordinate.  So the trace of our movement would be on the plane $x=1$ with $z = g(1,y) = 1-y$, and the derivative would be
+\[\frac{d}{dy}g(1,y)\Big|_{y=2} = -1|_{y=2} = -1\] 
+We can see that moving toward different directions can give us different values of the derivative.  Therefore, before we evaluate the derivative of a function of two variables, we have to specify which direction we are moving away from the point of interest.  Two most obvious directions, as we have demonstrated above, are along the direction parallel to the $x$-axis (holding the $y$-coordinate as constant) and along the direction parallel to the $y$-axis (holding the $x$-coordinate as constant).  These directions lead to the two first-order partial derivatives of the function, defined as below:
+
+\begin{defi}[Partial Derivatives of Functions of Two Variables]{def: partial}
     Let $f(x,y)$ be a continous function, then the first partial derivative of $f$ with respect to $x$ and $y$ are defined as
     \begin{align*}
-        \frac{\partial f}{\partial x} := f_x(x,y) &:= \lim_{h \rightarrow 0} \frac{f(x+h,y)-f(x,y)}{h}\\
-        \frac{\partial f}{\partial y} := f_y(x, y) &:= \lim_{h \rightarrow 0} \frac{f(x,y+h)-f(x,y)}{h}\\
+        \frac{\p f}{\p x} := f_x(x,y) &:= \lim_{h \rightarrow 0} \frac{f(x+h,y)-f(x,y)}{h}\\
+        \frac{\p f}{\p y} := f_y(x, y) &:= \lim_{h \rightarrow 0} \frac{f(x,y+h)-f(x,y)}{h}
     \end{align*}
+    And the value of the partial derivatives at $(x_0, y_0)$ are denoted as
+    \[\frac{\p f}{\p x}\Big|_{(x_0,y_0)} := f_x(x_0, y_0) \qquad\qquad \frac{\p f}{\p y}\Big|_{(x_0,y_0)} := f_y(x_0, y_0)\] 
 \end{defi}
 
-Luckily, although this definition seems cumbersome, the way to evaluate partial derivatives is to simply treat the input that is not to be differentiated as constant.  For example, suppose we let $f(x, y) = 2x + 3xy + 1$, then the partial derivative of $f$ with respect to $y$ is
-\[\frac{\partial f}{\partial y} = 0 + 3x + 0 = 3x\]
+Although the definition of partial derivatives seems cumbersome, luckily, the way to derive them is simple: treat the input that is not to be differentiated as constant.  For example, previously we had $g(x, y) = x^2-xy$.  To derive $\p g/\p x$ and its value at $(1,2)$, we can then treat $y$ as a "constant" and differentiate with respect to $y$, which yields
+\[\frac{\partial g}{\partial x} = 2x - y \qquad \frac{\partial g}{\partial x}\Big|_{(1,2)} = 2 \cdot 1 - 2 = 0\]
+Likewise, we can derive the derivative at $(1,2)$ in the direction parallel to the $y$-axis by
+\[\frac{\partial g}{\partial y} = 0 - x = -x \qquad \frac{\partial g}{\partial y}\Big|_{(1,2)} = -1\]
+Both values for partial derivatives are exactly what we have derived previously.  We will further demonstrate how first-order partial derivatives are evaluated in the following examples:
+
+\begin{eg}[]{eg: first_partial}
+    Suppose a surface in a three-dimensionsal space can be described by $z = f(x,y) = (xy)^x$.
+    \begin{enumerate}[a)]
+        \item Find the first-order partial derivatives of $f$ with respect to $x$ and $y$.
+        \item Evaluate the slope of $f(x,y)$ at $(1,e)$ in the direction parallel to the $x$-axis.
+    \end{enumerate}
+\end{eg}
+
+\begin{egsol}[]{eg: first_partial}
+    \begin{enumerate}[a)]
+        \item For the partial derivative with respect to $x$, we try $y$ as "constant" and yield
+        \begin{align*}
+            \frac{\p f}{\p x} = \frac{\p}{\p x} (xy)^x&= \frac{\p}{\p x} (e^{\ln(xy)})^x &\\
+            &= \frac{\p}{\p x} e^{x \ln(xy)}&\\
+            &= e^{x \ln(xy)} \frac{\p}{\p x} (x \ln (xy))&\text{(Chain rule)}\\
+            &= (xy)^x \Big[\ln(xy) + x \cdot \frac{1}{x}\Big]&\text{(Product rule)}\\
+            &= (xy)^x(\ln(xy)+1)& 
+        \end{align*}
+        Likewise, for the partial derivative with respect to $y$:
+        \[\frac{\p f}{\p y} = \frac{\p}{\p y}(xy)^x = \frac{\p}{\p y} x^x y^x = x^x \cdot x \cdot y^{x-1} = x^{x+1}y^{x-1}\]
+        \item The slope of $f(x,y)$ at $(1,e)$ in the direction parallel to the $x$-axis is exactly the definition of $f_x(1,e)$, which can be evaluated by
+        \[\frac{\p f}{\p x}\Big|_{(1,e)} = (1 \cdot e)^1 (\ln(1 \cdot e) + 1) = e \cdot (1+1) = 2e\]
+    \end{enumerate}
+\end{egsol}
+
+\begin{ex}[]{ex: first_partial}
+    Let the demand functions for two products $A$ and $B$, denoted as $q_A(p_A, p_B)$ and $q_B(p_A, p_B)$, be functions of the price of A ($p_A$) and price of B ($p_B$).  The two products are said to be \textit{complemetary} when 
+    \[\frac{\p q_A}{\p p_B} < 0 \qquad \text{and} \qquad \frac{\p q_B}{\p p_A} < 0\]
+    The two products are said to be \textit{substitutes} when 
+    \[\frac{\p q_A}{\p p_B} > 0 \qquad \text{and} \qquad \frac{\p q_B}{\p p_A} > 0\]
+    Suppose now we have 
+    \begin{align*}
+        q_A &= 180 - 2.5 p_A + 3 p_B\\
+        q_B &= 200 + 1.5 p_A - 0.5 p_B 
+    \end{align*}
+    Determine if $A$ and $B$ are complementary, substitutes, or neither.
+\end{ex}
+
+\begin{exsol}[]{exsol: first_partial}
+    Based on the definition of $q_A$ and $q_B$, we have the following partial derivatives:
+    \begin{align*}
+        \frac{\p q_A}{\p p_B} &= 3\\
+        \frac{\p q_B}{\p p_A} &= 1.5
+    \end{align*}
+    Since both partial derivatives are positive, $A$ and $B$ are \textit{complementary}. 
+\end{exsol}
+
+In Definition \ref{def: partial}, we only defined the partial derivatives for functions of two variables.  This definition can be readily extended to functions of arbitrary number of variables as follows:
+
+\begin{defi}[Partial Derivatives of Functions of Several Variables]{}
+    Let $f(x_1, x_2, ..., x_p)$ be a continous function, then the first partial derivative of $f$ with respect to $x_j$ is defined as
+    \[\frac{\p f}{\p x_j} := \lim_{h \rightarrow 0} \frac{f(x_1, x_2, ..., x_{j-1}, x_j+h, x_{j+1}, ... ,x_p)-f(x_1, x_2, ..., x_{j-1}, x_j, x_{j+1}, ... ,x_p)}{h}\]
+\end{defi}
+
+The recipe for deriving the partial derivative is exactly the same: treat all variables other than $x_j$ as constant and differentiate the function with respect to $x_j$.  For example, suppose we have $f(x,y,z,t) = xyz + yzt^2 + e^{xzt}$, then the partial derivative of $f$ with respect to $x$ is 
+\[\frac{\p f}{\p x} = yz + 0 + e^{xzt} \cdot zt = yz + zte^{xzt}\]
+
+Up until now, we have shown how to evaluate the first-order partial derivatives for functions of several variables.  As with ordinary derivatives, it also possible to do partial differentiation repeatedly to a function to obtain its higher-order partial derivatives.  However, note that since we have severval variables available for partial differentiation, we have to specify which variables and in what order do we want to carry out the partial differentiations.  For example, for a function of two variables $f(x,y)$, there are four ways to take its second-order partial derivative, defined with the notations below:
+
+\begin{align*}
+    &\frac{\p}{\p x}\Big(\frac{\p f}{\p x}\Big) := \frac{\p^2 f}{\p x^2} := f_{xx} := (f_x)_x \qquad 
+    &\frac{\p}{\p y}\Big(\frac{\p f}{\p x}\Big) := \frac{\p^2 f}{\p y \p x} := f_{xy} := (f_x)_y\\
+    &\frac{\p}{\p y}\Big(\frac{\p f}{\p y}\Big) := \frac{\p^2 f}{\p y^2} := f_{yy} := (f_y)_y \qquad &\frac{\p}{\p x}\Big(\frac{\p f}{\p y}\Big) := \frac{\p^2 f}{\p x \p y} := f_{yx} := (f_y)_x
+    \\
+\end{align*}
+
+The two partial derivatives on the right are called \textit{mixed partial derivatives} since they take partial derivatives of different variables.  Notice that the order of $x$ and $y$ in the "fraction style" notation and "subscript style" notation are different: in the "fraction style" you differentiate in a right-to-left fashion, while in the "subscript style" notation you differentiate in a left-to-right fashion.  This may seem a little bit confusing, but fortunately, \textit{it can be shown that as long as the function has continuous second partial derivatives, the order of partial differentiation does not matter}.  To demonstrate this, lets suppose $f(x,y) = x^2y + xy^3$, then we have
+\begin{align*}
+    \frac{\p^2 f}{\p x^2} &= \frac{\p}{\p x}\Big(\frac{\p f}{\p x}\Big) = \frac{\p}{\p x}\Big(2xy + y^3\Big) = 2y\\
+    \frac{\p^2 f}{\p y^2} &= \frac{\p}{\p y}\Big(\frac{\p f}{\p y}\Big) = \frac{\p}{\p y}\Big(x^2 + 3xy^2\Big) = 6xy\\
+    \frac{\p^2 f}{\p y \p x} &= \frac{\p}{\p y}\Big(\frac{\p f}{\p x}\Big) = \frac{\p}{\p y}\Big(2xy + y^3\Big) = 2x + 3y^2\\
+    \frac{\p^2 f}{\p x \p y} &= \frac{\p}{\p x}\Big(\frac{\p f}{\p y}\Big) = \frac{\p}{\p x}\Big(x^2 + 3xy^2\Big) = 2x + 3y^2
+\end{align*}
+which verifies that $f_{xy} = f_{yx}$.
+
+\section{Extrema of Functions of Two Variables}
+
+In single variable calculus, we used derivatives extensively to find the local and global extrema of a function.  For a brief recap, to find all the local extrema for a function $f(x)$, we argued that all local extrema should occur at the \textit{critical points} of the function, which is defined as points where its first derivative $f'(x) = 0$ or does not exist.  Therefore, we find all critical points of the function and check them one-by-one to see if they are local minima, local maxima, or neither.  In the case where a critical point is found by $f'(x) = 0$, we can use the \textit{first derivative test} or \textit{second derivative test} to help us do the checking.  In particular, the second derivative test states that a critical point $x = x_0$ attains local minimum if the second derivative $f''(x_0) > 0$, local maximum if $f''(x_0) < 0$, and no information is available from second derivative if $f''(x_0) = 0$.  Lastly, to find global extrema, we may find all local extrema and compare their function values with the function values at the boundary of the function's domain.  In this section, we will see that can can find the extrema of functions of two variables using methods analogus to what we have done in single variable calculus.
+
+For the sake of completeness, we first provide a formal definition of global and local extrema for functions of two variables: 
+
+\smallskip
+
+\begin{defi}[Extrema of functions of two variables]{def: extrema_multi}
+    Suppose $(x_0, y_0)$ is in the domain of $f(x,y)$, let $R_0$ be an region for input where $(x_0, y_0) \in R_0$
+    \begin{itemize}
+        \item $f$ has a \textbf{global (absolute) maximum} at $(x_0, y_0)$ in $R_0$ if $f(x,y) \le f(x_0,y_0), \forall x \in R_0$ 
+        \item $f$ has a \textbf{global (absolute) minimum} at $(x_0, y_0)$ in $R_0$ if $f(x,y) \ge f(x_0,y_0), \forall x \in R_0$ 
+        \item $f$ has a \textbf{local (relative) maximum} at $(x_0, y_0))$ in $I_0$ if there exists an circular region $R \subset R_0$ where $(x_0, y_0) \in R$ and $f(x,y) \le f(x_0, y_0), \forall x \in R$ 
+        \item $f$ has a \textbf{local (relative) minimum} at $(x_0, y_0))$ in $I_0$ if there exists an circular region $R \subset R_0$ where $(x_0, y_0) \in R$ and $f(x,y) \ge f(x_0, y_0), \forall x \in R$ 
+    \end{itemize}
+\end{defi}
+
+We can see that based on this definition, a local maximum is like a peak of a mountain, and a local minimum is like a valley.  To make sure that a point $(x_0,y_0)$ attains local maximum for a function $f(x,y)$, we must make sure that points neighboring $(x_0, y_0)$ \textit{at all directions} do not attain greater function value than $(x_0, y_0)$.  We now state the equivalent of Fermat's Interior Extremum Theorem for functions of two variables:
+
+\begin{theo}[Interior Extremum Theorem for Functions of Two Variables]{thm: fermat_multi}
+    Suppose $f(x, y)$ attains local extremum at $(x_0, y_0) \in R$, where $R$ is an open region.  If the first partial derivatives of $f(x,y)$ exists in $R$, then $f_x(x_0, y_0) = f_y(x_0, y_0) = 0$.
+\end{theo}
+
+The intuition of this theorem is that, if you see $f(x, y)$ as a geographic map measuring the height of each point, then as long as the terrain is smooth (existence of first partial derivatives) within a certain area of the map ($R$), then if you are at a valley or a peak, the ground will be relatively flat at where you stand (zero partial derivative).  However, the converse is not true: when the ground is relative flat near you, it is possible that you are neither at a peak nor a valley.  For example, it is possible that you ascend when you walk forwards and backwards, but descend when you walk to the left or right, which is the case for the point marked as X in the following graph.  This kind of point, where the two partial derivatives evaluate to zero but deos not attain local extremum, is called a \textbf{saddle point}.
+
+\begin{center}
+    \includegraphics[width = 0.4\textwidth]{figures/chap 08/saddle.png}
+\end{center}
+
+Since all local extrema occur at where both partial derivatives evaluates to zero when both partial derivatives exist, we can define critical points of functions of two variables as follows, in order to capture all possible points that can attain local extrema:
+
+\begin{defi}[Critical points of functions of two variables]{def: crit}
+    A point $(x_0, y_0)$ in the domain of $f(x, y)$ is termed as a \textit{critical point} for $f(x, y)$ if either of the following holds:
+    \begin{enumerate}
+        \item $f_x(x_0, y_0) = f_y(x_0, y_0) = 0$
+        \item $f_x(x_0, y_0)$ or $f_y(x_0, y_0)$ is undefined at $(x_0, y_0)$
+    \end{enumerate}
+\end{defi}
+
+After finding the critical points for a function, aside from trying to plot the function around the critical points to assess its behavior at these points, we can use the following second partial derivative test to help us categorize the critical points as long as they are found by letting $f_x(x,y) = f_y(x,y) = 0$.
+
+\begin{theo}[Second Partial Derivative Test for Relative Extrema]{thm: second_partial}
+    Suppose a function $f(x, y)$ has continuous second partial derivatives in a region $R$ containing $(x_0, y_0)$ where $f_x(x_0, y_0) = f_y(x_0, y_0) = 0$.  Define the determinant $D$ as
+    \[D = f_{xx}(x_0, y_0)f_{yy}(x_0, y_0) - [f_{xy}(x_0, y_0)]^2\]
+    \begin{enumerate}
+        \item If $D > 0$, then $f$ has a local extrema at $(x_0,y_0)$, and we assess the sign of $f_xx(x_0,y_0)$.
+        \begin{enumerate}
+            \item If $f_{xx}(x_0,y_0) > 0$, $f$ attains \textbf{local minimum} at $(x_0, y_0)$.
+            \item If $f_{xx}(x_0,y_0) < 0$, $f$ attains \textbf{local maxmimum} at $(x_0, y_0)$.
+        \end{enumerate}
+        \item If $D < 0$, then $(x_0, y_0)$ is a \textbf{saddle point}.
+        \item If $D = 0$, the second partial derivatives give no information.
+    \end{enumerate}
+\end{theo}
+
+Here we will not show how $D$ is derived, but will provide some intuition on why this criterion is needed and why it makes sense.  When $f_{xx}(x_0,y_0)$ and $f_{yy}(x_0,y_0)$ have opposite signs, we can see that $D$ is guaranteed to be less than zero and $(x_0, y_0)$ is a saddle point.  This is reasonable since in the case where $f_{xx}(x_0,y_0) > 0$ and $f_{yy}(x_0,y_0) <0$, the trace of the surface is concave up on $y = y_0$ and concave down on $x = x_0$, which implies that when you are walking from $(x_0, y_0)$, the terrain ascends when you walk parallel to the $x$-axis but decends when you walk parallel to the $y$-axis.  Therefore, it is clear that this point is niether a valley or a peak, so it is a saddle point.  The situtation is similar when $f_{xx}(x_0,y_0) < 0$ and $f_{yy}(x_0,y_0) > 0$.
+
+
+When both $f_{xx}(x_0,y_0)$ and $f_{yy}(x_0,y_0)$ are positive, the traces of the surface on $x = x_0$ and $y = y_0$ are both concave up, which implies that when you stand at $(x_0, y_0)$ and walk parallel to either the $x$- or $y$-axis, you will find the terrain ascending.  However, this is not sufficient to prove that you are in a valley (i.e. local minimum) since you are still not sure if the terrain would be descending when you walk in a direction not parellel to either the $x$- or $y$-axis.  The additional mixed partial derivative term $[f_{xy}(x_0, y_0)]^2$ can be seen as to provide information on what would happen if you walked diagonally.  When it is large enough to offset the $f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)$ and make $D$ negative, this implies that there are some walking directions where the terrain becomes descending, and the point becomes a saddle point.  Similar arguments can be made in the case where $f_{xx}(x_0,y_0)$ and $f_{yy}(x_0,y_0)$ are both negative.
+
+We will now see how the series of procedures above works in finding local extrema:
+
+\begin{eg}[]{eg: extrema_multi}
+
+\end{eg}
