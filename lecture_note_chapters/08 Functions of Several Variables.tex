@@ -47,7 +47,7 @@ Both values for partial derivatives are exactly what we have derived previously.
     \end{enumerate}
 \end{eg}
 
-\begin{egsol}[]{eg: first_partial}
+\begin{egsol}[]{egsol: first_partial}
     \begin{enumerate}[a)]
         \item For the partial derivative with respect to $x$, we try $y$ as "constant" and yield
         \begin{align*}
@@ -83,7 +83,7 @@ Both values for partial derivatives are exactly what we have derived previously.
         \frac{\p q_A}{\p p_B} &= 3\\
         \frac{\p q_B}{\p p_A} &= 1.5
     \end{align*}
-    Since both partial derivatives are positive, $A$ and $B$ are \textit{complementary}. 
+    Since both partial derivatives are positive, $A$ and $B$ are \textit{substitutes}. 
 \end{exsol}
 
 In Definition \ref{def: partial}, we only defined the partial derivatives for functions of two variables.  This definition can be readily extended to functions of arbitrary number of variables as follows:
@@ -146,7 +146,7 @@ The intuition of this theorem is that, if you see $f(x, y)$ as a geographic map 
 
 Since all local extrema occur at where both partial derivatives evaluates to zero when both partial derivatives exist, we can define critical points of functions of two variables as follows, in order to capture all possible points that can attain local extrema:
 
-\begin{defi}[Critical points of functions of two variables]{def: crit}
+\begin{defi}[Critical points of functions of two variables]{def: crit_multi}
     A point $(x_0, y_0)$ in the domain of $f(x, y)$ is termed as a \textit{critical point} for $f(x, y)$ if either of the following holds:
     \begin{enumerate}
         \item $f_x(x_0, y_0) = f_y(x_0, y_0) = 0$
@@ -178,5 +178,123 @@ When both $f_{xx}(x_0,y_0)$ and $f_{yy}(x_0,y_0)$ are positive, the traces of th
 We will now see how the series of procedures above works in finding local extrema:
 
 \begin{eg}[]{eg: extrema_multi}
-
+    Find the relative extrema and saddle points of $f(x,y) = 6xy - x^6 - y^6$
 \end{eg}
+
+\begin{egsol}[]{egsol: extrema_multi}
+    We will begin by finding the critical points of $f(x,y)$, with its first-order partial derivatives:
+    \begin{align*}
+        f_x(x,y) &= 6y - 6x^5\\
+        f_y(x,y) &= 6x - 6y^5
+    \end{align*}
+    Since both partial derivatives are defined under any value of $x$ and $y$, we proceed on find the values of $x$ and $y$ that satisfies $f_x(x,y) = f_y(x,y) = 0$.  This implies 
+    \begin{align*}
+        y &= x^5\\
+        x &= y^5
+    \end{align*}
+    plugging $x$ with $y^5$ in the first equality yields $y = (y^5)^5 = y^{25}$, so we have $y(y^{24}-1) = 0$, which yields three solutions $y = 0, 1, -1$.  Coupled with the fact that $x=y^5$, we have three critical points: $(0,0)$, $(1,1)$ and $(-1,-1)$.  
+
+    To determine if these critical points are local extrema, saddle points, or neither, we proceed on to the second partial derivative test, which requires us to derive the three second-order partial derivatives:
+    \begin{align*}
+        f_{xx}(x,y) &= - 30x^4\\
+        f_{yy}(x,y) &= - 30y^4\\
+        f_{xy}(x,y) &= 6
+    \end{align*}
+    Therefore, we have the following table, from formula $D = f_{xx}(x,y)f_{yy}(x,y)-[f_{xy}(x,y)]^2$:
+    \begin{center}
+        \begin{tabular}[ht]{cccccc}
+            Critical point & $f_{xx}$ & $f_{yy}$ & $f_{xy}$ & $D$ & Conclusion\\
+            \hline
+            $(0,0)$ & $0$ & $0$ & $6$ & $-36<0$ & Saddle point\\
+            $(1,1)$ & $-30<0$ & $-30$ & $6$ & $864>0$ & Local maximum\\
+            $(-1,-1)$ & $-30<0$ & $-30$ & $6$ & $864>0$ & Local maximum
+        \end{tabular}
+    \end{center}
+\end{egsol}
+
+\begin{ex}[]{ex: extrema_multi}
+    Suppose there is a rectangular box sitting on the $xy$-plane, with one vertex on the origin point and another on the plane $2x+3y+z = 6$.  Find the maximum volume for the box.
+\end{ex}
+
+\begin{exsol}[]{exsol: extrema_multi}
+    We can graph the plane using the fact that three points decides a plane: the plane clearly goes through $(3,0,0), (0,2,0)$ and $(0,0,6)$, cutting through the first octant forming a tetrahedron.  Suppose the vertex on the plane is of coordinate $(x,y,z)$, then first since $(x,y,z)$ is on the plane, the three unknowns are not totally free and we have to substitute $z = 6-2x-3y$.  Now since the volume of the box is $V = xyz$, we have
+    \[V = xyz = xy(6-2x-3y) = 6xy - 2x^2y-3xy^2\]
+    To maximize $V$ with respect to $x$ and $y$, we find the first-order partial derivatives of $V$
+    \begin{align*}
+        V_x &= 6y - 4xy - 3y^2 = y(6-4x-3y)\\
+        V_y &= 6x - 2x^2 - 6xy = x(6-2x-6y)
+    \end{align*}
+    Since $V_x$ and $V_y$ are always defined, we now try to solve the equation $V_x = V_y = 0$.  From $V_x = 0$, we have $y = 0$ or $6-4x-3y = 0$.  From $V_y = 0$, we have $x = 0$ or $6-2x-6y=0$.  Cross-matching either pair of solutions leads to four solutions for the critical points: $(0, 0), (0, 2), (3, 0), (1, 2/3)$.  
+
+    To determine which these critical points represents a maximum, we proceed on to the second partial derivative test, which requires us to derive the three second-order partial derivatives:
+    \begin{align*}
+        V_{xx} &= -4y\\
+        V_{yy} &= -6x\\
+        V_{xy} &= 6-4x-6y
+    \end{align*}
+    Therefore, we have the following table, from formula $D = V_{xx}V_{yy}-[V_{xy}]^2$:
+    \begin{center}
+        \begin{tabular}[ht]{cccccc}
+            Critical point & $f_{xx}$ & $f_{yy}$ & $f_{xy}$ & $D$ & Conclusion\\
+            \hline
+            $(0,0)$ & $0$ & $0$ & $6$ & $-36<0$ & Saddle point\\
+            $(0,2)$ & $-8$ & $0$ & $-6$ & $-36<0$ & Saddle point\\
+            $(3,0)$ & $0$ & $-18$ & $-6$ & $-36<0$ & Saddle point\\
+            $(1,2/3)$ & $-8/3 < 0$ & $-6$ & $-2$ & $12>0$ & Local maximum
+        \end{tabular}
+    \end{center}
+    Therefore, the maximum occurs at $(x,y) = (1,2/3)$, and from $z=6-2x-3y$, we get $z = 2$, and the maximum volume is $V = xyz = 1 \cdot 2/3 \cdot 2 = 4/3$.
+\end{exsol}
+
+\begin{eg}[]{eg: least_squares_regression}
+    Given a set of data of size $n$ observing two variables $(x_1, y_1), (x_2, y_2), ..., (x_n, y_n)$ where $x_i$ are not all identical, the aim of regression is to find a predictor function $f(x)$ so that when we use $f(x_i)$ to predict $y_i$, the \textit{magnitude} of the error $e_i := y_i-f(x_i)$ can be as small as possible.  Since absolute values are more difficult to handle, most commonly we would want to minimize the \textit{square} of the error.  Therefore, least squares regression set out to minimize the following quantity
+    \[L = \frac{1}{2}\sum_{i=1}^n e_i^2= \frac{1}{2}\sum_{i=1}^n[y_i - f(x_i)]^2\]
+    In the case where $f(x)$ is assume to be a linear function so that $f(x) = \alpha + \beta x$, the quantity to minimize becomes
+    \[L(\alpha, \beta) = \frac{1}{2}\sum_{i=1}^n[y_i - (\alpha + \beta x_i)]^2\]
+    Show that the following solutions for $\beta$ and $\alpha$ indeed minimizes $L$
+    \[\hat{\beta} = \frac{\overline{xy} - \overline{x}~\overline{y}}{\overline{x^2}-\overline{x}^2} \qquad\qquad \hat{\alpha} = \overline{y} - \hat{\beta}\overline{x}\]
+    where
+    \[\overline{xy} = \frac{1}{n}\sum_{i=1}^n x_i y_i \qquad \overline{x} = \frac{1}{n}\sum_{i=1}^n x_i \qquad \overline{y} = \frac{1}{n}\sum_{i=1}^n y_i  \qquad \overline{x^2} = \frac{1}{n}\sum_{i=1}^n x_i^2\]
+\end{eg}
+
+\begin{egsol}[]{egsol: least_squares_regression}
+    Note that $L$ is a function of $\alpha$ and $\beta$.  To find the minimizer for $L$, first we try to locate the critical points of $L$.  Expanding the expression within the summation sign, we yield
+    \begin{align*}
+        &L(\alpha, \beta)\\
+        = &\frac{1}{2} \sum_{i=1}^n[y_i - (\alpha + \beta x_i)]^2\\
+        = &\frac{1}{2} \sum_{i=1}^n[y_i^2 + \alpha^2 + x_i^2 \beta^2 - 2 y_i \alpha - 2 x_i y_i \beta  +2 x_i \alpha \beta]\\
+        = &\Big(\frac{1}{2} \sum_{i=1}^n y_i^2\Big) + \Big(\sum_{i=1}^n 1\Big) \cdot \frac{1}{2} \alpha^2 + \Big(\sum_{i=1}^n x_i^2\Big) \cdot \frac{1}{2}\beta^2 - \Big(\sum_{i=1}^n y_i\Big) \alpha - \Big(\sum_{i=1}^n x_i y_i\Big) \beta + \Big(\sum_{i=1}^n x_i\Big) \alpha \beta\\
+        = &\Big(\frac{1}{2} \sum_{i=1}^n y_i^2\Big) + n \cdot \frac{1}{2} \alpha^2 + n \overline{x^2} \cdot \frac{1}{2}\beta^2 - n \overline{y} \alpha - n \overline{xy} \beta + n \overline{x} \alpha \beta
+    \end{align*}
+    Therefore, the two first-order partial derivatives for $L$ are
+    \begin{align*}
+        L_\alpha(\alpha, \beta) &= n \alpha - n \overline{y} + n \overline{x} \beta\\
+        L_\beta(\alpha, \beta) &= n\overline{x^2} \beta - n \overline{xy} + n \overline{x} \alpha
+    \end{align*}
+    Since $L_\alpha(\alpha, \beta)$ and $L_\beta(\alpha, \beta)$ are defined for all $\alpha$ and $\beta$, the critical points for $L$ can only occur at where $L_\alpha(\alpha, \beta) = L_\beta(\alpha, \beta) = 0$.  This leads to the following system of equations
+    \[\systeme[\alpha\beta]{n\alpha+n\overline{x}\beta=n\overline{y}, n\overline{x}\alpha + n\overline{x^2}\beta = n\overline{xy}}\]
+    We divide by $n$ on both sides of the two equations:
+    \[\systeme[\alpha\beta]{\alpha+\overline{x}\beta=\overline{y}@\qquad(*), \overline{x}\alpha + \overline{x^2}\beta = \overline{xy}}\]
+    And now we can subtract equation (2) by $\overline{x}$ times equation (1) and yield
+    \begin{align*}
+        (\overline{x^2} - \overline{x}^2)\beta = \overline{xy} - \overline{x} ~ \overline{y}\\
+        \beta = \frac{\overline{xy} - \overline{x} ~ \overline{y}}{\overline{x^2} - \overline{x}^2} = \hat{\beta}
+    \end{align*}
+    Substituting $\beta$ with $\hat{\beta}$ into equation (1), we yield
+    \[\alpha = \overline{y} - \overline{x}\hat{\beta} = \hat{\alpha}\]
+    Now we know that $(\hat{\alpha}, \hat{\beta})$ is the only critical point for $L$, but we still need to make sure that it attains local minimum, so that $L$ is minmized.  We will thus need to calculate the discriminant $D = L_{\alpha\alpha}(\hat{\alpha}, \hat{\beta})L_{\beta\beta}(\hat{\alpha}, \hat{\beta}) - [L_{\alpha\beta}(\hat{\alpha}, \hat{\beta})]^2$.  Intriguingly, all second partial derivatives for $L$ are actually independent of $\alpha$ and $\beta$:
+    \begin{align*}
+        L_{\alpha\alpha}(\alpha, \beta) &= n\\
+        L_{\beta\beta}(\alpha, \beta) &= n\overline{x^2}\\
+        L_{\alpha\beta}(\alpha, \beta) &= n\overline{x}
+    \end{align*}
+    Therefore, we have
+    \begin{align*}
+        D &= n \cdot n \overline{x^2} - (n\overline{x})^2\\
+        &= n \cdot \sum_{i=1}^n x_i^2 - \Big(\sum_{i=1}^n x_i\Big)^2\\
+        &=  \Big(\sum_{i=1}^n 1^2\Big) \cdot \Big(\sum_{i=1}^n x_i^2\Big) - \Big(\sum_{i=1}^n 1 \cdot x_i\Big)^2
+    \end{align*}
+    The \textit{Cauchy's inequality} states that for any two sets of numbers $a_1, a_2, ..., a_n$ and $b_1, b_2, ..., b_n$, we have the following inequality
+    \[\Big(\sum_{i=1}^n a_i^2\Big)\Big(\sum_{i=1}^n b_i^2\Big) \ge \Big(\sum_{i=1}^n a_i b_i\Big)^2\]
+    where the equality holds if and only if $a_1/b_1 = a_2/b_2 = ... = a_n/b_n$.  Therefore, here $D \ge 0$ where the equality holds if and only if $x_1 = x_2 = ... = x_n$, which is precluded in the problem.  Consequently, $D > 0$ and $L_{\alpha\alpha} = n > 0$, so the critical point attains local minimum, which implies that it minimizes $L$.
+\end{egsol}
