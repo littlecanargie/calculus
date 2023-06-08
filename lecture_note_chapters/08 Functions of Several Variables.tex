@@ -298,3 +298,99 @@ We will now see how the series of procedures above works in finding local extrem
     \[\Big(\sum_{i=1}^n a_i^2\Big)\Big(\sum_{i=1}^n b_i^2\Big) \ge \Big(\sum_{i=1}^n a_i b_i\Big)^2\]
     where the equality holds if and only if $a_1/b_1 = a_2/b_2 = ... = a_n/b_n$.  Therefore, here $D \ge 0$ where the equality holds if and only if $x_1 = x_2 = ... = x_n$, which is precluded in the problem.  Consequently, $D > 0$ and $L_{\alpha\alpha} = n > 0$, so the critical point attains local minimum, which implies that it minimizes $L$.
 \end{egsol}
+
+\section{Constrained optimization and Lagrange multiplier}
+We have seen that for a function of two variables $f(x,y)$, we can find the candidate inputs for local extrema of $f(x,y)$ by first finding its critical points, and assess if $f$ attains local maximum, minimum or neither at each critical point using the discriminant $D$ calculated from second partial derivatives.  However, in some scenarios, we also have an additional constraint on the inputs $(x,y)$.  In this case, the constrained extrema of $f$ may not be identical to its unconstrained extrema.  For example, suppose we have $f(x,y) = x^2+y^2$, then it is trivial that $f$ has a local minimum at $(0,0)$.  But if we add a constraint $xy = 1$, then $(0,0)$ is no longer feasible as an input, and we will have to re-find the local extrema under the constraint.  This kind of problem where we want to find the extrema under one or more constraints is called \textit{constrained optimization}.
+
+One intuitive approach to constrained optimization is to reduce the number of input parameters by substituting one or more parameters with expressions that imply the constraints.  For example, in the example above we have the constraint $xy=1$, so we can substitute $y$ with $1/x$, and the function to optimize becomes a single-variable function
+\[f\Big(x, \frac{1}{x}\Big) = x^2 + \frac{1}{x^2}\] 
+To optimize this function, we can find its critical points by differentiating it with respect to $x$
+\[\frac{d}{dx}f\Big(x, \frac{1}{x}\Big) = 2x - \frac{2}{x^3}\]
+The derivative is undefined when $x = 0$ and takes value $0$ when $x = \pm 1$.  The critical point $x=0$ does not work since it is not feasible for the constraint $xy=1$.  The critical point $x=1$, which implies $(x,y) = (1,1)$ under the constraint, obtains local minimum since the second derivative of $f(x, 1/x)$ is positive at $x=1$.  Likewise, the critical point $x = -1$, which implies $(x,y) = (-1,-1)$ under the constraint, also obtains local minimum.  Therefore, we conclude that $f(x,y)$ obtained local minimum at $(x,y) = (1,1)$ and $(-1,-1)$ under the constraint $xy=1$, both taking value $2$.
+
+The approach above breaks down when the constraint is complicated so that is it difficult or impossible to solve for the parameters.  For example, if the constraint is something like $e^(xy) + x^2 + y = 10$, then it is impossible to solve $y$ with expressions of $x$ or solve $x$ with expression of $y$.  In this case, we need a more general strategy to find the constrained extrema.  We first define a function $g(x,y) = xy -1$ so that our constraint is exactly $g(x,y) = 0$.  We then plot $g(x,y) = 0$ and the contour map of $f(x,y)$ on a Cartesian plane as follows:
+
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width = 0.7\textwidth]{figures/chap 08/Lagrange.png}
+    \end{center}
+\end{figure}
+
+When $f(x,y) < 2$, the contour of $f(x,y)$ does not intersect with $g(x,y) = 0$.  This implies that under the constraint $xy=1$, $f(x,y)$ cannot be smaller than $2$.  When $f(x,y) = 2$, the contour of $f(x,y)$ just kisses $g(x,y) = 0$ at $A(1,1)$ and $A'(-1,-1)$.  Note that this exactly corresponds to our previous results where $f(x,y)$ obtains local minimum of $2$ at $(x,y) = (1,1)$ and $(-1,-1)$.  We will now argue that this is no coincidence.  
+
+Since $g(x,y) = 0$ is our constraint, all feasible inputs lies on its trace.  Therefore, if we start from any feasible input point, say, $B$ on the graph, moving the inputs under the constraints is acually equivalent to sliding it along the curve $g(x,y) = 0$.  Now notice that at point $B$, the contour of $f(x,y)$ is not at the same direction of the curve $g(x,y) = 0$.  This means that even if we are moving away a little bit from $B$ along $g(x,y) = 0$, we are leaving the contour of $f(x,y) = 3$, which implies that $f(x,y)$ is not "flat" near point $B$ along the direction of $g(x,y) = 0$, and thus $f(x,y)$ is not obtaining extremum at point $B$.  
+
+In contrast, at point $A$, the contour of $f(x,y)$ is kissing $g(x,y) = 0$, so they are moving at the same direction at the vicinity of $A$.  That is, if we move away $A$ along $g(x,y)=0$ for a little bit, the value of $f(x,y)$ would not change since its contour is of the same direction, so $A$ is a possible candidate for constrained local extremum.  Notice that this does not guarantee that constrained extremum is obtained at $A$, since it can still be a inflection point or saddle point.  In other words, the contour of $f(x,y)$ and $g(x,y) = 0$ kissing is a necessary condition for a point to be obtaining extremum, but not a sufficient condition.  The rigorous way to determine if the point induces maximum, minimum or neither is more involved and out of scope for this course, but practically you may plug in inputs near the point and argue that it is obtaining maximum when all nearby points results in smaller function values, vice versa.
+
+Now we have argued that the contour of $f(x,y)$ and trace of $g(x,y) = 0$ should go in the same direction locally at the point obtaining extremum.  The pressing question is: how do we come up with a systematic way to find these points?  Now suppose that the point of interest is $(x_0, y_0)$ where $g(x_0, y_0)=0$.  If we move a little bit from $(x_0, y_0)$ to $(x_0 + \Delta x, y_0 + \Delta y)$, what relationship do $\Delta x$ and $\Delta y$ need to satisfy for $(x_0 + \Delta x, y_0 + \Delta y)$ to still stay on $g(x,y) = 0$?  From the definition of partial derivatives, we have
+\begin{align*}
+    g(x_0 + \Delta x, y_0) &\approx g(x_0,y_0) + g_x(x_0, y_0) \Delta x\\
+    g(x_0 + \Delta x, y_0 + \Delta y) &\approx g(x_0 + \Delta x,y_0) + g_y(x_0+\Delta x, y_0) \Delta y\\
+    &\approx g(x_0 + \Delta x,y_0) + g_x(x_0, y_0) \Delta y\\
+    &\approx g(x_0,y_0) + g_x(x_0, y_0) \Delta x + g_y(x_0, y_0) \Delta y
+\end{align*}
+Therefore, letting $g(x_0, y_0) = g(x_0 + \Delta x, y_0 + \Delta y) = 0$, we have
+\[g_x(x_0, y_0) \Delta x + g_y(x_0, y_0) \Delta y = 0\]
+Or, when $g_y(x_0,y_0) \ne 0$,
+\[\Delta y = -\frac{g_x(x_0, y_0)}{g_y(x_0, y_0)} \Delta x\]
+Now for $f(x,y)$ to obtain extremum at $(x_0, y_0)$, when we move from $(x_0, y_0)$ to $(x_0 + \Delta x, y_0 + \Delta y)$, the value of $f(x,y)$ should remain the same.  Therefore, using arguments similar to above
+\begin{align*}
+    0 &= g(x_0 + \Delta x, y_0 + \Delta y) - f(x_0,y_0)\\
+    &\approx f_x(x_0, y_0) \Delta x + f_y(x_0, y_0) \Delta y\\
+    &= f_x(x_0, y_0) \Delta x - f_y(x_0, y_0)\frac{g_x(x_0, y_0)}{g_y(x_0, y_0)} \Delta x\\
+    &= \Big[f_x(x_0, y_0) - f_y(x_0, y_0)\frac{g_x(x_0, y_0)}{g_y(x_0, y_0)}\Big] \Delta x
+\end{align*}
+Since $\Delta x \ne 0$, we have
+\[f_x(x_0,y_0) = f_y(x_0, y_0)\frac{g_x(x_0, y_0)}{g_y(x_0, y_0)}\]
+\[\frac{f_x(x_0,y_0)}{g_x(x_0,y_0)} = \frac{f_y(x_0, y_0)}{g_y(x_0, y_0)} := \lambda\]
+where we denote the ratio as $\lambda$.  We then rearrange the equations and add in the constraint:
+\begin{align*}
+    f_x(x_0,y_0) - \lambda g_x(x_0,y_0) &= 0\\
+    f_y(x_0,y_0) - \lambda g_y(x_0,y_0) &= 0\\
+    g(x_0, y_0) &= 0
+\end{align*}
+Notice that these three equations can be made concise if we define the \textbf{Lagrangian function} as
+\[\mathcal{L}(x,y,\lambda) = f(x,y) - \lambda g(x,y)\]
+and the three equations become
+\begin{align*}
+    \mathcal{L}_x(x_0,y_0,\lambda) &= 0\\
+    \mathcal{L}_y(x_0,y_0,\lambda) &= 0\\
+    \mathcal{L}_\lambda(x_0,y_0,\lambda) &= 0
+\end{align*}
+This is call the method of \textbf{Lagrange multiplier}, which is extensively used in constrained optimziation.  It can be readily extended to optimization problems for functions of more than two inputs and multiple constraints: Suppose we want to find the local extrema of $f(x_1, x_2, ..., x_p)$ with $k$ constraints, $g_i(x_1, x_2, ..., x_p) = 0$, where $i$ ranges from $1$ to $k$, then we define the Larangian function as follows
+\[\mathcal{L}(x_1, x_2, ..., x_p, \lambda_1, \lambda_2, ..., \lambda_k) = f(x_1, x_2, ..., x_p) - \sum_{i=1}^k \lambda_i g_i(x_1, x_2, ..., x_p)\]
+Then the candidates for points that obtain extremum can be found by solving
+\begin{align*}
+    \mathcal{L}_{x_1}(x_1, x_2, ..., x_p, \lambda_1, \lambda_2, ..., \lambda_k) &= 0\\
+    \mathcal{L}_{x_2}(x_1, x_2, ..., x_p, \lambda_1, \lambda_2, ..., \lambda_k) &= 0\\
+    &\vdots\\
+    \mathcal{L}_{x_p}(x_1, x_2, ..., x_p, \lambda_1, \lambda_2, ..., \lambda_k) &= 0\\
+    \mathcal{L}_{\lambda_1}(x_1, x_2, ..., x_p, \lambda_1, \lambda_2, ..., \lambda_k) &= 0\\
+    \mathcal{L}_{\lambda_2}(x_1, x_2, ..., x_p, \lambda_1, \lambda_2, ..., \lambda_k) &= 0\\
+    &\vdots\\
+    \mathcal{L}_{\lambda_k}(x_1, x_2, ..., x_p, \lambda_1, \lambda_2, ..., \lambda_k) &= 0
+\end{align*}
+
+We will now see how Lagrange multiplier works in our previous example.
+
+\begin{eg}[]{eg: lagrange}
+   Find the local extrema of $f(x,y) = x^2 + y^2$ under the constraint $xy = 1$.
+\end{eg}
+
+\begin{egsol}[]{egsol: lagrange}
+    Using the method of Lagrange multiplier, we first define the constraint function $g(x,y) = xy - 1$ so that the contraint is $g(x,y) = 0$.  Then, we can define the Lagrangian function as 
+    \[\mathcal{L}(x,y,\lambda) = f(x,y) - \lambda g(x,y) = x^2 + y^2 - \lambda(xy-1)\]
+    Then, the candidate points for local extrema can be found by solving
+    \begin{align}
+        \mathcal{L}_x(x,y,\lambda) &= 2x - \lambda y = 0 \label{eq: lagrange_x}\\
+        \mathcal{L}_y(x,y,\lambda) &= 2y - \lambda x = 0 \label{eq: lagrange_y}\\
+        \mathcal{L}_\lambda(x,y,\lambda) &= xy-1 = 0 \label{eq: lagrange_l}
+    \end{align}
+    From \Cref{eq: lagrange_x}, we have $x = \frac{\lambda}{2}y$, so the $x$ in \Cref{eq: lagrange_y} can be substituted and we yield $2y - \frac{\lambda^2}{2}y = 0$, i.e. $(2+\lambda)(2-\lambda)y = 0$.  Therefore, we have three scenarios:
+    \begin{enumerate}
+        \item $\lambda = -2$: In this case, both \Cref{eq: lagrange_x,eq: lagrange_y} imply $x = -y$.  So from \Cref{eq: lagrange_l}, $-y^2-1=0$, which has no real solutions, and this root is discarded.
+        \item $\lambda = 2$: In this case, both \Cref{eq: lagrange_x,eq: lagrange_y} imply $x = y$.  So from \Cref{eq: lagrange_l}, $y^2-1=0$, which implies $y = 1$ or $-1$.  Given that $x = y$,  $(x,y) = (1,1)$ or $(-1,-1)$.
+        \item $y=0$: When $y=0$, \Cref{eq: lagrange_l} can never be fullfilled, so this root is also discarded.
+    \end{enumerate}
+    Pluggin in $(1,1)$ and $(-1,-1)$ into $f$ and we both yield $2$.  When we plug in points near these points that satisfies the constraint, eg. $(0.9, 1/0.9)$, $(1.1, 1/1.1)$, $(-0.9, -1/0.9)$, $(-1.1, -1/1.1)$, we get values larger than $2$, so we can postulate that $f$ obtains local minimium at these inputs.
+ \end{egsol}
